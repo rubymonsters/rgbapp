@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  language_de: false
+  language_en: false
+  attended_before: false
+  rejected_before: false
+  level: 1
+  comments: MyText
+  os: MyString
+  needs_computer: false
+  tutorials: MyText
+
+two:
+  name: MyString
+  email: MyString
+  language_de: false
+  language_en: false
+  attended_before: false
+  rejected_before: false
+  level: 1
+  comments: MyText
+  os: MyString
+  needs_computer: false
+  tutorials: MyText
