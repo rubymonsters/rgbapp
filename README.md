@@ -11,6 +11,10 @@
 
 ### Troubleshooting
 
+#### Cloning the repo fails with some message about SSH keys
+
+Use the `https` url instead. There is a link to get it under the GitHub *“clone or download”* menu.
+
 #### Installing gem `pg` fails
 
 ##### Mac
