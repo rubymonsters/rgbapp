@@ -1,6 +1,19 @@
-<h1>Applications#new</h1>
-<p>Find me in app/views/applications/new.html.erb</p>
+<h1>Application</h1>
+<!--p>Find me in app/views/applications/new.html.erb</p-->
 
 <%= form_for @application do |f| %>
-  <%= f.submit "Create" %>
+<p><%= f.label(:name) %> <%= f.text_field :name %> </p>
+
+
+
+<p><%= f.label(:email) %> <%= f.text_field :email %> </p>
+<p><%= f.label(:language_de) %> <%= f.check_box :language_de %></p>
+<p><%= f.label(:language_en) %> <%= f.check_box :language_en %></p>
+<p><%= f.label(:attended_before) %> <%= f.check_box :attended_before %></p>
+<p><%= f.label(:rejected_before)%> <%= f.check_box :rejected_before %></p>
+<p><%= f.label(:level)%> <%= f.text_field :level %></p>
+<p><%= f.label(:comments)%> <%= f.text_area :comments %></p>
+<p><%= f.label(:os)%> <%= f.text_field :os %></p>
+<p><%= f.label(:needs_computer)%><%= f.check_box :needs_computer %></p>
+<%= f.submit "Create" %>
 <% end %>
