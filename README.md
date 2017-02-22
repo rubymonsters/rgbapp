@@ -19,7 +19,7 @@ Use the `https` url instead. There is a link to get it under the GitHub *“clon
 
 ##### Mac
 
-Make sure Postgres is installed and set up. The easiest way is to use [http://postgresapp.com/](Postgres.app). Don't forget to setup the [CLI tools](http://postgresapp.com/documentation/cli-tools.html).
+Make sure Postgres is installed and set up. The easiest way is to use [Postgres.app](http://postgresapp.com/). Don't forget to setup the [CLI tools](http://postgresapp.com/documentation/cli-tools.html).
 
 ##### Linux
 
