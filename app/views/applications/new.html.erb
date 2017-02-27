@@ -1,19 +1,56 @@
-<h1>Application</h1>
-<!--p>Find me in app/views/applications/new.html.erb</p-->
-
-<%= form_for @application do |f| %>
-<p><%= f.label(:name) %> <%= f.text_field :name %> </p>
-
-
-
-<p><%= f.label(:email) %> <%= f.text_field :email %> </p>
-<p><%= f.label(:language_de) %> <%= f.check_box :language_de %></p>
-<p><%= f.label(:language_en) %> <%= f.check_box :language_en %></p>
-<p><%= f.label(:attended_before) %> <%= f.check_box :attended_before %></p>
-<p><%= f.label(:rejected_before)%> <%= f.check_box :rejected_before %></p>
-<p><%= f.label(:level)%> <%= f.text_field :level %></p>
-<p><%= f.label(:comments)%> <%= f.text_area :comments %></p>
-<p><%= f.label(:os)%> <%= f.text_field :os %></p>
-<p><%= f.label(:needs_computer)%><%= f.check_box :needs_computer %></p>
-<%= f.submit "Create" %>
-<% end %>
+<header>
+    <h1>Application - Railsgirls Beginners Workshop</h1>
+    <!--p>Find me in app/views/applications/new.html.erb</p-->
+</header>
+<div class="create">
+    <%= form_for @application do |f| %>
+    <% if @application.errors.any? %>
+    <p>Folgender Fehler ist aufgetreten:</p>
+    <ul>
+        <% @application.errors.each do |error| %>
+        <li><%= error %></li>
+        <% end %>
+    </ul>
+    <% end %>
+<div class="zero">
+        <%= f.label(:name) %><br>
+        <%= f.text_field :name, placeholder: (errors = @application.errors).present? ? errors[:name][0] : 'Name' %>
+</div>
+<div class="one">
+      <%= f.label(:email) %><br>
+      <%= f.text_field :email, placeholder: (errors = @application.errors).present? ? errors[:email][0] : 'Email' %>
+    </div>
+<div class="two">
+      In welcher Sprache kannst Du den Workshop absolvieren?/ Which language you prefer for the workshop?<br>
+      <%= f.label(:Deutsch) %>
+      <%= f.check_box :language_de %>
+      <!--/div>
+      <div class="three"-->
+      <%= f.label(:Englisch) %>
+      <%= f.check_box :language_en %>
+</div>
+<div class="four">
+      Hast Du schonmal an einem unserer Workshops teilgenommen oder wurde Deine Bewerbung schon mal abgelehnt?<br>
+      <%= f.label(:attended_before) %>
+      <%= f.check_box :attended_before %></div>
+<div class="five"><%= f.label(:rejected_before)%>
+      <%= f.check_box :rejected_before %></div>
+<div class="six">
+      Wie schätzt Du Deine Programmierfähigkeiten auf einer Skala von 1-10 ein?<%= f.label(:level)%></br>
+      <%= f.text_field :level %></div>
+<div class="seven">
+    Möchtest Du och etwas los werden oder hast Du Tipps und Ratschläge?
+    <%= f.label(:Comments)%></br>
+    <%= f.text_area :comments %></div>
+<div class="eight">
+    Welches Betriebssystem benutzt Du?
+    <%= f.label(:OS)%><br>
+    <%= f.text_field :os %></div>
+<div class="nine">
+    Benötigst Du für den Workshop einen Computer?<%= f.label(:needs_computer)%><%= f.check_box :needs_computer %></div>
+</div>
+<div class="ten">
+  <%= f.submit "Create" %>
+  <% end %>
+</div>
+</div>

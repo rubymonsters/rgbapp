@@ -7,6 +7,13 @@ class ApplicationsController < ApplicationController
     @application = Application.new(params.require(:application).permit(:name,
       :email, :language_de, :language_en, :attended_before, :rejected_before, :level,
       :comments, :os, :needs_computer))
-    @application.save!
+
+    if @application.save
+      redirect_to application_path
+    else
+      render :new
+    end
   end
+
+
 end
