@@ -2,6 +2,17 @@
 <!--p>Find me in app/views/applications/new.html.erb</p-->
 
 <%= form_for @application do |f| %>
+  <% if @application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@application.errors.count, "error") %>Application could not be saved:</h2>
+
+      <ul>
+      <% @application.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <p><%= f.label(:name) %> <%= f.text_field :name %> </p>
 
 
