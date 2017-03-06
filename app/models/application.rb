@@ -11,5 +11,4 @@ class Application < ApplicationRecord
        errors.add(:language_de, "please select at least one language")
      end
    end
-
 end
