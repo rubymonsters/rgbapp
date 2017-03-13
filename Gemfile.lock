@@ -50,6 +50,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.4)
     debug_inspector (0.0.2)
+    email_validation (1.2.1)
+      localized_each_validator (>= 1.0.1)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.17)
@@ -66,6 +68,9 @@ GEM
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+    localized_each_validator (1.0.3)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -156,6 +161,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
+  email_validation
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -171,4 +177,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.13.7
+   1.14.3
