@@ -5,6 +5,7 @@ class Application < ApplicationRecord
    validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }
    validates :os, presence: true, unless: :needs_computer?
    validate :at_least_select_one_language
+   validates :read_coc, acceptance: true
 
    def at_least_select_one_language
      unless language_de? || language_en?

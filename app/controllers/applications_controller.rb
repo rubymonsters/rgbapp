@@ -6,10 +6,10 @@ class ApplicationsController < ApplicationController
   def create
     @application = Application.new(params.require(:application).permit(:name,
       :email, :language_de, :language_en, :attended_before, :rejected_before, :level,
-      :comments, :os, :needs_computer))
+      :comments, :os, :needs_computer, :read_coc))
+      
     unless @application.save
-      render :new 
+      render :new
     end
-
   end
 end
