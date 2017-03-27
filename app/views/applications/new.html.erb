@@ -1,49 +1,78 @@
-<h1>Rails Girls Berlin Beginners Workshop [date]</h1>
-<p>Rails Girls Berlin want to give total beginners the opportunity and a community to start learning the technology to build their ideas and continue coding.</p>
-<p>The Beginners Workshop is a hands on introduction to Rails. The workshop has a main focus on women with no previous Ruby on Rails programming experience and who want to be able to build their own applications. The program of the workshop includes an overview of the Rails framework and a practical exercise in which attendees will be guided by coaches through the application building process.</p>
+<article>
+    <h1>Rails Girls Berlin Beginners Workshop [date]</h1>
+    <article>
+        <p>Rails Girls Berlin want to give total beginners the opportunity and a community to start learning the technology to build their ideas and continue coding.</p>
+        <p>The Beginners Workshop is a hands on introduction to Rails. The workshop has a main focus on women with no previous Ruby on Rails programming experience and who want to be able to build their own applications. The program of the workshop includes
+            an overview of the Rails framework and a practical exercise in which attendees will be guided by coaches through the application building process.</p>
 
-<p>We provide a completely differently learning environment in order to not only support but also further motivate women who want to code, but don’t have the right environment to do so. We also aim to establish a community, so it’s not a once in a life-time event, we want to help women code and encourage them to continue coding.</p>
+        <p>We provide a completely differently learning environment in order to not only support but also further motivate women who want to code, but don’t have the right environment to do so. We also aim to establish a community, so it’s not a once in a
+            life-time event, we want to help women code and encourage them to continue coding.</p>
 
-<p>No previous knowledge is required to attend this workshop.</p>
+        <p>No previous knowledge is required to attend this workshop.</p>
 
-<p>The first steps of learning how to program can be difficult. Our goal is it to help you with these first steps. We want to show you that programming is fun and creative and that there is a wonderful community that will support you.</p>
+        <p>The first steps of learning how to program can be difficult. Our goal is it to help you with these first steps. We want to show you that programming is fun and creative and that there is a wonderful community that will support you.</p>
 
-<p>We are looking forward to seeing you <3</p>
+        <p>We are looking forward to seeing you <3</p>
 
-<p>Application Start: [date]</p>
-<p>Application End: [date]</p>
-<p>Confirmation Mails: [date]</p>
+        <p>Application Start: [date]</p>
+        <p>Application End: [date]</p>
+        <p>Confirmation Mails: [date]</p>
 
-<p>* Required</p>
-
-<%= form_for @application do |f| %>
-  <% if @application.errors.any? %>
+        <p>* Required</p>
+    </article>
+    <%= form_for @application do |f| %>
+    <% if @application.errors.any? %>
     <div id="error_explanation">
-      <h2>Ooops. Something went wrong. Please correct the following errors.</h2>
+        <h2>Ooops. Something went wrong. Please correct the following errors.</h2>
 
-      <ul>
-      <% @application.errors.messages.each do |error| %>
-        <% messages = error.last %>
-        <% messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      <% end %>
-      </ul>
+        <ul>
+            <% @application.errors.messages.each do |error| %>
+            <% messages = error.last %>
+            <% messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+            <% end %>
+        </ul>
     </div>
-  <% end %>
-<p><%= f.label(:female, "I am a woman / non-binary person.") %> <%= f.check_box :female %></p>
-<p><%= f.label(:name, "Name (No official name necessary, you can use the name you want to be called. Just be sure to remember what you picked.) *") %> <%= f.text_field :name %> </p>
-<p><%= f.label(:email, "E-Mail Address *") %> <%= f.text_field :email %> </p>
-<p>Which language(s) do you prefer learning in? *</p>
-<p><%= f.label(:language_de, "German") %> <%= f.check_box :language_de %></p>
-<p><%= f.label(:language_en, "English") %> <%= f.check_box :language_en %></p>
-<p><%= f.label(:attended_before, "Have you attended a Rails Girls Berlin Workshop before?") %> <%= f.check_box :attended_before %></p>
-<p><%= f.label(:rejected_before, "Have you applied before but did not get a place in the workshop?") %> <%= f.check_box :rejected_before %></p>
-<p><%= f.label(:level, "What level of coding do you see yourself in Rails? (0=never coded before; 10=expert) *") %> <%= f.number_field(:level, in: 0..10, step: 1) %></p>
-<p><%= f.label(:os, "Which operating system does your computer have? *") %> <%= f.select(:os, options_for_select([["Linux", "linux"], ["Mac", "mac"], ["Windows", "windows"]]), include_blank: true) %></p>
-<p><%= f.label(:needs_computer, "Or do you need a computer for the workshop?") %> <%= f.check_box :needs_computer %></p>
-<p><%= f.label(:comments, "Is there anything else that you would like to mention?") %> <%= f.text_area :comments %></p>
-<p>Please read and accept our <a href="http://berlincodeofconduct.org">Code of Conduct</a> *</p>
-<p><%= f.label(:read_coc, "I have read the Code of Conduct and will comply with it. *") %> <%= f.check_box :read_coc %></p>
-<%= f.submit "Apply" %>
-<% end %>
+    <% end %>
+    <fieldset>
+        <h2>Personal Information</h2>
+        <p><%= f.check_box :female %><%= f.label(:female, "I am a woman / non-binary person.") %>
+        </p>
+        <p><%= f.label(:name, "Name") %><p class="note">(No official name necessary, you can use the name you want to be called. Just be sure to remember what you picked.) *</p>
+          <%= f.text_field :name %>
+        </p>
+        <p><%= f.label(:email, "E-Mail Address *") %><br>
+            <%= f.text_field :email %>
+        </p>
+    </fieldset>
+    <fieldset>
+        <h2>Which language(s) do you prefer learning in? *</h2>
+        <p><%= f.check_box :language_de %><%= f.label(:language_de, "German") %>
+        </p>
+        <p><%= f.check_box :language_en %><%= f.label(:language_en, "English") %>
+        </p>
+    </fieldset>
+    <p><%= f.check_box :attended_before %>
+        <%= f.label(:attended_before, "I have attended a Rails Girls Berlin Workshop before.") %>
+    </p>
+    <p><%= f.check_box :rejected_before %>
+        <%= f.label(:rejected_before, "I have applied before but did not get a place in the workshop.") %>
+    </p>
+    <p><%= f.label(:level, "What level of coding do you see yourself in Rails? (0=never coded before; 10=expert) *") %>
+        <%= f.number_field(:level, in: 0..10, step: 1) %></p>
+    <p><%= f.label(:os, "Which operating system does your computer have? *") %>
+        <%= f.select(:os, options_for_select([["Linux", "linux"], ["Mac", "mac"], ["Windows", "windows"]]), include_blank: true) %></p>
+    <p><%= f.check_box :needs_computer %>
+        <%= f.label(:needs_computer, "Or do you need a computer for the workshop?") %>
+    </p>
+    <p>
+    <%= f.label(:comments, "Is there anything else that you would like to mention?") %>
+        <%= f.text_area :comments %></p>
+    <p>Please read and accept our
+        <a href="http://berlincodeofconduct.org">Code of Conduct</a>
+        *</p>
+    <p><%= f.label(:read_coc, "I have read the Code of Conduct and will comply with it. *") %>
+        <%= f.check_box :read_coc %></p>
+    <%= f.submit "Apply" %>
+    <% end %>

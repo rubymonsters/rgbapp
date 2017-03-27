@@ -16,3 +16,39 @@
 
 /* * {
 background-color: red;   }*/
+
+h1 {
+  color:#c4220d;
+  font-size: 30px;
+}
+
+h2{
+ font-size: 16px;
+  font-style: italic;
+}
+body {
+  margin: 30px auto;
+  font-family: 'Open Sans', sans-serif;
+  color: #777777;
+  font-size: 14px;
+  width: 60%;
+}
+
+
+fieldset {
+border: none;
+border-top: 1px solid #777777;
+
+}
+
+input[type=text] {
+
+  width: 50%;
+  height:
+}
+
+.note {
+  font-size:11px;
+  font-style:italic;
+  margin-top:-10px;
+}
