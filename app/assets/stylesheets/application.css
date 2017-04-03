@@ -42,13 +42,48 @@ border-top: 1px solid #777777;
 }
 
 input[type=text] {
-
   width: 50%;
-  height:
+}
+
+input[type=submit] {
+  -webkit-appearance: none;
+  width: 150px;
+  height: 60px;
+  font-size: 40px;
+  border-radius: 20px;
+  background-color: #c4220d;
+  color: white;
+}
+
+input[type=number] {
+  width: 75px;
+}
+
+textarea {
+  width: 50%;
+  height: 100px;
+}
+
+#error_explanation h2 {
+  color: #c4220d;
+}
+
+.button {
+  text-align: center;
 }
 
 .note {
   font-size:11px;
   font-style:italic;
   margin-top:-10px;
+}
+
+.field_with_errors {
+  display: inline;
+  color: #c4220d;
+}
+
+.logo {
+  text-align: center;
+  margin-top: 100px;
 }

@@ -23,7 +23,7 @@
     <%= form_for @application do |f| %>
     <% if @application.errors.any? %>
     <div id="error_explanation">
-        <h2>Ooops. Something went wrong. Please correct the following errors.</h2>
+        <h2>Ooops. Something went wrong. Please correct the following errors:</h2>
 
         <ul>
             <% @application.errors.messages.each do |error| %>
@@ -37,10 +37,11 @@
     <% end %>
     <fieldset>
         <h2>Personal Information</h2>
-        <p><%= f.check_box :female %><%= f.label(:female, "I am a woman / non-binary person.") %>
+        <p><%= f.check_box :female %>
+          <%= f.label(:female, "I am a woman / non-binary person.") %>
         </p>
-        <p><%= f.label(:name, "Name") %><p class="note">(No official name necessary, you can use the name you want to be called. Just be sure to remember what you picked.) *</p>
-          <%= f.text_field :name %>
+        <p><%= f.label(:name, "Name") %></p><p class="note">(No official name necessary, you can use the name you want to be called. Just be sure to remember what you picked.) *</p>
+          <p><%= f.text_field :name %>
         </p>
         <p><%= f.label(:email, "E-Mail Address *") %><br>
             <%= f.text_field :email %>
@@ -48,31 +49,40 @@
     </fieldset>
     <fieldset>
         <h2>Which language(s) do you prefer learning in? *</h2>
-        <p><%= f.check_box :language_de %><%= f.label(:language_de, "German") %>
+        <p><%= f.check_box :language_de %>
+          <%= f.label(:language_de, "German") %>
         </p>
-        <p><%= f.check_box :language_en %><%= f.label(:language_en, "English") %>
+        <p><%= f.check_box :language_en %>
+          <%= f.label(:language_en, "English") %>
         </p>
     </fieldset>
-    <p><%= f.check_box :attended_before %>
-        <%= f.label(:attended_before, "I have attended a Rails Girls Berlin Workshop before.") %>
-    </p>
-    <p><%= f.check_box :rejected_before %>
-        <%= f.label(:rejected_before, "I have applied before but did not get a place in the workshop.") %>
-    </p>
-    <p><%= f.label(:level, "What level of coding do you see yourself in Rails? (0=never coded before; 10=expert) *") %>
-        <%= f.number_field(:level, in: 0..10, step: 1) %></p>
-    <p><%= f.label(:os, "Which operating system does your computer have? *") %>
-        <%= f.select(:os, options_for_select([["Linux", "linux"], ["Mac", "mac"], ["Windows", "windows"]]), include_blank: true) %></p>
-    <p><%= f.check_box :needs_computer %>
-        <%= f.label(:needs_computer, "Or do you need a computer for the workshop?") %>
-    </p>
-    <p>
-    <%= f.label(:comments, "Is there anything else that you would like to mention?") %>
-        <%= f.text_area :comments %></p>
-    <p>Please read and accept our
-        <a href="http://berlincodeofconduct.org">Code of Conduct</a>
-        *</p>
-    <p><%= f.label(:read_coc, "I have read the Code of Conduct and will comply with it. *") %>
-        <%= f.check_box :read_coc %></p>
+    <fieldset>
+        <p><%= f.check_box :attended_before %>
+            <%= f.label(:attended_before, "I have attended a Rails Girls Berlin Workshop before.") %>
+        </p>
+        <p><%= f.check_box :rejected_before %>
+            <%= f.label(:rejected_before, "I have applied before but did not get a place in the workshop.") %>
+        </p>
+        <p><%= f.label(:level, "What level of coding do you see yourself in Rails? (0=never coded before; 10=expert) *") %></p>
+            <p><%= f.number_field(:level, in: 0..10, step: 1) %></p>
+        <p><%= f.label(:os, "Which operating system does your computer have? *") %></p>
+            <p><%= f.select(:os, options_for_select([["Linux", "linux"], ["Mac", "mac"], ["Windows", "windows"]]), include_blank: true) %></p>
+        <p><%= f.check_box :needs_computer %>
+            <%= f.label(:needs_computer, "Or do you need a computer for the workshop?") %>
+        </p>
+        <p>
+        <%= f.label(:comments, "Is there anything else that you would like to mention?") %></p>
+            <p><%= f.text_area :comments %></p>
+    </fieldset>
+    <fieldset>
+        <h2>Please read and accept our
+            <a href="http://berlincodeofconduct.org">Code of Conduct</a>
+            </h2>
+        <p><%= f.check_box :read_coc %>
+          <%= f.label(:read_coc, "I have read the Code of Conduct and will comply with it. *") %>
+        </p>
+    </fieldset>
+    <div class="button">
     <%= f.submit "Apply" %>
+    </div>
     <% end %>
