@@ -12,7 +12,9 @@ class ApplicationsController < ApplicationController
       :email, :language_de, :language_en, :attended_before, :rejected_before, :level,
       :comments, :os, :needs_computer, :read_coc, :female))
 
-    unless @application.save
+    if @application.save
+      UserMailer.application_mail(@application).deliver_now
+    else
       render :new
     end
   end
