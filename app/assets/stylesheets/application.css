@@ -1,4 +1,4 @@
-/*
+        /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -13,77 +13,315 @@
  *= require_tree .
  *= require_self
  */
-
-/* * {
+    /* * {
 background-color: red;   }*/
 
-h1 {
-  color:#c4220d;
-  font-size: 30px;
-}
+    header {
+        position: fixed;
+        top: 0;
+        width: 60%;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        border-bottom: 10px solid #c4220d;
+        width: 60%;
+        margin: -30px auto;
+        background: #ffffff;
+        padding-top: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 
-h2{
- font-size: 16px;
-  font-style: italic;
-}
-body {
-  margin: 30px auto;
-  font-family: 'Open Sans', sans-serif;
-  color: #777777;
-  font-size: 14px;
-  width: 60%;
-}
+    header .section-boxed section-header {
+        margin: 0 auto;
+        padding: 0 3%;
+        position: relative;
+        border: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        color: #777777;
+    }
 
+    .fixed-header-scroll #header {
+        padding: 7px 0;
+    }
 
-fieldset {
-border: none;
-border-top: 1px solid #777777;
+    .fixed-header #header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.97);
+        z-index: 500;
+        -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
 
-}
+    #mitschrift {
+        background: url(logomitschrift.png) no-repeat;
+        height: 50px;
+        width: 200px;
+        position: absolute;
+        left: 5px;
+        top: 35px;
+    }
 
-input[type=text] {
-  width: 50%;
-}
+    #social-profiles {
+        margin: 9px 0;
+        float: right;
+        vertical-align: baseline;
+        margin-right: 10px;
+    }
 
-input[type=submit] {
-  -webkit-appearance: none;
-  width: 150px;
-  height: 60px;
-  font-size: 40px;
-  border-radius: 20px;
-  background-color: #c4220d;
-  color: white;
-}
+    .social-icons ul {
+        margin-left: 0px;
+        list-style: none;
+        border: 1px solid transparent;
+    }
 
-input[type=number] {
-  width: 75px;
-}
+    .social-icons li {
+        float: left;
+        width: 20px;
+        height: 20px;
+        border-radius: 30px;
+        margin-left: 3px;
+        padding: 3px;
+        border: 2px solid #ddd;
+        line-height: 1em;
+        overflow: hidden;
+        -webkit-transition: border-color 0.5s ease;
+        -moz-transition: border-color 0.5s ease;
+        -ms-transition: border-color 0.5s ease;
+        -o-transition: border-color 0.5s ease;
+        transition: border-color 0.5s ease;
+    }
 
-textarea {
-  width: 50%;
-  height: 100px;
-}
+    #logo-container {
+        height: auto;
+        width: auto;
+        float: left;
+        margin: 0 3.06%;
+        margin-left: 0;
+        position: relative;
+    }
 
-#error_explanation h2 {
-  color: #c4220d;
-}
+    #facebook {
+        background: url(facebook.png) no-repeat;
+        height: 30px;
+        width: 30px;
+        top: 44px;
+        position: absolute;
+        right: 140px;
+        -moz-opacity: 0.2;
+        -khtml-opacity: 0.2;
+        -webkit-opacity: 0.2;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+        filter: alpha(opacity=20);
+        opacity: 0.2;
+    }
 
-.button {
-  text-align: center;
-}
+    #twitter {
+        background: url(twitter.png) no-repeat;
+        height: 30px;
+        width: 30px;
+        top: 44px;
+        position: absolute;
+        right: 106px;
+        -moz-opacity: 0.2;
+        -khtml-opacity: 0.2;
+        -webkit-opacity: 0.2;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+        filter: alpha(opacity=20);
+        opacity: 0.2;
+    }
 
-.note {
-  font-size:11px;
-  font-style:italic;
-  margin-top:-10px;
-}
+    #flickr {
+        background: url(flickr.png) no-repeat;
+        height: 30px;
+        width: 30px;
+        top: 44px;
+        position: absolute;
+        right: 74px;
+        -moz-opacity: 0.2;
+        -khtml-opacity: 0.2;
+        -webkit-opacity: 0.2;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+        filter: alpha(opacity=20);
+        opacity: 0.2;
+    }
 
-.field_with_errors {
-  display: inline;
-  color: #c4220d;
-}
+    #linkedin {
+        background: url(linkedin.png) no-repeat;
+        height: 30px;
+        width: 30px;
+        top: 44px;
+        position: absolute;
+        right: 40px;
+        -moz-opacity: 0.2;
+        -khtml-opacity: 0.2;
+        -webkit-opacity: 0.2;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+        filter: alpha(opacity=20);
+        opacity: 0.2;
+    }
+    /*end-of-header*/
 
-.logo {
-  text-align: center;
-  margin-top: 100px;
-}
+    body {
+        margin: 30px auto;
+        text-align: justify;
+        font-family: 'Open Sans', sans-serif;
+        color: #777777;
+        font-size: 14px;
+        width: 60%;
+        text-align: justify;
+        font-size: 16px;
+        line-height: 1.6;
+        padding-top: 30px;
+        position: relative;
+    }
+
+    h1 {
+        color: #c4220d;
+        font-size: 30px;
+        padding-top: 20px;
+        margin-left: 40px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 25px;
+        font-weight: normal;
+    }
+
+    h3 {
+        color: #c4220d;
+        font-weight: semibold;
+    }
+
+    article {
+        margin-top: 20px;
+    }
+
+    #aktuelles {
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    fieldset {
+        border: none;
+        border-top: 1px solid #c4220d;
+        padding-left: 100px;
+    }
+
+    fieldset p.right {
+        width: 30%;
+        float: left;
+    }
+
+    fieldset p.left {
+        width: 30%;
+        float: left;
+    }
+
+    input[type=text] {
+        width: 50%;
+        border-radius: 5px;
+        height: 30px;
+    }
+
+    input[type=submit] {
+        display: inline-block;
+        padding: 12px 25px;
+        line-height: 20px;
+        color: #ffffff;
+        text-align: center;
+        vertical-align: middle;
+        background-repeat: repeat-x;
+        background-color: #c4220d;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+        font-size: 14px;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 2px 0;
+        margin-left: 110px;
+        text-align: center;
+    }
+
+    a {
+        color: #c4220d;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: pink;
+    }
+
+    a:active {
+        color: yellow;
+    }
+
+    a:focus {
+        color: green;
+    }
+
+    a, .post-info, .post-info a, .lp-post-info a {
+        color: #c4220d;
+    }
+
+    input[type=number] {
+        width: 150px;
+        border-radius: 5px;
+        height: 30px;
+    }
+
+    textarea {
+        width: 50%;
+        height: 120px;
+        border-radius: 5px;
+    }
+
+    #error_explanation h2 {
+        color: #c4220d;
+        text-align: center;
+    }
+
+    span {
+        color: #c4220d;
+    }
+
+    .note {
+        font-size: 11px;
+        font-style: italic;
+        margin-top: -10px;
+    }
+
+    .field_with_errors {
+        display: block;
+        color: #c4220d;
+    }
+
+    .logo {
+        text-align: center;
+        margin-top: 100px;
+    }
+
+    #logoklein {
+        background: url(logo_klein.jpg) no-repeat;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        bottom: 0px;
+        right: -25px;
+        border: 1px solid red;
+        z-index: -9999;
