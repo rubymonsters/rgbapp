@@ -1,5 +1,6 @@
 <article>
     <h1>Rails Girls Berlin Beginners Workshop [date]</h1>
+
     <article>
         <p>Rails Girls Berlin want to give total beginners the opportunity and a community to start learning the technology to build their ideas and continue coding.</p>
         <p>The Beginners Workshop is a hands on introduction to Rails. The workshop has a main focus on women with no previous Ruby on Rails programming experience and who want to be able to build their own applications. The program of the workshop includes
@@ -14,12 +15,20 @@
 
         <p>We are looking forward to seeing you <3</p>
 
-        <p>Application Start: [date]</p>
-        <p>Application End: [date]</p>
-        <p>Confirmation Mails: [date]</p>
+        <aside>
+          <h3>
+            Application Start: <span>tba</span>
+          </h3>
+          <h3>
+            Application End: <span>tba</span>
+          </h3>
+          <h3>
+            Confirmation Mails: <span>tba</span>
+          </h3>
+        </aside>
 
-        <p>* Required</p>
-    </article>
+  </article>
+
     <%= form_for @application do |f| %>
     <% if @application.errors.any? %>
     <div id="error_explanation">
@@ -36,6 +45,8 @@
     </div>
     <% end %>
     <fieldset>
+        <p>* Required</p>
+
         <h2>Personal Information</h2>
         <p><%= f.check_box :female %>
           <%= f.label(:female, "I am a woman / non-binary person.") %>

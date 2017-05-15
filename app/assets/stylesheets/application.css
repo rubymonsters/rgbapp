@@ -22,10 +22,20 @@ h1 {
   font-size: 30px;
 }
 
-h2{
+h2 {
  font-size: 16px;
-  font-style: italic;
+ font-style: italic;
 }
+
+h3 {
+  color:#c4220d;
+  font-size: 18px;
+}
+
+h3 span {
+  color:#000000;
+}
+
 body {
   margin: 30px auto;
   font-family: 'Open Sans', sans-serif;
@@ -34,10 +44,13 @@ body {
   width: 60%;
 }
 
+article aside {
+  border-top: 1px solid #777777;
+}
 
 fieldset {
-border: none;
-border-top: 1px solid #777777;
+  border: none;
+  border-top: 1px solid #777777;
 
 }
 
