@@ -40,7 +40,8 @@ body {
   margin: 30px auto;
   font-family: 'Open Sans', sans-serif;
   color: #777777;
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 25px;
   width: 60%;
 }
 
