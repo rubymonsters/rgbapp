@@ -65,7 +65,6 @@ header .section-boxed section-header {
 }
 
 #mitschrift {
-  background: url(logomitschrift.png) no-repeat;
   height: 50px;
   width: 200px;
   position: absolute;
