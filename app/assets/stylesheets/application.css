@@ -1,21 +1,86 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
 
 /* * {
 background-color: red;   }*/
+
+header {
+  position: fixed;
+  top: 0;
+  width: 60%;
+  height: 65px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border-bottom: 10px solid #c4220d;
+  width: 60%;
+  margin: -30px auto;
+  background: #ffffff;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+header .section-boxed section-header {
+  margin: 0 auto;
+  padding: 0 3%;
+  position: relative;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  color: #777777;
+}
+
+.fixed-header-scroll #header {
+  padding: 7px 0;
+}
+
+.fixed-header #header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.97);
+  z-index: 500;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+#mitschrift {
+  background: url(logomitschrift.png) no-repeat;
+  height: 50px;
+  width: 200px;
+  position: absolute;
+  left: 5px;
+  top: 35px;
+}
+
+#logo-container {
+  height: auto;
+  width: auto;
+  float: left;
+  margin: 0 3.06%;
+  margin-left: 0;
+  position: relative;
+}
 
 h1 {
   color:#c4220d;
@@ -23,8 +88,8 @@ h1 {
 }
 
 h2 {
- font-size: 16px;
- font-style: italic;
+  font-size: 16px;
+  font-style: italic;
 }
 
 h3 {
@@ -37,6 +102,7 @@ h3 span {
 }
 
 body {
+  padding-top: 40px;
   margin: 30px auto;
   text-align: justify;
   font-family: 'Open Sans', sans-serif;
@@ -86,7 +152,7 @@ input[type=submit] {
   margin: 2px 0;
   margin-left: 110px;
   text-align: center;
-    }
+}
 
 input[type=number] {
   width: 75px;
