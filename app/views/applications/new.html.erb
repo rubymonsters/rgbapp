@@ -53,7 +53,7 @@
         <p><%= f.check_box :female %>
           <%= f.label(:female, "I am a woman / non-binary person.") %>
         </p>
-        <p><%= f.label(:name, "Name") %></p><p class="note">(No official name necessary, you can use the name you want to be called. Just be sure to remember what you picked.) *</p>
+        <p><%= f.label(:name, "Name") %></p><p class="note">No official name necessary, you can use the name you want to be called. Just be sure to remember what you picked. *</p>
           <p><%= f.text_field :name %>
         </p>
         <p><%= f.label(:email, "E-Mail Address *") %><br>
@@ -62,6 +62,7 @@
     </fieldset>
     <fieldset>
         <h2>Which language(s) do you prefer learning in? *</h2>
+        <p class="note">You can select one or both.</p>
         <p><%= f.check_box :language_de %>
           <%= f.label(:language_de, "German") %>
         </p>
