@@ -12,7 +12,7 @@ class Application < ApplicationRecord
 
    def at_least_select_one_language
      unless language_de? || language_en?
-       errors.add(:language_de, "Please select at least one language.")
+       errors.add(:language, "Please select at least one language.")
      end
    end
 end
