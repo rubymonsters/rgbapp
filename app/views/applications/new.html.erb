@@ -2,6 +2,7 @@
     <h1>Rails Girls Berlin Beginners Workshop [date]</h1>
 
     <article>
+      <% if @application.errors.empty? %>
         <p>Rails Girls Berlin want to give total beginners the opportunity and a community to start learning the technology to build their ideas and continue coding.</p>
         <p>The Beginners Workshop is a hands on introduction to Rails. The workshop has a main focus on women with no previous Ruby on Rails programming experience and who want to be able to build their own applications. The program of the workshop includes
             an overview of the Rails framework and a practical exercise in which attendees will be guided by coaches through the application building process.</p>
@@ -12,7 +13,8 @@
         <p>No previous knowledge is required to attend this workshop.</p>
 
         <p>The first steps of learning how to program can be difficult. Our goal is it to help you with these first steps. We want to show you that programming is fun and creative and that there is a wonderful community that will support you.</p>
-
+      <% end %>
+      
         <div id="greeting">
           <h3>We are looking forward to seeing you <3</h3>
         </div>
