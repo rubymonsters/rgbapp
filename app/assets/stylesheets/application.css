@@ -171,13 +171,18 @@ textarea {
 }
 
 .note {
-  font-size:11px;
-  font-style:italic;
-  margin-top:-10px;
+  font-size: 11px;
+  font-style: italic;
+  margin-top: -10px;
 }
 
 .field_with_errors {
   display: inline;
+  color: #c4220d;
+}
+
+.error_message {
+  font-style: italic;
   color: #c4220d;
 }
 
