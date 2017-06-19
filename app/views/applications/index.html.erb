@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @applications.each do |application| %>
+    <tr>
+      <td><%= application.name %></td>
+      <td><%= application.email %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

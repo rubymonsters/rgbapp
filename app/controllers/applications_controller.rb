@@ -1,4 +1,7 @@
 class ApplicationsController < ApplicationController
+
+  before_action :require_login, only: [:index]
+
   def new
     @application = Application.new
   end
@@ -12,4 +15,9 @@ class ApplicationsController < ApplicationController
       render :new
     end
   end
+
+  def index
+    @applications = Application.all
+  end
+
 end
