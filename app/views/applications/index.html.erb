@@ -3,6 +3,15 @@
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>English</th>
+      <th>German</th>
+      <th>Attended</th>
+      <th>Rejected</th>
+      <th>Level</th>
+      <th>Operating system</th>
+      <th>Needs computer</th>
+      <th>Applied date</th>
+      <th>Comments</th>
     </tr>
   </thead>
   <tbody>
@@ -10,6 +19,15 @@
     <tr>
       <td><%= application.name %></td>
       <td><%= application.email %></td>
+      <td><% if application.language_en %> x <% end %></td>
+      <td><% if application.language_de %> x <% end %></td>
+      <td><% if application.attended_before %> x <% end %></td>
+      <td><% if application.rejected_before %> x <% end %></td>
+      <td><%= application.level %></td>
+      <td><%= application.os %></td>
+      <td><% if application.needs_computer %> x <% end %></td>
+      <td><%= application.created_at.strftime("%d.%m.%Y") %></td>
+      <td><%= application.comments %></td>
     </tr>
     <% end %>
   </tbody>
