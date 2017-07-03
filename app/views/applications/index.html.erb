@@ -1,0 +1,37 @@
+<p>Total: <%= pluralize(@applications.size, "application") %></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th><div class="tooltip"><span class="tooltiptext">English</span>🇬🇧</div></th>
+      <th><div class="tooltip"><span class="tooltiptext">German</span>🇩🇪</div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Attended before</span>👍</div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Rejected before</span>👎</div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Level</span>🎓</div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Operating System</span>🖥</div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Needs computer</span>💻</div></th>
+      <th>Date</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @applications.each do |application| %>
+    <tr>
+      <td><%= application.name %></td>
+      <td><%= application.email %></td>
+      <td class="center"><% if application.language_en %> ✅ <% end %></td>
+      <td class="center"><% if application.language_de %> ✅ <% end %></td>
+      <td class="center"><% if application.attended_before %> ✅ <% end %></td>
+      <td class="center"><% if application.rejected_before %> ✅ <% end %></td>
+      <td class="center"><%= application.level %></td>
+      <td><%= application.os %></td>
+      <td class="center"><% if application.needs_computer %> ✅ <% end %></td>
+      <td><%= application.created_at.strftime("%d.%m.%Y") %></td>
+      <td><%= application.comments %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= button_to 'Sign out', sign_out_path, method: :delete %>

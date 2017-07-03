@@ -1,4 +1,7 @@
 class ApplicationsController < ApplicationController
+
+  before_action :require_admin, only: [:index]
+
   def new
     @application = Application.new
   end
@@ -10,6 +13,17 @@ class ApplicationsController < ApplicationController
 
     unless @application.save
       render :new
+    end
+  end
+
+  def index
+    @applications = Application.all
+  end
+
+  def require_admin
+    require_login
+    if current_user && !current_user.admin
+      redirect_to root_path
     end
   end
 end
