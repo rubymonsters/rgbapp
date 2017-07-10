@@ -2,17 +2,17 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th><div class="tooltip"><span class="tooltiptext">English</span>🇬🇧</div></th>
-      <th><div class="tooltip"><span class="tooltiptext">German</span>🇩🇪</div></th>
-      <th><div class="tooltip"><span class="tooltiptext">Attended before</span>👍</div></th>
-      <th><div class="tooltip"><span class="tooltiptext">Rejected before</span>👎</div></th>
-      <th><div class="tooltip"><span class="tooltiptext">Level</span>🎓</div></th>
-      <th><div class="tooltip"><span class="tooltiptext">Operating System</span>🖥</div></th>
-      <th><div class="tooltip"><span class="tooltiptext">Needs computer</span>💻</div></th>
-      <th>Date</th>
-      <th>Comments</th>
+      <th><%= link_to("Name", order: order("upper(name)")) %></th>
+      <th><%= link_to("Email", order: order("upper(email)")) %></th>
+      <th><div class="tooltip"><span class="tooltiptext">English</span><%= link_to("🇬🇧", order: order("language_en")) %></div></th>
+      <th><div class="tooltip"><span class="tooltiptext">German</span><%= link_to("🇩🇪", order: order("language_de")) %></div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Attended before</span><%= link_to("👍", order: order("attended_before")) %></div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Rejected before</span><%= link_to("👎", order: order("rejected_before")) %></div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Level</span><%= link_to("🎓", order: order("level")) %></div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Operating System</span><%= link_to("🖥", order: order("os")) %></div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Needs computer</span><%= link_to("💻", order: order("needs_computer")) %></div></th>
+      <th><%= link_to("Date", order: order("created_at")) %></th>
+      <th><%= link_to("Comments", order: order("comments")) %></th>
     </tr>
   </thead>
   <tbody>

@@ -203,6 +203,16 @@ th {
     color: white;
 }
 
+th a {
+  text-decoration: none;
+  color: white;
+}
+
+th a:hover {
+  text-decoration: none;
+  color: #ffb3b3;
+}
+
 td {
     height: 50px;
     vertical-align: middle;
@@ -226,7 +236,6 @@ tr:hover {background-color: #ffb3b3}
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
 }
 
 /* Tooltip text */
