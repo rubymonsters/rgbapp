@@ -17,7 +17,7 @@ class ApplicationsController < ApplicationController
   end
 
   def index
-    @applications = Application.all
+    @applications = Application.order(params[:order] || "created_at desc")
   end
 
   def require_admin
