@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
- root 'applications#new'
 
- resources :applications
+  resources :events do
+    resources :applications
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

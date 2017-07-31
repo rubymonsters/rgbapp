@@ -10,6 +10,8 @@ class Application < ApplicationRecord
   validate :at_least_select_one_language
   validates :read_coc, acceptance: { message: "You must confirm that you have read the Code of Conduct and will comply with it." }
 
+  belongs_to :event
+
    def at_least_select_one_language
      unless language_de? || language_en?
        errors.add(:language, "Please select at least one language.")
