@@ -1,5 +1,5 @@
 <article>
-    <h1>Rails Girls Berlin Beginners Workshop [date]</h1>
+    <h1><%= @event.name %> <%= @event.scheduled_at.strftime("%d.%m.%Y") %> </h1>
 
     <article>
       <% if @application.errors.empty? %>
@@ -14,7 +14,7 @@
 
         <p>The first steps of learning how to program can be difficult. Our goal is it to help you with these first steps. We want to show you that programming is fun and creative and that there is a wonderful community that will support you.</p>
       <% end %>
-      
+
         <div id="greeting">
           <h3>We are looking forward to seeing you <3</h3>
         </div>
@@ -33,7 +33,7 @@
 
   </article>
 
-    <%= form_for @application do |f| %>
+    <%= form_for [@event, @application] do |f| %>
 
     <fieldset>
       <% if @application.errors.any? %>
