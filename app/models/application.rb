@@ -1,3 +1,5 @@
+require "csv"
+
 class Application < ApplicationRecord
   validates :female, acceptance: { message: "You must identify as a woman or non-binary person to participate." }
   validates :name, presence: { message: "Please tell us your name." }
@@ -15,6 +17,15 @@ class Application < ApplicationRecord
    def at_least_select_one_language
      unless language_de? || language_en?
        errors.add(:language, "Please select at least one language.")
+     end
+   end
+
+   def self.to_csv(options = {})
+     CSV.generate(options) do |csv|
+       csv << ["Name", "E-mail"]
+       all.each do |application|
+         csv << [application.name, application.email]
+       end
      end
    end
 end
