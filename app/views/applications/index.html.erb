@@ -1,4 +1,7 @@
+<p><%= button_to("Download table as csv", {format: "csv"}, {method: :get}) %></p>
+
 <p>Total: <%= pluralize(@applications.size, "application") %></p>
+
 <table>
   <thead>
     <tr>

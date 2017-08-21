@@ -22,9 +22,9 @@ class Application < ApplicationRecord
 
    def self.to_csv(options = {})
      CSV.generate(options) do |csv|
-       csv << ["Name", "E-mail"]
+       csv << ["Name", "E-mail", "English", "German", "Attended before", "Rejected before", "Level", "Operating system", "Needs computer", "Date of application", "Comments"]
        all.each do |application|
-         csv << [application.name, application.email]
+         csv << [application.name, application.email, application.language_en, application.language_de, application.attended_before, application.rejected_before, application.level, application.os, application.needs_computer, application.created_at, application.comments]
        end
      end
    end
