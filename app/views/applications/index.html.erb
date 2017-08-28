@@ -2,9 +2,11 @@
 
 <p>Total: <%= pluralize(@applications.size, "application") %></p>
 
+<%= form_tag('/url') do %>
 <table>
   <thead>
     <tr>
+      <th>Select</th>
       <th><%= link_to("Name", order: order("upper(name)")) %></th>
       <th><%= link_to("Email", order: order("upper(email)")) %></th>
       <th><div class="tooltip"><span class="tooltiptext">English</span><%= link_to("🇬🇧", order: order("language_en")) %></div></th>
@@ -21,6 +23,7 @@
   <tbody>
     <% @applications.each do |application| %>
     <tr>
+      <td><%= check_box_tag 'somename', 'somevalue', application.selected %></td>
       <td><%= application.name %></td>
       <td><%= application.email %></td>
       <td class="center"><% if application.language_en %> ✅ <% end %></td>
@@ -36,5 +39,7 @@
     <% end %>
   </tbody>
 </table>
+<%= submit_tag "Save" %>
+<% end %>
 
 <%= button_to 'Sign out', sign_out_path, method: :delete %>
