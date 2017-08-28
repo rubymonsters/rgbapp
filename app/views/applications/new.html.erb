@@ -21,14 +21,18 @@
 
         <aside>
           <h3>
-            Application Start: <span>tba</span>
+            Application Start: <span><%= @event.application_start.strftime("%d.%m.%Y") %></span>
           </h3>
           <h3>
-            Application End: <span>tba</span>
+            Application End: <span><%= @event.application_end.strftime("%d.%m.%Y") %></span>
           </h3>
           <h3>
-            Confirmation Mails: <span>tba</span>
+            Confirmation Mails: <span><%= @event.confirmation_date.strftime("%d.%m.%Y") %></span>
           </h3>
+          <h3>
+            Location: <span><%= @event.place %></span>
+          </h3>
+
         </aside>
 
   </article>
