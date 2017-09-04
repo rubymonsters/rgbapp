@@ -2,7 +2,7 @@
 
 <p>Total: <%= pluralize(@applications.size, "application") %></p>
 
-<%= form_tag('/url') do %>
+<%= form_tag({}, method: :put) do %>
 <table>
   <thead>
     <tr>
@@ -23,7 +23,7 @@
   <tbody>
     <% @applications.each do |application| %>
     <tr>
-      <td><%= check_box_tag 'somename', 'somevalue', application.selected %></td>
+      <td><%= check_box_tag 'selected_ids[]', application.id, application.selected %></td>
       <td><%= application.name %></td>
       <td><%= application.email %></td>
       <td class="center"><% if application.language_en %> ✅ <% end %></td>

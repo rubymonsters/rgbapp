@@ -25,6 +25,11 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def select
+    @event.applications.update_all(["selected = (id IN (?))", params[:selected_ids]])
+    redirect_to event_applications_path(@event), notice: "Cool! Changes saved."
+  end
+
   def require_admin
     require_login
     if current_user && !current_user.admin
