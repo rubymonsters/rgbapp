@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
 
-  before_action :require_admin, only: [:index]
+  before_action :require_admin, only: [:index, :select]
   before_action :find_event
 
   def new
