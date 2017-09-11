@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828173442) do
+ActiveRecord::Schema.define(version: 20170828190222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,10 @@ ActiveRecord::Schema.define(version: 20170828173442) do
     t.string   "os"
     t.boolean  "needs_computer"
     t.text     "tutorials"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "event_id"
+    t.boolean  "selected",        default: false, null: false
     t.index ["event_id"], name: "index_applications_on_event_id", using: :btree
   end
 

@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
 
-  before_action :require_admin, only: [:index]
+  before_action :require_admin, only: [:index, :select]
   before_action :find_event
 
   def new
@@ -23,6 +23,11 @@ class ApplicationsController < ApplicationController
       format.html
       format.csv { send_data @applications.to_csv }
     end
+  end
+
+  def select
+    @event.applications.update_all(["selected = (id IN (?))", params[:selected_ids]])
+    redirect_to event_applications_path(@event), notice: "Cool! Changes saved."
   end
 
   def require_admin
