@@ -1,0 +1,7 @@
+language: ruby
+services:
+  - postgresql
+before_script:
+  - rake db:create db:migrate
+script:
+  - rake
