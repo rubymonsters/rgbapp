@@ -2,6 +2,6 @@ language: ruby
 services:
   - postgresql
 before_script:
-  - rake db:create db:migrate
+  - bundle exec rake db:create db:migrate
 script:
-  - rake
+  - bundle exec rake
