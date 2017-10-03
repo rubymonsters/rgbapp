@@ -1,4 +1,4 @@
-# Rails Girls Berlin Application
+# Rails Girls Berlin application [![Build Status](https://travis-ci.org/rubymonsters/rgbapp.svg?branch=master)](https://travis-ci.org/rubymonsters/rgbapp)
 
 ## About
 
