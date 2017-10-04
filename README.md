@@ -119,7 +119,7 @@ Execute following in the rails console:
 # => #<ActiveRecord::Relation [#<Event id: 1, name: "RGB Beginners WS 2017", place: "Travis", scheduled_at: "2017-10-31 00:00:00", created_at: "2017-10-03 12:55:54", updated_at: "2017-10-03 12:55:54", application_start: "2017-10-02 00:00:00", application_end: "2017-10-20 00:00:00", confirmation_date: "2017-10-25 00:00:00">]>
 ```
 
-Now start up the server with `rails s` again and go to:
+Now start up the server with `$ (bundle exec) rails s` again and go to:
 http://localhost:3000/events/1/applications/new
 
 The current production URL start page can be found here (this may change in the future):
@@ -153,6 +153,7 @@ Use the `https` url instead. There is a link to get it under the GitHub *“clon
 TODO
 
 **Running rake <option> fails**
+
 You may see following error sometimes:
 
 ```
