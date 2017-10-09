@@ -23,7 +23,7 @@
   <tbody>
     <% @applications.each do |application| %>
     <tr>
-      <td><%= check_box_tag 'selected_ids[]', application.id, application.selected %></td>
+      <td><%= check_box_tag 'selected_ids[]', application.id, application.selected, id: "select_applicant_#{application.id}" %></td>
       <td><%= application.name %></td>
       <td><%= application.email %></td>
       <td class="center"><% if application.language_en %> ✅ <% end %></td>

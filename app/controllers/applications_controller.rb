@@ -26,7 +26,11 @@ class ApplicationsController < ApplicationController
   end
 
   def select
-    @event.applications.update_all(["selected = (id IN (?))", params[:selected_ids]])
+    if params[:selected_ids]
+      @event.applications.update_all(["selected = (id IN (?))", params[:selected_ids]])
+    else
+      @event.applications.update_all(selected: false)
+    end
     redirect_to event_applications_path(@event), notice: "Cool! Changes saved."
   end
 
