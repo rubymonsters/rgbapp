@@ -5,3 +5,4 @@ before_script:
   - bundle exec rake db:create db:migrate
 script:
   - bundle exec rake
+  - bundle exec rake test:system
