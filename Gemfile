@@ -41,6 +41,7 @@ group :development, :test do
   gem 'rb-readline'
   gem 'capybara'
   gem 'launchy'
+  gem 'factory_girl_rails'
 end
 
 group :development do
