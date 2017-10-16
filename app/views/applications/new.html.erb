@@ -89,7 +89,7 @@
 
         <p><%= f.label(:os, "Which operating system does your computer have? *") %></p><p class="note">If "Other", please tell us in the comments which one you use.</p>
         <%= error_message(:os) %>
-            <p><%= f.select(:os, options_for_select([["Linux", "linux"], ["Mac", "mac"], ["Windows", "windows"], ["Other", "other"]]), include_blank: true) %></p>
+            <p><%= f.select(:os, options_for_select([["Linux", "linux"], ["Mac", "mac"], ["Windows", "windows"], ["Other", "other"]], @application.os), include_blank: true) %></p>
 
         <p><%= f.check_box :needs_computer %>
             <%= f.label(:needs_computer, "Or do you need a computer for the workshop?") %>

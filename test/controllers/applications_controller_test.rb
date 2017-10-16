@@ -27,4 +27,11 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
     assert_response 200
     assert_select "p", "Thank you for filling out the form!"
   end
+
+  test "Trying to apply without providing all the requested data, the operating system field is preserved." do
+    event = create(:event)
+    post "/events/#{event.id}/applications", params: { application: {os: "mac"} }
+    assert_response 200
+    assert_select "option[selected]", "Mac"
+  end
 end
