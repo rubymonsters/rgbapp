@@ -13,7 +13,7 @@ class ApplicationsController < ApplicationController
       :comments, :os, :needs_computer, :read_coc, :female))
 
     if @application.save
-      UserMailer.application_mail(@application).deliver_now
+      UserMailer.application_mail(@application).deliver_later
     else
       render :new
     end
