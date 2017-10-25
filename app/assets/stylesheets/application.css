@@ -232,6 +232,23 @@ tr:nth-child(even) {background-color: #ffe6e6}
 
 tr:hover {background-color: #ffb3b3}
 
+/* Shorten text in comment field */
+
+.shorten-long-text {
+   white-space: nowrap;
+   overflow: hidden;
+   max-width: 200px;
+   text-overflow: ellipsis;
+}
+
+.shorten-long-text:hover {
+  overflow: visible;
+  white-space: normal;
+  display: block;
+  width: 400px;
+  height: auto;
+}
+
 /* Tooltip container */
 .tooltip {
     position: relative;

@@ -34,7 +34,7 @@
       <td><%= application.os %></td>
       <td class="center"><% if application.needs_computer %> ✅ <% end %></td>
       <td><%= application.created_at.strftime("%d.%m.%Y") %></td>
-      <td><%= application.comments %></td>
+      <td class="shorten-long-text"><%= application.comments %></td>
     </tr>
     <% end %>
   </tbody>
