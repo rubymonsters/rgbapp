@@ -4,7 +4,13 @@ class ApplicationsController < ApplicationController
   before_action :find_event
 
   def new
-    @application = Application.new
+    if Time.now < @event.application_start
+      render :too_early
+    elsif Time.now > @event.application_end
+      render :too_late
+    else
+      @application = Application.new
+    end
   end
 
   def create
