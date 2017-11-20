@@ -1,5 +1,7 @@
 <p><%= button_to("Download table as csv", {format: "csv"}, {method: :get}) %></p>
 
+<p><%= button_to 'Selection complete', event_path(@event), method: :patch %></p>
+
 <p>Total: <%= pluralize(@applications.size, "application") %></p>
 
 <%= form_tag({}, method: :put) do %>
