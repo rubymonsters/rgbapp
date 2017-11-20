@@ -18,14 +18,14 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
     event = Event.create(name: "Test Me", place: "Testing", scheduled_at: "2017-09-25", application_start: 2.days.from_now, application_end: 10.days.from_now, confirmation_date: 5.days.from_now)
     get "/events/#{event.id}/applications/new"
     assert_response 200
-    assert_select "TOO EARLY! THE APPLICATION HASN'T STARTED YET!"
+    assert_select "h3", /Hi, early bird!/
   end
 
   test "Get an event after application ends" do
     event = Event.create(name: "Test Me", place: "Testing", scheduled_at: "2017-09-25", application_start: 10.days.ago, application_end: 1.day.ago, confirmation_date: 5.days.from_now)
     get "/events/#{event.id}/applications/new"
     assert_response 200
-    assert_select "TOO LATE! THE APPLICATION TIME IS OVER!"
+    assert_select "p", /The application period for this workshop has already ended./
   end
 
   test "Trying to apply without providing all the requested data." do
