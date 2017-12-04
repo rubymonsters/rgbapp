@@ -5,6 +5,9 @@ class EventsController < ApplicationController
 
 
 def update
+  @event = Event.find(params[:id])
+  @event.update_attributes(selection_complete: true)
+  redirect_to event_applications_path(@event)
 end
 
 end
