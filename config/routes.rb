@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root to: "events#index" 
   resources :events do
     resources :applications
     put :applications, to: "applications#select"

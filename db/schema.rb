@@ -15,46 +15,46 @@ ActiveRecord::Schema.define(version: 20170828190222) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "applications", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.boolean  "language_de"
-    t.boolean  "language_en"
-    t.boolean  "attended_before"
-    t.boolean  "rejected_before"
-    t.integer  "level"
-    t.text     "comments"
-    t.string   "os"
-    t.boolean  "needs_computer"
-    t.text     "tutorials"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.integer  "event_id"
-    t.boolean  "selected",        default: false, null: false
-    t.index ["event_id"], name: "index_applications_on_event_id", using: :btree
+  create_table "applications", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.boolean "language_de"
+    t.boolean "language_en"
+    t.boolean "attended_before"
+    t.boolean "rejected_before"
+    t.integer "level"
+    t.text "comments"
+    t.string "os"
+    t.boolean "needs_computer"
+    t.text "tutorials"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "event_id"
+    t.boolean "selected", default: false, null: false
+    t.index ["event_id"], name: "index_applications_on_event_id"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string   "name"
-    t.string   "place"
+  create_table "events", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "place"
     t.datetime "scheduled_at"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.datetime "application_start"
     t.datetime "application_end"
     t.datetime "confirmation_date"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-    t.string   "email",                                          null: false
-    t.string   "encrypted_password", limit: 128,                 null: false
-    t.string   "confirmation_token", limit: 128
-    t.string   "remember_token",     limit: 128,                 null: false
-    t.boolean  "admin",                          default: false, null: false
-    t.index ["email"], name: "index_users_on_email", using: :btree
-    t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", limit: 128, null: false
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128, null: false
+    t.boolean "admin", default: false, null: false
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
 end
