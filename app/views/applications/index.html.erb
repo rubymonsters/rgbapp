@@ -1,5 +1,11 @@
 <p><%= button_to("Download table as csv", {format: "csv"}, {method: :get}) %></p>
 
+<p><%= button_to 'Selection complete', event_path(@event), method: :patch, data: { confirm: "Are you sure? This will send e-mails to the selected applicants. You are not supposed to change the selection after clicking this button." } %></p>
+
+<% if @event.selection_complete %>
+  <h3>The selection is completed and confirmation e-mails have been sent. Please do not change the selection.</h3>
+<% end %>
+
 <p>Total: <%= pluralize(@applications.size, "application") %></p>
 
 <%= form_tag({}, method: :put) do %>
