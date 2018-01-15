@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  root to: "events#index" 
+  root to: "events#index"
   resources :events do
-    resources :applications
+    resources :applications do
+      get :confirm, to: "applications#confirm"
+    end
     put :applications, to: "applications#select"
   end
 

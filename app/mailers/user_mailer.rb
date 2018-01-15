@@ -8,6 +8,6 @@ class UserMailer < ApplicationMailer
 
   def selection_mail(application)
     @application = application
-    mail(to: application.email, subject: "Welcome to the Rails Girls Berlin workshop on #{@application.event.scheduled_at.strftime("%d.%m.%Y")}")
+    mail(to: application.email, subject: "Welcome to the Rails Girls Berlin workshop on #{@application.event.scheduled_at.strftime("%d.%m.%Y")}. Please confirm!")
   end
 end
