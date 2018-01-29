@@ -53,5 +53,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# Windows and Android do not include zoneinfo files, so bundle the tzinfo-data gem. Android is also not supported by Bundler platforms, hence the weird if/else
+if RUBY_PLATFORM =~ /-linux-android$/
+  gem 'tzinfo-data'
+else
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+end
