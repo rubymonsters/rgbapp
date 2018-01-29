@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class ApplicationsController < ApplicationController
 
   before_action :require_admin, only: [:index, :select]
@@ -17,6 +19,8 @@ class ApplicationsController < ApplicationController
     @application = @event.applications.build(params.require(:application).permit(:name,
       :email, :language_de, :language_en, :attended_before, :rejected_before, :level,
       :comments, :os, :needs_computer, :read_coc, :female))
+
+    @application.random_id = SecureRandom.hex(12)
 
     if @application.save
       UserMailer.application_mail(@application).deliver_later
@@ -41,6 +45,17 @@ class ApplicationsController < ApplicationController
     end
     redirect_to event_applications_path(@event), notice: "Cool! Changes saved."
   end
+
+  def confirm
+    @application = @event.applications.find_by(random_id: params[:application_id])
+    if Date.today - @application.selected_on > 5
+      render :confirmed_too_late
+    else
+      @application.update_attributes(attendance_confirmed: true)
+    end
+  end
+
+private
 
   def require_admin
     require_login

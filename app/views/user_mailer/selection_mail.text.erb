@@ -1,0 +1,32 @@
+Hello <%= @application.name %>,
+
+We are happy to tell you that you are accepted for our beginners workshop happening on <%= @application.event.scheduled_at.strftime("%d.%m.%Y") %> .
+YAAAAY!!!!
+
+Here are some very important infos. Please read them carefully!
+
+Installation Get-Together: 11.8.2017 18:30-20:30
+  Where: Co Up 3rd floor  Adalbertstr. 8 10999 Berlin-Kreuzberg  
+
+Please install Rails by yourself if you cannot come to the party.  
+Here is the guide: http://guides.railsgirls.com/install
+ If there are problems with the installation please write us.
+
+ Workshop Day: <%= @application.event.scheduled_at.strftime("%d.%m.%Y") %> 10:00-18:00 
+Where: <%= @application.event.place %>  
+Schedule & Details: http://wp.me/P4oXTv-IQ 
+What to bring: Laptop, charger, extension cord (if you have one), your own coffee cup and something to share at lunch. Think of lunch as a thank you to our coaches who all volunteer on that day :) We will provide warm and cold drinks for you.
+
+IMPORTANT!
+Please confirm that you are coming by clicking the following link until <%= 5.days.from_now.strftime("%d.%m.%Y") %>:
+
+<%= event_application_confirm_url(event_id: @application.event.id, application_id: @application.random_id, host: "rgbworkshopapplication.herokuapp.com") %>
+
+Please let us know as soon as possible when you cannot come!!!
+ We had a lot of applications and had to reject over 60 people.
+So, if you cannot come, make someone else happy. <3
+
+Feel free to write us if you have any questions.
+See you next weekend.
+All the best
+Rails Girls Berlin
