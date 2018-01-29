@@ -47,10 +47,10 @@ class ApplicationsController < ApplicationController
   end
 
   def confirm
-    if Time.now > sent_on.5.days.from_now
+    @application = @event.applications.find_by(random_id: params[:application_id])
+    if Date.today - @application.selected_on > 5
       render :confirmed_too_late
     else
-      @application = @event.applications.find_by(random_id: params[:application_id])
       @application.update_attributes(attendance_confirmed: true)
     end
   end

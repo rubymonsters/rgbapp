@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115190413) do
+ActiveRecord::Schema.define(version: 20180129192321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180115190413) do
     t.boolean "selected", default: false, null: false
     t.boolean "attendance_confirmed", default: false, null: false
     t.string "random_id"
+    t.date "selected_on"
     t.index ["event_id"], name: "index_applications_on_event_id"
   end
 
@@ -46,6 +47,8 @@ ActiveRecord::Schema.define(version: 20180115190413) do
     t.datetime "application_end"
     t.datetime "confirmation_date"
     t.boolean "selection_complete", default: false, null: false
+    t.string "start_time"
+    t.string "end_time"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
