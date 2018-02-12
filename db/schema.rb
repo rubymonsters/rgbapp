@@ -47,8 +47,6 @@ ActiveRecord::Schema.define(version: 20180129192321) do
     t.datetime "application_end"
     t.datetime "confirmation_date"
     t.boolean "selection_complete", default: false, null: false
-    t.string "start_time"
-    t.string "end_time"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
