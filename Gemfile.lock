@@ -52,6 +52,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-email (2.5.0)
+      capybara (~> 2.4)
+      mail
     clearance (1.16.0)
       bcrypt
       email_validator (~> 1.4)
@@ -171,8 +174,6 @@ GEM
     turbolinks-source (5.0.3)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2018.3)
-      tzinfo (>= 1.0.0)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
     web-console (3.5.1)
@@ -192,6 +193,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara
+  capybara-email
   clearance
   coffee-rails (~> 4.2)
   factory_girl_rails

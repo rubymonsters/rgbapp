@@ -22,5 +22,6 @@ FactoryGirl.define do
     os "Linux"
     language_en true
     language_de false
+    random_id { SecureRandom.hex(12) }
   end
 end

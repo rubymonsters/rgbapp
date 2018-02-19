@@ -40,6 +40,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rb-readline'
   gem 'capybara'
+  gem 'capybara-email'
   gem 'launchy'
   gem 'factory_girl_rails'
 end

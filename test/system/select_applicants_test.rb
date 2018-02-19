@@ -3,6 +3,7 @@ require "application_system_test_case"
 class SelectApplicantsTest < ApplicationSystemTestCase
 
   setup do
+    clear_emails
     @event = create(:event)
     @user = create(:user, email: "test@user.de", password: "test", admin: true)
     @applicant1 = create(:application, event: @event)
@@ -37,12 +38,19 @@ class SelectApplicantsTest < ApplicationSystemTestCase
   end
 
   test "complete selection" do
-    assert_no_text "The selection is completed"
+    @applicant1.update_attributes(selected: true)
+    perform_enqueued_jobs do
+      assert_no_text "The selection is completed"
 
-    click_on "Selection complete"
+      click_on "Selection complete"
 
-    assert_text "The selection is completed"
+      assert_text "The selection is completed"
 
-    assert has_no_button?('Selection complete')
+      assert has_no_button?('Selection complete')
+    end
+
+    open_email(@applicant1.email)
+
+    assert current_email.has_content?("/events/#{@event.id}/applications/#{@applicant1.random_id}/confirm")
   end
 end
