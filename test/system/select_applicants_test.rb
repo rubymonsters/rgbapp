@@ -9,7 +9,7 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     @applicant1 = create(:application, event: @event)
     @applicant2 = create(:application, event: @event)
 
-    visit event_applications_path(@event.id)
+    visit admin_event_applications_path(@event.id)
 
     fill_in "Email", with: "test@user.de"
     fill_in "Password", with: "test"

@@ -4,8 +4,13 @@ Rails.application.routes.draw do
     resources :applications do
       get :confirm, to: "applications#confirm"
     end
-    put :applications, to: "applications#select"
   end
 
+  namespace :admin do
+    resources :events do
+      resources :applications
+      put :applications, to: "applications#select"
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
