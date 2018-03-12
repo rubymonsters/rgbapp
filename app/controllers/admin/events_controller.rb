@@ -2,8 +2,8 @@ class Admin::EventsController < ApplicationController
 
   before_action :require_admin
 
-  def update
-    @event = Event.find(params[:id])
+  def complete
+    @event = Event.find(params[:event_id])
     @event.update_attributes(selection_complete: true)
     @event.applications.where(selected: true).each do |application|
       UserMailer.selection_mail(application).deliver_later
