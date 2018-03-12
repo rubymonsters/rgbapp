@@ -57,13 +57,6 @@ class ApplicationsController < ApplicationController
 
 private
 
-  def require_admin
-    require_login
-    if current_user && !current_user.admin
-      redirect_to new_event_application_path(params[:event_id])
-    end
-  end
-
   def find_event
     @event = Event.find(params[:event_id])
   end
