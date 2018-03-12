@@ -9,6 +9,6 @@ class Admin::EventsController < ApplicationController
       UserMailer.selection_mail(application).deliver_later
       application.update_attributes(selected_on: Date.today)
     end
-    redirect_to event_applications_path(@event)
+    redirect_to admin_event_applications_path(@event)
   end
 end
