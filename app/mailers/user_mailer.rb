@@ -15,4 +15,10 @@ class UserMailer < ApplicationMailer
     @application = application
     mail(to: application.email, subject: "Reminder: The Rails Girls Berlin workshop will take place on #{@application.event.scheduled_at.strftime("%d.%m.%Y")}")
   end
+
+  def rejection_mail(application)
+    @application = application
+    mail(to: application.email, subject: "Sorry! You have not been selected for the Rails Girls Berlin workshop")
+  end
+
 end

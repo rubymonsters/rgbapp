@@ -54,5 +54,9 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     assert current_email.has_content?("/events/#{@event.id}/applications/#{@applicant1.random_id}/confirm")
     assert current_email.has_content?("Workshop Day: 19.02.2018 from 09:00 until 17:30")
 
+    open_email(@applicant2.email)
+    assert current_email.has_content?("Sorry you have not been selected for the workshop")
+
+
   end
 end
