@@ -1,0 +1,9 @@
+Here is a list of our workshops:
+<ul>
+  <% @events.each do |event| %>
+  <li>
+    <%= link_to event.name, edit_admin_event_path(event) %>
+    <%= event.scheduled_at.strftime("%d.%m.%Y") %>
+  </li>
+  <%end %>
+</ul>
