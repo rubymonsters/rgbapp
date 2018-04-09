@@ -1,0 +1,45 @@
+require "application_system_test_case"
+
+class EditEventTest < ApplicationSystemTestCase
+
+  setup do
+      create(:event, name: "Test Me", place: "Testing", scheduled_at: "2017-09-25", start_time: "09:00", end_time: "17:00", application_start: Time.now, application_end: 10.days.from_now, confirmation_date: Time.now)
+      create(:user, email: "test@user.de", password: "test", admin: true)
+
+      visit admin_events_path
+
+      fill_in "Email", with: "test@user.de"
+      fill_in "Password", with: "test"
+
+      click_on "Sign in"
+
+      click_on "Test Me"
+  end
+
+  test "Editing event" do
+    fill_in("Name", { currently_with: "Test Me", with: "Some Event" } )
+
+    click_on "Save"
+
+    assert_text "Here is a list of our workshops"
+    assert_text "Some Event"
+  end
+
+  test "Making an invalid entry" do
+    fill_in("Name", { currently_with: "Test Me", with: "" } )
+
+    click_on "Save"
+
+    assert_text "Name can't be blank"
+
+    assert_equal Event.first.name, "Test Me"
+
+    fill_in("Name", { currently_with: "", with: "Some Event" } )
+
+    click_on "Save"
+
+    assert_text "Here is a list of our workshops"
+    assert_text "Some Event"
+  end
+
+end
