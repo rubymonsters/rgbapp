@@ -3,7 +3,7 @@ require "application_system_test_case"
 class EditEventTest < ApplicationSystemTestCase
 
   setup do
-      create(:event, name: "Test Me", place: "Testing", scheduled_at: "2017-09-25", start_time: "09:00", end_time: "17:00", application_start: Time.now, application_end: 10.days.from_now, confirmation_date: Time.now)
+      create(:event, name: "Test Me")
       create(:user, email: "test@user.de", password: "test", admin: true)
 
       visit admin_events_path

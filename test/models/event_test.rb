@@ -53,4 +53,18 @@ class EventTest < ActiveSupport::TestCase
     assert_nil(current_email)
   end
 
+  test "application start after scheduled at" do
+    event = build(:event, scheduled_at: "2018-04-25", application_start: "2018-04-26", application_end: "2018-04-17", confirmation_date: "2018-04-20")
+    assert event.invalid?
+  end
+
+  test "application end after scheduled at" do
+    event = build(:event, scheduled_at: "2018-04-25", application_start: "2018-04-11", application_end: "2018-04-26", confirmation_date: "2018-04-20")
+    assert event.invalid?
+  end
+
+  test "confirmation date before application end" do
+    event = build(:event, scheduled_at: "2018-04-25", application_start: "2018-04-11", application_end: "2018-04-20", confirmation_date: "2018-04-17")
+    assert event.invalid?
+  end
 end

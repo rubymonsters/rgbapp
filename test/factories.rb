@@ -2,10 +2,10 @@ FactoryGirl.define do
   factory :event do
     name "Rails Girls Event"
     place "Venue"
-    scheduled_at Time.now
     application_start Time.now
     application_end Time.now
     confirmation_date Time.now
+    scheduled_at Time.now
     start_time "10:00"
     end_time "18:00"
   end

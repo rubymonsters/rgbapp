@@ -8,21 +8,21 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "Get an event that exists respond to 200" do
-    event = create(:event, name: "Test Me", place: "Testing", scheduled_at: "2017-09-25", application_start: Time.now, application_end: 10.days.from_now, confirmation_date: Time.now)
+    event = create(:event, name: "Test Me", place: "Testing", scheduled_at: 2.weeks.from_now, application_start: Time.now, application_end: 10.days.from_now, confirmation_date: 12.days.from_now)
     get "/events/#{event.id}/applications/new"
     assert_response 200
-    assert_select "h1", "Test Me 25.09.2017"
+    assert_select "h1", "Test Me #{2.weeks.from_now.strftime("%d.%m.%Y")}"
   end
 
   test "Get an event before application starts" do
-    event = create(:event, name: "Test Me", place: "Testing", scheduled_at: "2017-09-25", application_start: 2.days.from_now, application_end: 10.days.from_now, confirmation_date: 5.days.from_now)
+    event = create(:event, name: "Test Me", place: "Testing", scheduled_at: 2.weeks.from_now, application_start: 2.days.from_now, application_end: 10.days.from_now, confirmation_date: 12.days.from_now)
     get "/events/#{event.id}/applications/new"
     assert_response 200
     assert_select "h3", /Hi, early bird!/
   end
 
   test "Get an event after application ends" do
-    event = create(:event, name: "Test Me", place: "Testing", scheduled_at: "2017-09-25", application_start: 10.days.ago, application_end: 1.day.ago, confirmation_date: 5.days.from_now)
+    event = create(:event, name: "Test Me", place: "Testing", scheduled_at: 2.weeks.from_now, application_start: 10.days.ago, application_end: 1.day.ago, confirmation_date: 5.days.from_now)
     get "/events/#{event.id}/applications/new"
     assert_response 200
     assert_select "p", /The application period for this workshop has already ended./
