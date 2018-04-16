@@ -19,6 +19,11 @@ class Admin::EventsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = Event.find(params[:id]).destroy
+    redirect_to admin_events_path
+  end
+
   def complete
     @event = Event.find(params[:event_id])
     @event.update_attributes(selection_complete: true)

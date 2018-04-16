@@ -31,9 +31,10 @@
   <p><%= f.label(:confirmation_date, "Attendance to be confirmed by:") %></p>
   <%= error_message(@event, :confirmation_date) %>
   <p><%= f.date_field :confirmation_date %></p>
-
 </fieldset>
+
 <div class='button'>
   <%= f.submit "Save", class: 'commit', type: 'submit' %>
+  <%= button_to "Delete event", { action: "destroy", id: @event.id }, method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
 <% end %>
