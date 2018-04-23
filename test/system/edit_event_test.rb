@@ -19,6 +19,8 @@ class EditEventTest < ApplicationSystemTestCase
   test "Editing event" do
     fill_in("Name", { currently_with: "Test Me", with: "Some Event" } )
 
+    #save_and_open_page
+
     click_on "Save"
 
     assert_text "Here is a list of our workshops"
