@@ -1,0 +1,39 @@
+<%= form_for [:admin, @event] do |f| %>
+<fieldset>
+  <p><%= f.label(:name, "Name") %></p>
+  <%= error_message(@event, :name) %>
+  <p><%= f.text_field :name %></p>
+
+  <p><%= f.label(:place, "Place") %></p>
+  <%= error_message(@event, :place) %>
+  <p><%= f.text_field :place %></p>
+
+  <p><%= f.label(:scheduled_at, "Workshop date") %></p>
+  <%= error_message(@event, :scheduled_at) %>
+  <p><%= f.date_field :scheduled_at %></p>
+
+  <p><%= f.label(:start_time, "Workshop starts at:") %></p>
+  <%= error_message(@event, :start_time) %>
+  <p><%= f.text_field :start_time %></p>
+
+  <p><%= f.label(:end_time, "Workshop ends at:") %></p>
+  <%= error_message(@event, :end_time) %>
+  <p><%= f.text_field :end_time %></p>
+
+  <p><%= f.label(:application_start, "Applications start on:") %></p>
+  <%= error_message(@event, :application_start) %>
+  <p><%= f.date_field :application_start %></p>
+
+  <p><%= f.label(:application_end, "Applications end on:") %></p>
+  <%= error_message(@event, :application_end) %>
+  <p><%= f.date_field :application_end %></p>
+
+  <p><%= f.label(:confirmation_date, "Attendance to be confirmed by:") %></p>
+  <%= error_message(@event, :confirmation_date) %>
+  <p><%= f.date_field :confirmation_date %></p>
+
+</fieldset>
+<div class='button'>
+  <%= f.submit "Save", class: 'commit', type: 'submit' %>
+</div>
+<% end %>

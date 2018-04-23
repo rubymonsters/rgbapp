@@ -6,6 +6,19 @@ class Admin::EventsController < ApplicationController
     @events = Event.all
   end
 
+  def new
+    @event = Event.new
+  end
+
+  def create
+    @event = Event.new(params.require(:event).permit(:name, :place, :scheduled_at, :start_time, :end_time, :application_start, :application_end, :confirmation_date))
+    if @event.save
+      redirect_to admin_events_path
+    else
+      render :new
+    end
+  end
+
   def edit
     @event = Event.find(params[:id])
   end
