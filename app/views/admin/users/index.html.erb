@@ -1,0 +1,26 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>E-mail</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td>
+        <% if user.admin? %>
+          ✅
+          <% if user != current_user %>
+            <%= button_to "Remove rights", admin_user_path(user), method: "put" %>
+          <% end %>
+        <% else %>
+          <%= button_to "Make admin", admin_user_path(user), method: "put" %>
+        <% end %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
