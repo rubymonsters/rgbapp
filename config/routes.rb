@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :users
     resources :events do
       resources :applications
       put :applications, to: "applications#select"
