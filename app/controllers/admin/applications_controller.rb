@@ -1,4 +1,5 @@
 class Admin::ApplicationsController < ApplicationController
+  layout "admin"
 
   before_action :require_admin
   before_action :find_event
