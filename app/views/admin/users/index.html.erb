@@ -4,6 +4,7 @@
     <tr>
       <th>E-mail</th>
       <th>Admin</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,11 @@
           <% end %>
         <% else %>
           <%= button_to "Make admin", admin_user_path(user), method: "put" %>
+        <% end %>
+      </td>
+      <td>
+        <% if user != current_user %>
+          <%= button_to "Delete user", admin_user_path(user), method: "delete" %>
         <% end %>
       </td>
     </tr>

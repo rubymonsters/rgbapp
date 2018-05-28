@@ -33,7 +33,7 @@ class Admin::EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id]).destroy
+    Event.find(params[:id]).destroy
     redirect_to admin_events_path
   end
 
