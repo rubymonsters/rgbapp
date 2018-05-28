@@ -16,4 +16,14 @@ class Admin::UsersController < ApplicationController
     end
     redirect_to admin_users_path
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    if @user == current_user
+      flash[:error] = "You cannot delete the logged in user."
+    else
+      @user.destroy
+    end
+    redirect_to admin_users_path
+  end
 end
