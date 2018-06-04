@@ -1,11 +1,34 @@
-Here is a list of our workshops:
-<ul>
-  <% @events.each do |event| %>
-  <li>
-    <%= link_to event.name, edit_admin_event_path(event) %>
-    <%= event.scheduled_at.strftime("%d.%m.%Y") %>
-  </li>
-  <%end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+    <tr>
+      <td>
+        <%= event.name %>
+      </td>
+      <td>
+        <%= event.scheduled_at.strftime("%d.%m.%Y") %>
+      </td>
+      <td>
+        <%= button_to 'Applicants', admin_event_applications_path(event), method: :get %>
+      </td>
+      <td>
+        <%= button_to 'Edit', edit_admin_event_path(event), method: :get %>
+      </td>
+      <td>
+        <%= button_to "Delete", admin_event_path(event), method: :delete, data: { confirm: "Are you sure?" } %>
+      </td>
+  </tr>
+    <%end %>
+  </tbody>
+</table>
 
-<%= button_to 'Add event', new_admin_event_path, method: :get  %>
+<p><%= button_to 'Add event', new_admin_event_path, method: :get  %></p>

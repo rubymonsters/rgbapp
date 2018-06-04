@@ -37,5 +37,3 @@
   <%= f.submit "Save", class: 'commit', type: 'submit' %>
 </div>
 <% end %>
-
-<%= button_to "Delete event", admin_event_path(@event.id), method: :delete, data: { confirm: "Are you sure?" } %>

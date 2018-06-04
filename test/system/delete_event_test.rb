@@ -16,11 +16,8 @@ class DeleteEventTest < ApplicationSystemTestCase
 
   test "Deleting an event" do
 
-    click_on "Test Me"
+    click_on "Delete"
 
-    click_on "Delete event"
-
-    assert_text "Here is a list of our workshops"
     assert_no_text "Test Me"
   end
 end
