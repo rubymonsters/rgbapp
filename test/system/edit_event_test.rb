@@ -13,7 +13,7 @@ class EditEventTest < ApplicationSystemTestCase
 
       click_on "Sign in"
 
-      click_on "Test Me"
+      click_on "Edit"
   end
 
   test "Editing event" do
@@ -23,7 +23,6 @@ class EditEventTest < ApplicationSystemTestCase
 
     click_on "Save"
 
-    assert_text "Here is a list of our workshops"
     assert_text "Some Event"
   end
 
@@ -40,7 +39,6 @@ class EditEventTest < ApplicationSystemTestCase
 
     click_on "Save"
 
-    assert_text "Here is a list of our workshops"
     assert_text "Some Event"
   end
 

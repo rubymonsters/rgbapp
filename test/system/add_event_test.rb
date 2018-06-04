@@ -28,7 +28,6 @@ class AddEventTest < ApplicationSystemTestCase
 
     click_on "Save"
 
-    assert_text "Here is a list of our workshops"
     assert_text "New event"
   end
 

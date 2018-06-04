@@ -1,0 +1,6 @@
+<%= inside_layout do %>
+  <%= yield %>
+  <p><%= link_to_unless_current "Events", admin_events_path %></p>
+  <p><%= link_to_unless_current "Users", admin_users_path %></p>
+  <p><%= link_to "Sign out", sign_out_path, method: :delete %></p>
+<% end %>
