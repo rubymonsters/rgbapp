@@ -50,4 +50,13 @@ class Admin::EventsController < ApplicationController
     end
     redirect_to admin_event_applications_path(@event)
   end
+
+  def send_emails
+    @event = Event.find(params[:event_id])
+    @event.applications.where(selected: true, selected_on: nil).each do |application|
+      UserMailer.selection_mail(application).deliver_later
+      application.update_attributes(selected_on: Date.today)
+    end
+    redirect_to admin_event_applications_path(@event)
+  end
 end
