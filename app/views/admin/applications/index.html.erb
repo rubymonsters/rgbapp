@@ -1,9 +1,10 @@
 <p><%= button_to("Download table as csv", {format: "csv"}, {method: :get}) %></p>
 
 <% if @event.selection_complete %>
-  <h3>The selection is completed and confirmation e-mails have been sent. Please do not change the selection.</h3>
+  <h3>The selection is completed and confirmation e-mails have been sent. If you select additional applicants, please click the "Send e-mails" button to send them the e-mail.</h3>
+  <p><%= button_to "Send e-mails", admin_event_send_emails_path(@event), method: :put, data: { confirm: "Are you sure? This will send e-mails to the selected applicants." } %></p>
 <% else %>
-  <p><%= button_to 'Selection complete', admin_event_complete_path(@event), method: :put, data: { confirm: "Are you sure? This will send e-mails to the selected applicants. You are not supposed to change the selection after clicking this button." } %></p>
+  <p><%= button_to 'Selection complete', admin_event_complete_path(@event), method: :put, data: { confirm: "Are you sure? This will send e-mails to the selected applicants." } %></p>
 <% end %>
 
 <p>Total: <%= pluralize(@applications.size, "application") %></p>
@@ -47,7 +48,5 @@
     <% end %>
   </tbody>
 </table>
-<%= submit_tag "Save" %>
+<p><%= submit_tag "Save" %></p>
 <% end %>
-
-<%= button_to 'Sign out', sign_out_path, method: :delete %>

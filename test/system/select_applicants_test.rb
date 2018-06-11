@@ -57,6 +57,31 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     open_email(@applicant2.email)
     assert current_email.has_content?("Sorry you have not been selected for the workshop")
 
+  end
 
+  test "additional selection" do
+    @applicant1.update_attributes(selected: true)
+
+    perform_enqueued_jobs do
+      click_on "Selection complete"
+    end
+
+    clear_emails
+
+    check("select_applicant_#{@applicant2.id}")
+
+    click_on "Save"
+
+    perform_enqueued_jobs do
+      click_on "Send e-mails"
+    end
+
+    open_email(@applicant2.email)
+
+    assert current_email.has_content?("/events/#{@event.id}/applications/#{@applicant2.random_id}/confirm")
+    assert current_email.has_content?("Workshop Day: #{@event.scheduled_at.strftime("%d.%m.%Y")} from 09:00 until 17:30")
+
+    open_email(@applicant1.email)
+    assert_nil current_email
   end
 end
