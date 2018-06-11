@@ -14,6 +14,10 @@ class Application < ApplicationRecord
 
   belongs_to :event
 
+  scope :selected, -> { where(selected: true) }
+  scope :rejected, -> { where(selected: false) }
+  scope :not_marked_as_selected, -> { where(selected_on: nil) }
+
    def at_least_select_one_language
      unless language_de? || language_en?
        errors.add(:language, "Please select at least one language.")

@@ -2,6 +2,7 @@ class Admin::EventsController < ApplicationController
   layout "admin"
 
   before_action :require_admin
+  before_action :find_event, only: [:edit, :update, :destroy, :complete, :send_emails]
 
   def index
     @events = Event.all
@@ -12,7 +13,7 @@ class Admin::EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(params.require(:event).permit(:name, :place, :scheduled_at, :start_time, :end_time, :application_start, :application_end, :confirmation_date))
+    @event = Event.new(event_params)
     if @event.save
       redirect_to admin_events_path
     else
@@ -21,12 +22,10 @@ class Admin::EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
-    @event = Event.find(params[:id])
-    if @event.update_attributes(params.require(:event).permit(:name, :place, :scheduled_at, :application_start, :application_end, :confirmation_date, :start_time, :end_time))
+    if @event.update_attributes(event_params)
       redirect_to admin_events_path
     else
       render :edit
@@ -34,29 +33,42 @@ class Admin::EventsController < ApplicationController
   end
 
   def destroy
-    Event.find(params[:id]).destroy
+    @event.destroy
     redirect_to admin_events_path
   end
 
   def complete
-    @event = Event.find(params[:event_id])
     @event.update_attributes(selection_complete: true)
-    @event.applications.where(selected: true).each do |application|
-      UserMailer.selection_mail(application).deliver_later
-      application.update_attributes(selected_on: Date.today)
-    end
-    @event.applications.where(selected: false).each do |application|
-      UserMailer.rejection_mail(application).deliver_later
-    end
+    send_selection_emails @event.applications.selected
+    send_rejection_emails @event.applications.rejected
     redirect_to admin_event_applications_path(@event)
   end
 
   def send_emails
-    @event = Event.find(params[:event_id])
-    @event.applications.where(selected: true, selected_on: nil).each do |application|
-      UserMailer.selection_mail(application).deliver_later
-      application.update_attributes(selected_on: Date.today)
-    end
+    send_selection_emails @event.applications.selected.not_marked_as_selected
     redirect_to admin_event_applications_path(@event)
   end
+
+private
+
+    def find_event
+      @event = Event.find(params[:id] || params[:event_id])
+    end
+
+    def event_params
+      params.require(:event).permit(:name, :place, :scheduled_at, :application_start, :application_end, :confirmation_date, :start_time, :end_time)
+    end
+
+    def send_selection_emails(applications)
+      applications.each do |application|
+        UserMailer.selection_mail(application).deliver_later
+        application.update_attributes(selected_on: Date.today)
+      end
+    end
+
+    def send_rejection_emails(applications)
+      applications.each do |application|
+        UserMailer.rejection_mail(application).deliver_later
+      end
+    end
 end
