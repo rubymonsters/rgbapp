@@ -17,6 +17,7 @@ class Application < ApplicationRecord
   scope :selected, -> { where(selected: true) }
   scope :rejected, -> { where(selected: false) }
   scope :not_marked_as_selected, -> { where(selected_on: nil) }
+  scope :confirmed, -> { where(attendance_confirmed: true) }
 
    def at_least_select_one_language
      unless language_de? || language_en?

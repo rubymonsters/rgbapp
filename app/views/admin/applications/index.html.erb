@@ -8,6 +8,9 @@
 <% end %>
 
 <p>Total: <%= pluralize(@applications.size, "application") %></p>
+<p>Selected: <%= pluralize(@applications.selected.size, "application") %></p>
+<p>Confirmed: <%= pluralize(@applications.selected.confirmed.size, "application") %></p>
+<p>E-mail pending: <%= pluralize(@applications.selected.not_marked_as_selected.size, "application") %></p>
 
 <%= form_tag({}, method: :put) do %>
 <table>
