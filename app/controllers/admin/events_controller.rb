@@ -10,6 +10,7 @@ class Admin::EventsController < ApplicationController
 
   def new
     @event = Event.new
+    render :edit
   end
 
   def create
@@ -17,7 +18,7 @@ class Admin::EventsController < ApplicationController
     if @event.save
       redirect_to admin_events_path
     else
-      render :new
+      render :edit
     end
   end
 
