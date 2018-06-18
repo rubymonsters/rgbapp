@@ -12,12 +12,12 @@ class Admin::ApplicationsController < ApplicationController
     end
   end
 
-  def select
-    if params[:selected_ids]
-      @event.applications.update_all(["selected = (id IN (?))", params[:selected_ids]])
-    else
-      @event.applications.update_all(selected: false)
-    end
+  def checkboxes
+    selected_ids = params[:selected_ids] || [-1]
+    confirmed_ids = params[:confirmed_ids] || [-1]
+
+    @event.applications.update_all(["selected = (id IN (?)), attendance_confirmed = (id IN (?))", selected_ids, confirmed_ids])
+
     redirect_to admin_event_applications_path(@event), notice: "Cool! Changes saved."
   end
 

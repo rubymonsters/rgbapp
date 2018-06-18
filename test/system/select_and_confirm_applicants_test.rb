@@ -17,8 +17,9 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     click_on "Sign in"
   end
 
-  test "select applicant" do
+  test "select or confirm applicant" do
     check("select_applicant_#{@applicant1.id}")
+    check("confirm_applicant_#{@applicant2.id}")
 
     click_on "Save"
 
@@ -27,7 +28,11 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     assert @applicant1.reload.selected?
     assert !@applicant2.reload.selected?
 
+    assert !@applicant1.reload.attendance_confirmed?
+    assert @applicant2.reload.attendance_confirmed?
+
     uncheck("select_applicant_#{@applicant1.id}")
+    uncheck("confirm_applicant_#{@applicant2.id}")
 
     click_on "Save"
 
@@ -35,6 +40,9 @@ class SelectApplicantsTest < ApplicationSystemTestCase
 
     assert !@applicant1.reload.selected?
     assert !@applicant2.reload.selected?
+
+    assert !@applicant1.reload.attendance_confirmed?
+    assert !@applicant2.reload.attendance_confirmed?
   end
 
   test "complete selection" do
