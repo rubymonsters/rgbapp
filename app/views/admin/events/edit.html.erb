@@ -31,6 +31,15 @@
   <p><%= f.label(:confirmation_date, "Attendance to be confirmed by:") %></p>
   <%= error_message(@event, :confirmation_date) %>
   <p><%= f.date_select :confirmation_date %></p>
+
+  <p><%= f.label(:application_mail, "Edit application email:") %></p>
+  <%= error_message(@event, :application_mail) %>
+  <p><%= f.text_area :application_mail %></p>
+
+  <p><%= f.label(:selection_mail, "Edit selection email:") %></p>
+  <%= error_message(@event, :selection_mail) %>
+  <p><%= f.text_area :selection_mail %></p>
+
 </fieldset>
 
 <div class='button'>
