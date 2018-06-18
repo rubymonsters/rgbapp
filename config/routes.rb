@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :users
     resources :events do
       resources :applications
-      put :applications, to: "applications#select"
+      put :applications, to: "applications#checkboxes"
       put :complete
       put :send_emails
     end
