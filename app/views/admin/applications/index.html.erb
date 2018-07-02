@@ -16,6 +16,7 @@
 <table>
   <thead>
     <tr>
+      <th><%= link_to("No.", order: order("id")) %></th>
       <th>Select</th>
       <th><%= link_to("Confirmed", order: order("attendance_confirmed")) %></th>
       <th><%= link_to("Name", order: order("upper(name)")) %></th>
@@ -34,6 +35,7 @@
   <tbody>
     <% @applications.each do |application| %>
     <tr>
+      <td><%= application.id %>.</td>
       <td><%= check_box_tag 'selected_ids[]', application.id, application.selected, id: "select_applicant_#{application.id}" %></td>
       <td><%= check_box_tag 'confirmed_ids[]', application.id, application.attendance_confirmed, id: "confirm_applicant_#{application.id}" %></td>
       <td><%= application.name %></td>
