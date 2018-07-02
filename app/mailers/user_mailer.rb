@@ -8,17 +8,17 @@ class UserMailer < ApplicationMailer
 
   def selection_mail(application)
     @application = application
-    mail(to: application.email, subject: "Welcome to the Rails Girls Berlin workshop on #{@application.event.scheduled_at.strftime("%d.%m.%Y")}. Please confirm!")
+    mail(to: application.email, subject: "Welcome to the Rails Girls Berlin (code curious) workshop on #{@application.event.scheduled_at.strftime("%d.%m.%Y")}. Please confirm!")
   end
 
   def reminder_mail(application)
     @application = application
-    mail(to: application.email, subject: "Reminder: The Rails Girls Berlin workshop will take place on #{@application.event.scheduled_at.strftime("%d.%m.%Y")}")
+    mail(to: application.email, subject: "Reminder: The Rails Girls Berlin (code curious) workshop will take place on #{@application.event.scheduled_at.strftime("%d.%m.%Y")}")
   end
 
   def rejection_mail(application)
     @application = application
-    mail(to: application.email, subject: "Sorry! You have not been selected for the Rails Girls Berlin workshop")
+    mail(to: application.email, subject: "Sorry! You have not been selected for the Rails Girls Berlin (code curious) workshop")
   end
 
 end

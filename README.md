@@ -1,8 +1,8 @@
-# Rails Girls Berlin application [![Build Status](https://travis-ci.org/rubymonsters/rgbapp.svg?branch=master)](https://travis-ci.org/rubymonsters/rgbapp)
+# Rails Girls Berlin (code curious) application [![Build Status](https://travis-ci.org/rubymonsters/rgbapp.svg?branch=master)](https://travis-ci.org/rubymonsters/rgbapp)
 
 ## About
 
-This repo is the open source project for the **Rails Girls Berlin App** that aims to help the [Rails Girls Berlin orga team](http://railsgirlsberlin.de) to organize their events by making the attendees, coaches and volunteers applications and/or participation more manageable.
+This repo is the open source project for the **Rails Girls Berlin (code curious) App** that aims to help the [Rails Girls Berlin (code curious) orga team](http://railsgirlsberlin.de) to organize their events by making the attendees, coaches and volunteers applications and/or participation more manageable.
 
 ## Technical Requirements
 
