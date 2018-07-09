@@ -20,6 +20,7 @@ class ApplicationsController < ApplicationController
       :comments, :os, :needs_computer, :read_coc, :female))
 
     @application.random_id = SecureRandom.hex(12)
+    @application.sequence_number = @event.applications.count + 1
 
     if @application.save
       UserMailer.application_mail(@application).deliver_later

@@ -20,6 +20,7 @@ FactoryGirl.define do
     association :event
     name "Rails Applicant"
     sequence(:email) { |n| "person#{n}@example.com" }
+    sequence(:sequence_number)
     level "0"
     os "Linux"
     language_en true
