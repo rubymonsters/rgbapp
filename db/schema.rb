@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129192321) do
+ActiveRecord::Schema.define(version: 20180709175006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180129192321) do
     t.boolean "attendance_confirmed", default: false, null: false
     t.string "random_id"
     t.date "selected_on"
+    t.integer "sequence_number"
     t.index ["event_id"], name: "index_applications_on_event_id"
   end
 

@@ -11,6 +11,7 @@ class Application < ApplicationRecord
   validates :os, presence: { message: "We need to know the operating system of your computer." }, unless: :needs_computer?
   validate :at_least_select_one_language
   validates :read_coc, acceptance: { message: "You must confirm that you have read the Code of Conduct and will comply with it." }
+  validates :sequence_number, uniqueness: { scope: :event_id }, presence: true
 
   belongs_to :event
 
