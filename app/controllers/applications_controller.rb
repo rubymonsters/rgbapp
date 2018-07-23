@@ -5,9 +5,13 @@ class ApplicationsController < ApplicationController
   before_action :find_event
 
   def new
-    if Time.now < @event.application_start
+    # We want the periods to start and end at midnight in Berlin, not UTC.
+    # A possible improvement could be to configure a time zone for each event, instead of hardcoding it to Berlin.
+    date_in_berlin = Time.now.in_time_zone("Berlin").to_date
+
+    if @event.application_start > date_in_berlin
       render :too_early
-    elsif Time.now > @event.application_end
+    elsif @event.application_end < date_in_berlin
       render :too_late
     else
       @application = Application.new

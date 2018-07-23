@@ -7,8 +7,15 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "Get an event that exists respond to 200" do
-    event = create(:event, name: "Test Me", place: "Testing", scheduled_at: 2.weeks.from_now, application_start: Time.now, application_end: 10.days.from_now, confirmation_date: 12.days.from_now)
+  test "Get an event on the day the application period ends" do
+    event = create(:event, name: "Test Me", place: "Testing", scheduled_at: 2.weeks.from_now, application_start: Date.yesterday, application_end: Date.today, confirmation_date: 12.days.from_now)
+    get "/events/#{event.id}/applications/new"
+    assert_response 200
+    assert_select "h1", "Test Me #{2.weeks.from_now.strftime("%d.%m.%Y")}"
+  end
+
+  test "Get an event on the day the application period starts" do
+    event = create(:event, name: "Test Me", place: "Testing", scheduled_at: 2.weeks.from_now, application_start: Date.today, application_end: Date.tomorrow, confirmation_date: 12.days.from_now)
     get "/events/#{event.id}/applications/new"
     assert_response 200
     assert_select "h1", "Test Me #{2.weeks.from_now.strftime("%d.%m.%Y")}"
