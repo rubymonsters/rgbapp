@@ -9,9 +9,15 @@ class UserMailer < ApplicationMailer
   end
 
   def selection_mail(application)
-    @application = application
-    mail(to: application.email, subject: "Welcome to the Rails Girls Berlin workshop on #{@application.event.scheduled_at.strftime("%d.%m.%Y")}. Please confirm!") do |format|
-      format.text { render inline: application.event.selection_mail }
+    mail(to: application.email, subject: "Welcome to the Rails Girls Berlin workshop on #{application.event.scheduled_at.strftime("%d.%m.%Y")}. Please confirm!") do |format|
+      format.text {
+        render plain: Mustache.render(application.event.selection_mail,
+          applicant_name: application.name,
+          event_date: application.event.scheduled_at.strftime("%d.%m.%Y"),
+          confirmation_deadline: 5.days.from_now.strftime("%d.%m.%Y"),
+          confirmation_link: event_application_confirm_url(event_id: application.event.id, application_id: application.random_id, host: "rgbworkshopapplication.herokuapp.com")
+        )
+      }
     end
   end
 
