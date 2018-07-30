@@ -43,6 +43,7 @@ group :development, :test do
   gem 'capybara-email'
   gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'timecop'
 end
 
 group :development do
