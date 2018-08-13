@@ -1,0 +1,15 @@
+<%= form_for @event, url: admin_event_template_path(@event, params[:id]) do |f| %>
+<fieldset>
+
+  <p><%= f.label(params[:id]) %></p>
+  <%= error_message(@event, params[:id]) %>
+  <p><%= f.text_area params[:id] %></p>
+
+</fieldset>
+
+<%= link_to "Back", edit_admin_event_path(@event) %>
+
+<div class='button'>
+  <%= f.submit "Save", class: 'commit', type: 'submit' %>
+</div>
+<% end %>

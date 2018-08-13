@@ -32,15 +32,12 @@
   <%= error_message(@event, :confirmation_date) %>
   <p><%= f.date_select :confirmation_date %></p>
 
-  <p><%= f.label(:application_mail, "Edit application email:") %></p>
-  <%= error_message(@event, :application_mail) %>
-  <p><%= f.text_area :application_mail %></p>
-
-  <p><%= f.label(:selection_mail, "Edit selection email:") %></p>
-  <%= error_message(@event, :selection_mail) %>
-  <p><%= f.text_area :selection_mail %></p>
-
 </fieldset>
+
+<% if @event.persisted? %>
+  <%= link_to "Edit application e-mail", edit_admin_event_template_path(@event, :application_mail) %>
+  <%= link_to "Edit selection e-mail", edit_admin_event_template_path(@event, :selection_mail) %>
+<% end %>
 
 <div class='button'>
   <%= f.submit "Save", class: 'commit', type: 'submit' %>

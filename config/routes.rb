@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       put :applications, to: "applications#checkboxes"
       put :complete
       put :send_emails
+      resources :templates
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
