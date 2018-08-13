@@ -4,7 +4,7 @@ class SelectApplicantsTest < ApplicationSystemTestCase
 
   setup do
     clear_emails
-    @event = create(:event, start_time: "09:00", end_time: "17:30")
+    @event = create(:event, start_time: "09:00", end_time: "17:30", selection_mail: "Workshop Day: {{ event_date }} from 09:00 until 17:30 {{ confirmation_link }}")
     @user = create(:user, email: "test@user.de", password: "test", admin: true)
     @applicant1 = create(:application, event: @event)
     @applicant2 = create(:application, event: @event)

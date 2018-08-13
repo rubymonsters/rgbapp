@@ -2,9 +2,13 @@ class UserMailer < ApplicationMailer
   default from: "contact@railsgirlsberlin.de"
 
   def application_mail(application)
-    @application = application
     mail(to: application.email, subject: "We have received your application for the Rails Girls Workshop") do |format|
-      format.text { render plain: application.event.application_mail }
+      format.text { render plain: Mustache.render(application.event.application_mail,
+        applicant_name: application.name,
+        event_date: application.event.scheduled_at.strftime("%d.%m.%Y"),
+        confirmation_deadline: 5.days.from_now.strftime("%d.%m.%Y")
+        )
+      }
     end
   end
 
