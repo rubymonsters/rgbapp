@@ -36,8 +36,15 @@ class UserMailer < ApplicationMailer
   end
     
   def reminder_mail(application)
-    @application = application
-    mail(to: application.email, subject: "Reminder: The Rails Girls Berlin workshop will take place on #{@application.event.scheduled_at.strftime("%d.%m.%Y")}")
+    mail(to: application.email, subject: "Reminder: The Rails Girls Berlin workshop will take place on #{application.event.scheduled_at.strftime("%d.%m.%Y")}") do |format|
+      format.text {
+        render plain: Mustache.render(application.event.reminder_mail,
+          applicant_name: application.name,
+          event_date: application.event.scheduled_at.strftime("%d.%m.%Y"),
+          event_place: application.event.place
+        )
+      }
+    end 
   end
 
 
