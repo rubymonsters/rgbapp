@@ -15,6 +15,11 @@ class Admin::ApplicationsController < ApplicationController
   def checkboxes
     selected_ids = params[:selected_ids] || [-1]
     confirmed_ids = params[:confirmed_ids] || [-1]
+    params[:state].each do |application_id, state|
+      application = Application.find(application_id)
+      application.state = state
+      application.save!
+    end  
 
     @event.applications.update_all(["selected = (id IN (?)), attendance_confirmed = (id IN (?))", selected_ids, confirmed_ids])
 

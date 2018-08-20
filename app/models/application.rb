@@ -20,6 +20,8 @@ class Application < ApplicationRecord
   scope :not_marked_as_selected, -> { where(selected_on: nil) }
   scope :confirmed, -> { where(attendance_confirmed: true) }
 
+  enum state: { rejected: 0, waitinglist: 1, applicationselected: 2 }
+  
    def at_least_select_one_language
      unless language_de? || language_en?
        errors.add(:language, "Please select at least one language.")
