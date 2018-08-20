@@ -37,6 +37,7 @@
 <% if @event.persisted? %>
   <%= link_to "Edit application e-mail", edit_admin_event_template_path(@event, :application_mail) %>
   <%= link_to "Edit selection e-mail", edit_admin_event_template_path(@event, :selection_mail) %>
+  <%= link_to "Edit rejection e-mail", edit_admin_event_template_path(@event, :rejection_mail) %>  
 <% end %>
 
 <div class='button'>
