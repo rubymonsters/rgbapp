@@ -7,6 +7,11 @@
 
 </fieldset>
 
+<details>
+  <summary>Preview</summary>
+  <pre><%= preview_template params[:id] %></pre>
+</details>
+
 <%= render :partial => "#{params[:id]}_help" %>
 
 <%= link_to "Back", edit_admin_event_path(@event) %>

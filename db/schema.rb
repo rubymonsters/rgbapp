@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20180820192321) do
     t.string "random_id"
     t.date "selected_on"
     t.integer "sequence_number"
-    t.integer "state", default: 0, null: false
     t.index ["event_id"], name: "index_applications_on_event_id"
   end
 
