@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180820192321) do
+ActiveRecord::Schema.define(version: 20180910172959) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +54,10 @@ ActiveRecord::Schema.define(version: 20180820192321) do
     t.text "selection_mail"
     t.text "rejection_mail"
     t.text "reminder_mail"
+    t.text "reminder_mail_subject"
+    t.text "application_mail_subject"
+    t.text "selection_mail_subject"
+    t.text "rejection_mail_subject"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

@@ -4,12 +4,13 @@ class EventTest < ActiveSupport::TestCase
   include Capybara::Email::DSL
 
   test "send reminders to selected and confirmed participants" do
-    event = create(:event, scheduled_at: 2.days.from_now, place: "Travis", reminder_mail: "The workshop starts tmrw at {{ event_place }}!" )
+    event = create(:event, scheduled_at: 2.days.from_now, place: "Travis", reminder_mail_subject: "Workshop reminder", reminder_mail: "The workshop starts tmrw at {{ event_place }}!" )
     applicant = create(:application, event: event, selected: true, attendance_confirmed: true)
 
     Event.send_reminders
 
     open_email(applicant.email)
+    assert_equal current_email.subject, "Workshop reminder"
     assert current_email.has_content?("The workshop starts tmrw at Travis!")
   end
 

@@ -9,7 +9,7 @@ class Admin::TemplatesController < ApplicationController
 
   def update
     @event = Event.find(params[:event_id])
-    if @event.update_attributes(params.require(:event).permit(params[:id]))
+    if @event.update_attributes(params.require(:event).permit(params[:id], params[:id] + "_subject"))
       flash[:notice] = "E-mail saved."
       redirect_back(fallback_location: root_path)
     else

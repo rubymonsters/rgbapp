@@ -1,14 +1,20 @@
 <%= form_for @event, url: admin_event_template_path(@event, params[:id]) do |f| %>
-<fieldset>
 
-  <p><%= f.label(params[:id]) %></p>
+<h3>Edit template: <%= params[:id] %></h3>
+
+<fieldset>
+  <p><%= f.label params[:id] + "_subject", "Subject" %></p>
+  <%= error_message(@event, params[:id] + "_subject") %>
+  <p><%= f.text_field params[:id] + "_subject" %></p>
+
+  <p><%= f.label params[:id], "E-mail body" %></p>
   <%= error_message(@event, params[:id]) %>
   <p><%= f.text_area params[:id] %></p>
-
 </fieldset>
 
 <details>
   <summary>Preview</summary>
+  <pre style="font-weight: bold"><%= preview_template params[:id] + "_subject" %></pre>
   <pre><%= preview_template params[:id] %></pre>
 </details>
 

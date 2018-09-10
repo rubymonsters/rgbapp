@@ -24,7 +24,7 @@ ExampleData = {
 
   def preview_template(template_name)
     begin
-      Mustache.render(@event[template_name], ExampleData[template_name.to_sym]
+      Mustache.render(@event[template_name], ExampleData[template_name.sub(/_subject$/,"").to_sym]
       )
     rescue => e
       "Error: #{e.message}"
