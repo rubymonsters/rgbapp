@@ -5,9 +5,9 @@ class ApplicationsController < ApplicationController
   before_action :find_event
 
   def new
-    if Time.now < @event.application_start
+    if @event.application_start > date_in_berlin
       render :too_early
-    elsif Time.now > @event.application_end
+    elsif @event.application_end < date_in_berlin
       render :too_late
     else
       @application = Application.new
@@ -20,6 +20,7 @@ class ApplicationsController < ApplicationController
       :comments, :os, :needs_computer, :read_coc, :female))
 
     @application.random_id = SecureRandom.hex(12)
+    @application.sequence_number = @event.applications.count + 1
 
     if @application.save
       UserMailer.application_mail(@application).deliver_later
@@ -30,7 +31,7 @@ class ApplicationsController < ApplicationController
 
   def confirm
     @application = @event.applications.find_by!(random_id: params[:application_id], selected: true)
-    if Date.today - @application.selected_on > 5
+    if date_in_berlin - @application.selected_on > 5
       render :confirmed_too_late
     else
       @application.update_attributes(attendance_confirmed: true)
@@ -41,6 +42,12 @@ private
 
   def find_event
     @event = Event.find(params[:event_id])
+  end
+
+  # We want the periods to start and end at midnight in Berlin, not UTC.
+  # A possible improvement could be to configure a time zone for each event, instead of hardcoding it to Berlin.
+  def date_in_berlin
+    Time.now.in_time_zone("Berlin").to_date
   end
 
 end
