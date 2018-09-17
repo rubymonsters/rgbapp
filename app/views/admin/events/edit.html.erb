@@ -1,3 +1,5 @@
+<%= render partial: "event_menu" if  @event.persisted? %>
+
 <%= form_for [:admin, @event] do |f| %>
 <fieldset>
   <p><%= f.label(:name, "Name") %></p>
@@ -33,13 +35,6 @@
   <p><%= f.date_select :confirmation_date %></p>
 
 </fieldset>
-
-<% if @event.persisted? %>
-  <%= link_to "Edit application e-mail", edit_admin_event_template_path(@event, :application_mail) %>
-  <%= link_to "Edit selection e-mail", edit_admin_event_template_path(@event, :selection_mail) %>
-  <%= link_to "Edit rejection e-mail", edit_admin_event_template_path(@event, :rejection_mail) %>  
-  <%= link_to "Edit reminder e-mail", edit_admin_event_template_path(@event, :reminder_mail) %>  
-<% end %>
 
 <div class='button'>
   <%= f.submit "Save", class: 'commit', type: 'submit' %>
