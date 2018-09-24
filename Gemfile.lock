@@ -59,6 +59,7 @@ GEM
       bcrypt
       email_validator (~> 1.4)
       rails (>= 3.1)
+    coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -106,10 +107,14 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.10.3)
     multi_json (1.12.2)
+    mustache (1.0.5)
     nio4r (2.1.0)
     nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
     pg (0.21.0)
+    pry (0.11.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     public_suffix (3.0.0)
     puma (3.10.0)
     rack (2.0.3)
@@ -202,7 +207,9 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen (~> 3.0.5)
+  mustache
   pg (~> 0.18)
+  pry
   puma (~> 3.0)
   rails (~> 5.1.0)
   rb-readline

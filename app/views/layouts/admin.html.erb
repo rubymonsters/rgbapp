@@ -1,6 +1,17 @@
 <%= inside_layout do %>
+  <nav class="top-menu">
+    <ul>
+      <li><%= link_to_active "Events", admin_events_path %></li>
+      <li><%= link_to_active "Users", admin_users_path %></li>
+      <li style="float:right"><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+    </ul>
+  </nav>
   <%= yield %>
-  <p><%= link_to_unless_current "Events", admin_events_path %></p>
-  <p><%= link_to_unless_current "Users", admin_users_path %></p>
-  <p><%= link_to "Sign out", sign_out_path, method: :delete %></p>
+  <footer>
+    <ul>
+      <li><%= link_to_active "Events", admin_events_path %></li>
+      <li><%= link_to_active "Users", admin_users_path %></li>
+      <li style="float:right"><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+    </ul>
+  </footer>
 <% end %>
