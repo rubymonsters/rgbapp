@@ -21,4 +21,9 @@ class UserMailer < ApplicationMailer
     mail(to: application.email, subject: "Sorry! You have not been selected for the Rails Girls Berlin (code curious) workshop")
   end
 
+  def waiting_list_mail(application)
+    @application = application
+    mail(to: application.email, subject: "You are on the waiting list")
+  end
+
 end

@@ -8,7 +8,8 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     @user = create(:user, email: "test@user.de", password: "test", admin: true)
     @applicant1 = create(:application, event: @event)
     @applicant2 = create(:application, event: @event)
-
+    @applicant3 = create(:application, event: @event)
+    
     visit admin_event_applications_path(@event.id)
 
     fill_in "Email", with: "test@user.de"
@@ -18,35 +19,44 @@ class SelectApplicantsTest < ApplicationSystemTestCase
   end
 
   test "select or confirm applicant" do
-    check("select_applicant_#{@applicant1.id}")
+    choose("state_#{@applicant1.id}_waiting_list")
+    choose("state_#{@applicant2.id}_application_selected")
+
     check("confirm_applicant_#{@applicant2.id}")
 
     click_on "Save"
 
     assert_text "Cool! Changes saved."
 
-    assert @applicant1.reload.selected?
-    assert !@applicant2.reload.selected?
+    assert @applicant1.reload.waiting_list?
+    assert @applicant2.reload.application_selected?
+    assert @applicant3.reload.rejected?
 
     assert !@applicant1.reload.attendance_confirmed?
     assert @applicant2.reload.attendance_confirmed?
+    assert !@applicant3.reload.attendance_confirmed?
 
-    uncheck("select_applicant_#{@applicant1.id}")
+    choose("state_#{@applicant1.id}_rejected")
     uncheck("confirm_applicant_#{@applicant2.id}")
 
     click_on "Save"
 
     assert_text "Cool! Changes saved."
 
-    assert !@applicant1.reload.selected?
-    assert !@applicant2.reload.selected?
+    assert @applicant1.reload.rejected?
+    assert @applicant2.reload.application_selected?
+    assert @applicant3.reload.rejected?
 
     assert !@applicant1.reload.attendance_confirmed?
     assert !@applicant2.reload.attendance_confirmed?
+    assert !@applicant3.reload.attendance_confirmed?
+    
   end
 
   test "complete selection" do
-    @applicant1.update_attributes(selected: true)
+    @applicant1.update_attributes!(state: :application_selected)
+    @applicant3.update_attributes!(state: :waiting_list)
+
     perform_enqueued_jobs do
       assert_no_text "The selection is completed"
 
@@ -65,10 +75,13 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     open_email(@applicant2.email)
     assert current_email.has_content?("Sorry you have not been selected for the workshop")
 
+    open_email(@applicant3.email)
+    assert current_email.has_content?("You are on the waiting list")
+
   end
 
   test "additional selection" do
-    @applicant1.update_attributes(selected: true)
+    @applicant1.update_attributes(state: :application_selected)
 
     perform_enqueued_jobs do
       click_on "Selection complete"
@@ -76,7 +89,7 @@ class SelectApplicantsTest < ApplicationSystemTestCase
 
     clear_emails
 
-    check("select_applicant_#{@applicant2.id}")
+    choose("state_#{@applicant2.id}_application_selected")
 
     click_on "Save"
 

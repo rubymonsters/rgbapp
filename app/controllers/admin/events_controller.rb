@@ -40,13 +40,15 @@ class Admin::EventsController < ApplicationController
 
   def complete
     @event.update_attributes(selection_complete: true)
-    send_selection_emails @event.applications.selected
+    send_selection_emails @event.applications.application_selected
     send_rejection_emails @event.applications.rejected
+    send_waiting_list_emails @event.applications.waiting_list
+
     redirect_to admin_event_applications_path(@event)
   end
 
   def send_emails
-    send_selection_emails @event.applications.selected.not_marked_as_selected
+    send_selection_emails @event.applications.application_selected.not_marked_as_selected
     redirect_to admin_event_applications_path(@event)
   end
 
@@ -70,6 +72,12 @@ private
     def send_rejection_emails(applications)
       applications.each do |application|
         UserMailer.rejection_mail(application).deliver_later
+      end
+    end
+    
+    def send_waiting_list_emails(applications)
+      applications.each do |application|
+        UserMailer.waiting_list_mail(application).deliver_later
       end
     end
 end
