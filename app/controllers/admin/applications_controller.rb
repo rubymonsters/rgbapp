@@ -21,7 +21,7 @@ class Admin::ApplicationsController < ApplicationController
       application.save!
     end  
 
-    @event.applications.update_all(["selected = (id IN (?)), attendance_confirmed = (id IN (?))", selected_ids, confirmed_ids])
+    @event.applications.update_all(["attendance_confirmed = (id IN (?))", confirmed_ids])
 
     redirect_to admin_event_applications_path(@event), notice: "Cool! Changes saved."
   end
