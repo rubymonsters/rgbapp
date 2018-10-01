@@ -4,7 +4,7 @@ class SelectApplicantsTest < ApplicationSystemTestCase
 
   setup do
     clear_emails
-    @event = create(:event, start_time: "09:00", end_time: "17:30")
+    @event = create(:event, start_time: "09:00", end_time: "17:30", selection_mail_subject: "You were selected", selection_mail: "Workshop Day: {{ event_date }} from 09:00 until 17:30 {{ confirmation_link }}", rejection_mail_subject: "You were rejected", rejection_mail: "Sorry, you are rejected" )
     @user = create(:user, email: "test@user.de", password: "test", admin: true)
     @applicant1 = create(:application, event: @event)
     @applicant2 = create(:application, event: @event)
@@ -69,11 +69,13 @@ class SelectApplicantsTest < ApplicationSystemTestCase
 
     open_email(@applicant1.email)
 
+    assert_equal current_email.subject, "You were selected"
     assert current_email.has_content?("/events/#{@event.id}/applications/#{@applicant1.random_id}/confirm")
     assert current_email.has_content?("Workshop Day: #{@event.scheduled_at.strftime("%d.%m.%Y")} from 09:00 until 17:30")
 
     open_email(@applicant2.email)
-    assert current_email.has_content?("Sorry you have not been selected for the workshop")
+    assert_equal current_email.subject, "You were rejected"
+    assert current_email.has_content?("Sorry, you are rejected")
 
     open_email(@applicant3.email)
     assert current_email.has_content?("You are on the waiting list")

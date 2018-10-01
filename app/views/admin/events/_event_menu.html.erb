@@ -1,0 +1,9 @@
+<nav class="email-templates-menu">
+  <ul>
+    <li><%= link_to_active "General info", edit_admin_event_path(@event) %></li>
+    <li><%= link_to_active "Application e-mail", edit_admin_event_template_path(@event, :application_mail) %></li>
+    <li><%= link_to_active "Selection e-mail", edit_admin_event_template_path(@event, :selection_mail) %></li>
+    <li><%= link_to_active "Rejection e-mail", edit_admin_event_template_path(@event, :rejection_mail) %></li>
+    <li><%= link_to_active "Reminder e-mail", edit_admin_event_template_path(@event, :reminder_mail) %></li>
+  </ul>
+</nav>

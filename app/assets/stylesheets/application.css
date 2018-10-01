@@ -294,3 +294,97 @@ tr:hover {background-color: #ffb3b3}
     visibility: visible;
     opacity: 1;
 }
+
+/* Footer navigation in admin view */
+
+footer {
+  border-top: 1px solid #c4220d;
+}
+
+footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: none;
+}
+
+footer li {
+  float: left;
+}
+
+footer li a {
+    display: block;
+    color: #c4220d;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+footer li a:hover {
+    background-color: #ffb3b3;
+}
+
+/* Top navigation in admin view */
+
+nav.top-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: none;
+}
+
+nav.top-menu li {
+  float: left;
+}
+
+nav.top-menu li a {
+  display: block;
+  color: #c4220d;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav.top-menu li a.active {
+    background-color: #c4220d;
+    color: white;
+}
+
+nav.top-menu li a:hover {
+  background-color: #ffb3b3;
+}
+
+/* E-mail templates side menu */
+
+nav.email-templates-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white;
+}
+
+nav.email-templates-menu li {
+  float: left;
+}
+
+nav.email-templates-menu li a {
+  display: block;
+  color: #c4220d;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav.email-templates-menu li a.active {
+    background-color: #c4220d;
+    color: white;
+}
+
+/* Change the link color on hover */
+nav.email-templates-menu li a:hover {
+  background-color: #ffe6e6;
+  color: #c4220d;
+}
