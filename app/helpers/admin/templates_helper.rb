@@ -19,6 +19,10 @@ ExampleData = {
     applicant_name: "Ruby",
     event_date: "01.01.3000",
     event_place: "Wakanda"
+  },
+  waiting_list_mail: {
+    applicant_name: "Ruby",
+    event_date: "01.01.3000",
   }
 }
 

@@ -37,8 +37,14 @@ class UserMailer < ApplicationMailer
   end
 
   def waiting_list_mail(application)
-    @application = application
-    mail(to: application.email, subject: "You are on the waiting list")
+    data = {
+      applicant_name: application.name,
+      event_date: application.event.scheduled_at.strftime("%d.%m.%Y")
+    }
+
+    mail(to: application.email, subject: Mustache.render(application.event.waiting_list_mail_subject, data )) do |format|
+      format.text { render plain: Mustache.render(application.event.waiting_list_mail, data) }
+    end
   end
 
   def reminder_mail(application)
