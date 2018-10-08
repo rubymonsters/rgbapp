@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180910172959) do
+ActiveRecord::Schema.define(version: 20181001174506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 20180910172959) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id"
-    t.boolean "selected", default: false, null: false
     t.boolean "attendance_confirmed", default: false, null: false
     t.string "random_id"
     t.date "selected_on"
     t.integer "sequence_number"
+    t.integer "state", default: 0, null: false
     t.index ["event_id"], name: "index_applications_on_event_id"
   end
 
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20180910172959) do
     t.text "application_mail_subject"
     t.text "selection_mail_subject"
     t.text "rejection_mail_subject"
+    t.text "waiting_list_mail"
+    t.text "waiting_list_mail_subject"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

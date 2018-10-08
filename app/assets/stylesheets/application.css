@@ -232,6 +232,15 @@ tr:nth-child(even) {background-color: #ffe6e6}
 
 tr:hover {background-color: #ffb3b3}
 
+input[type=radio] {
+  border: 0px;
+  width: 15px;
+  height: 2em
+}
+
+td.rejected {background-color: #FF4D4D}
+td.waiting_list {background-color: #FF9E9E}
+td.application_selected {background-color: #59A12F}
 /* Shorten text in comment field */
 
 .shorten-long-text {
