@@ -7,20 +7,20 @@
   <p><%= button_to 'Selection complete', admin_event_complete_path(@event), method: :put, data: { confirm: "Are you sure? This will send e-mails to the selected applicants." } %></p>
 <% end %>
 
-<p>Total: <%= pluralize(@applications.size, "application") %></p>
-<p>Selected: <%= pluralize(@applications.application_selected.size, "application") %></p>
-<p>Waiting list: <%= pluralize(@applications.waiting_list.size, "application") %></p>
-<p>Confirmed: <%= pluralize(@applications.application_selected.confirmed.size, "application") %></p>
-<p>E-mail pending: <%= pluralize(@applications.application_selected.not_marked_as_selected.size, "application") %></p>
+<p>Total: <%= pluralize(@applications.size, "application") %> |
+Selected: <%= pluralize(@applications.application_selected.size, "application") %> |
+Waiting list: <%= pluralize(@applications.waiting_list.size, "application") %> |
+Confirmed: <%= pluralize(@applications.application_selected.confirmed.size, "application") %> |
+E-mail pending: <%= pluralize(@applications.application_selected.not_marked_as_selected.size, "application") %></p>
 
 <%= form_tag({}, method: :put) do %>
 <table>
   <thead>
     <tr>
       <th><%= link_to("No.", order: order("sequence_number")) %></th>
-      <th><div class="tooltip"><span class="tooltiptext">Rejected</span><%= link_to("R", order: order("state"))%></div></th>      
-      <th><div class="tooltip"><span class="tooltiptext">Waiting list</span><%= link_to("WL", order: order("state"))%></div></th>      
-      <th><div class="tooltip"><span class="tooltiptext">Selected</span><%= link_to("S", order: order("state"))%></div></th>      
+      <th><div class="tooltip"><span class="tooltiptext">Rejected</span><%= link_to("R", order: order("state"))%></div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Waiting list</span><%= link_to("WL", order: order("state"))%></div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Selected</span><%= link_to("S", order: order("state"))%></div></th>
       <th><%= link_to("Confirmed", order: order("attendance_confirmed")) %></th>
       <th><%= link_to("Name", order: order("upper(name)")) %></th>
       <th><%= link_to("Email", order: order("upper(email)")) %></th>

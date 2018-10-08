@@ -15,11 +15,12 @@ class Admin::ApplicationsController < ApplicationController
   def checkboxes
     selected_ids = params[:selected_ids] || [-1]
     confirmed_ids = params[:confirmed_ids] || [-1]
+    # This code might cause performance problems. If application too slow, it needs refactoring.
     params[:state].each do |application_id, state|
       application = Application.find(application_id)
       application.state = state
       application.save!
-    end  
+    end
 
     @event.applications.update_all(["attendance_confirmed = (id IN (?))", confirmed_ids])
 
