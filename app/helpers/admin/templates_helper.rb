@@ -4,7 +4,7 @@ ExampleData = {
   application_mail: {
     applicant_name: "Ruby",
     event_date: "01.01.3000",
-    confirmation_deadline: "31.12.2999"
+    selection_email_deadline: "31.12.2999"
   },
   selection_mail: {
     applicant_name: "Ruby",
