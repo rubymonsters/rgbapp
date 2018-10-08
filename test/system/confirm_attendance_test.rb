@@ -4,7 +4,7 @@ class ConfirmAttendanceTest < ApplicationSystemTestCase
 
   test "confirmation" do
     @event = create(:event)
-    @applicant = create(:application, event: @event, selected: true, selected_on: 5.days.ago, attendance_confirmed: false)
+    @applicant = create(:application, event: @event, state: :application_selected, selected_on: 5.days.ago, attendance_confirmed: false)
 
     visit "/events/#{@event.id}/applications/#{@applicant.random_id}/confirm"
 
@@ -15,7 +15,7 @@ class ConfirmAttendanceTest < ApplicationSystemTestCase
 
   test "confirmation too late" do
     @event = create(:event)
-    @applicant = create(:application, event: @event, selected: true, selected_on: 6.days.ago, attendance_confirmed: false)
+    @applicant = create(:application, event: @event, state: :application_selected, selected_on: 6.days.ago, attendance_confirmed: false)
 
     visit "/events/#{@event.id}/applications/#{@applicant.random_id}/confirm"
 
@@ -27,7 +27,7 @@ class ConfirmAttendanceTest < ApplicationSystemTestCase
   test "confirmation after midnight" do
     Timecop.freeze("2018-07-31 00:01 CEST")
     @event = create(:event)
-    @applicant = create(:application, event: @event, selected: true, selected_on: "2018-07-25", attendance_confirmed: false)
+    @applicant = create(:application, event: @event, state: :application_selected, selected_on: "2018-07-25", attendance_confirmed: false)
 
     visit "/events/#{@event.id}/applications/#{@applicant.random_id}/confirm"
 
@@ -39,7 +39,7 @@ class ConfirmAttendanceTest < ApplicationSystemTestCase
 
   test "confirmation if not selected" do
     @event = create(:event)
-    @applicant = create(:application, event: @event, selected: false, attendance_confirmed: false)
+    @applicant = create(:application, event: @event, state: :waiting_list, attendance_confirmed: false)
 
     assert_raises ActiveRecord::RecordNotFound do
       visit "/events/#{@event.id}/applications/#{@applicant.random_id}/confirm"
@@ -50,7 +50,7 @@ class ConfirmAttendanceTest < ApplicationSystemTestCase
 
   test "confirmation without valid random id" do
     @event = create(:event)
-    @applicant = create(:application, event: @event, selected: true, selected_on: Date.today, attendance_confirmed: false)
+    @applicant = create(:application, event: @event, state: :application_selected, selected_on: Date.today, attendance_confirmed: false)
 
     assert_raises ActiveRecord::RecordNotFound do
       visit "/events/#{@event.id}/applications/aklfphgh/confirm"
