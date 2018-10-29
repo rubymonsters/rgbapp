@@ -29,7 +29,7 @@ private
   end
 
   def copy_templates
-    if copy_templates_from_event_id
+    unless copy_templates_from_event_id.blank?
       event = Event.find(copy_templates_from_event_id)
       self.application_mail = event.application_mail
       self.selection_mail = event.selection_mail
