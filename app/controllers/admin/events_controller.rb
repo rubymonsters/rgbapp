@@ -16,7 +16,7 @@ class Admin::EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to admin_events_path
+      redirect_to edit_admin_event_path(@event)
     else
       render :edit
     end
@@ -59,7 +59,7 @@ private
     end
 
     def event_params
-      params.require(:event).permit(:name, :place, :scheduled_at, :application_start, :application_end, :confirmation_date, :start_time, :end_time)
+      params.require(:event).permit(:name, :place, :scheduled_at, :application_start, :application_end, :confirmation_date, :start_time, :end_time, :copy_templates_from_event_id)
     end
 
     def send_selection_emails(applications)
@@ -74,7 +74,7 @@ private
         UserMailer.rejection_mail(application).deliver_later
       end
     end
-    
+
     def send_waiting_list_emails(applications)
       applications.each do |application|
         UserMailer.waiting_list_mail(application).deliver_later
