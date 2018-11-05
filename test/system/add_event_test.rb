@@ -36,7 +36,7 @@ class AddEventTest < ApplicationSystemTestCase
 
     click_on "Save"
 
-    assert_text "New event"
+    assert_equal find_field("Name").value, "New event"
   end
 
   test "Adding event without filling in fields" do
