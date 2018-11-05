@@ -34,6 +34,12 @@
   <%= error_message(@event, :confirmation_date) %>
   <p><%= f.date_select :confirmation_date %></p>
 
+  <% unless @event.persisted? %>
+  <p><%= f.label(:copy_templates_from_event_id, "Use email templates from event:") %></p>
+  <%= error_message(@event, :copy_templates_from_event_id) %>
+  <p><%= f.collection_select(:copy_templates_from_event_id, Event.order(:scheduled_at), :id, :name_and_date, prompt: "Leave templates empty") %></p>
+  <% end %>
+  
 </fieldset>
 
 <div class='button'>
