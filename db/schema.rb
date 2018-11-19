@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181001174506) do
+ActiveRecord::Schema.define(version: 20181119183140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20181001174506) do
     t.text "rejection_mail_subject"
     t.text "waiting_list_mail"
     t.text "waiting_list_mail_subject"
+    t.integer "confirmation_deadline", default: 5, null: false
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

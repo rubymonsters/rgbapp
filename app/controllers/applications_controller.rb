@@ -31,7 +31,7 @@ class ApplicationsController < ApplicationController
 
   def confirm
     @application = @event.applications.application_selected.find_by!(random_id: params[:application_id])
-    if date_in_berlin - @application.selected_on > 5
+    if date_in_berlin - @application.selected_on > @event.confirmation_deadline
       render :confirmed_too_late
     else
       @application.update_attributes(attendance_confirmed: true)

@@ -24,6 +24,17 @@ class ConfirmAttendanceTest < ApplicationSystemTestCase
     assert !@applicant.reload.attendance_confirmed?
   end
 
+	test "confirmation after deadline" do
+    @event = create(:event, confirmation_deadline: 3)
+    @applicant = create(:application, event: @event, state: :application_selected, selected_on: 4.days.ago, attendance_confirmed: false)
+
+    visit "/events/#{@event.id}/applications/#{@applicant.random_id}/confirm"
+
+    assert_no_text "Thanks for confirming!"
+
+    assert !@applicant.reload.attendance_confirmed?
+  end
+
   test "confirmation after midnight" do
     Timecop.freeze("2018-07-31 00:01 CEST")
     @event = create(:event)

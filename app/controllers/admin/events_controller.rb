@@ -59,7 +59,7 @@ private
     end
 
     def event_params
-      params.require(:event).permit(:name, :place, :scheduled_at, :application_start, :application_end, :confirmation_date, :start_time, :end_time, :copy_templates_from_event_id)
+      params.require(:event).permit(:name, :place, :scheduled_at, :application_start, :application_end, :confirmation_date, :start_time, :end_time, :copy_templates_from_event_id, :confirmation_deadline)
     end
 
     def send_selection_emails(applications)

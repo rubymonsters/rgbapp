@@ -33,6 +33,10 @@
   <p><%= f.label(:confirmation_date, "Confirmation emails sent by:") %></p>
   <%= error_message(@event, :confirmation_date) %>
   <p><%= f.date_select :confirmation_date %></p>
+	
+	<p><%= f.label(:confirmation_deadline, "Days to confirme the participation:") %></p>
+	<%= error_message(@event, :confirmation_deadline) %>
+	<p><%= f.text_field :confirmation_deadline %></p>
 
   <% unless @event.persisted? %>
   <p><%= f.label(:copy_templates_from_event_id, "Use email templates from event:") %></p>
