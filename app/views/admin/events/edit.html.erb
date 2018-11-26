@@ -33,12 +33,12 @@
   <p><%= f.label(:confirmation_date, "Confirmation emails sent by:") %></p>
   <%= error_message(@event, :confirmation_date) %>
   <p><%= f.date_select :confirmation_date %></p>
-	
-	<p><%= f.label(:confirmation_deadline, "Days to confirme the participation:") %></p>
+
+	<p><%= f.label(:confirmation_deadline, "Days to confirm participation:") %></p>
 	<%= error_message(@event, :confirmation_deadline) %>
 	<p><%= f.text_field :confirmation_deadline %></p>
-	
-	<p><%= f.label(:reminder_date, "Days to send the remainder email:") %></p>
+
+	<p><%= f.label(:reminder_date, "Days to send the reminder email:") %></p>
 	<%= error_message(@event, :reminder_date) %>
 	<p><%= f.text_field :reminder_date %></p>
 
@@ -47,7 +47,7 @@
   <%= error_message(@event, :copy_templates_from_event_id) %>
   <p><%= f.collection_select(:copy_templates_from_event_id, Event.order(:scheduled_at), :id, :name_and_date, prompt: "Leave templates empty") %></p>
   <% end %>
-  
+
 </fieldset>
 
 <div class='button'>
