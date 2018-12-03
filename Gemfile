@@ -22,6 +22,7 @@ gem 'coffee-rails', '~> 4.2'
 #gem 'therubyracer', platforms: :ruby
 gem 'clearance'
 gem 'mustache'
+gem 'trix'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
