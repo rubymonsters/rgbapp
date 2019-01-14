@@ -9,7 +9,7 @@ class UserMailer < ApplicationMailer
     }
 
     mail(to: application.email, subject: Mustache.render(application.event.application_mail_subject, data)) do |format|
-      format.text { render plain: Mustache.render(application.event.application_mail, data) }
+      format.html { render plain: Mustache.render(application.event.application_mail, data) }
     end
   end
 
@@ -22,7 +22,7 @@ class UserMailer < ApplicationMailer
     }
 
     mail(to: application.email, subject: Mustache.render(application.event.selection_mail_subject, data)) do |format|
-      format.text { render plain: Mustache.render(application.event.selection_mail, data) }
+      format.html { render plain: Mustache.render(application.event.selection_mail, data) }
     end
   end
 
@@ -32,7 +32,7 @@ class UserMailer < ApplicationMailer
     }
 
     mail(to: application.email, subject: Mustache.render(application.event.rejection_mail_subject, data )) do |format|
-      format.text { render plain: Mustache.render(application.event.rejection_mail, data ) }
+      format.html { render plain: Mustache.render(application.event.rejection_mail, data ) }
     end
   end
 
@@ -43,7 +43,7 @@ class UserMailer < ApplicationMailer
     }
 
     mail(to: application.email, subject: Mustache.render(application.event.waiting_list_mail_subject, data )) do |format|
-      format.text { render plain: Mustache.render(application.event.waiting_list_mail, data) }
+      format.html { render plain: Mustache.render(application.event.waiting_list_mail, data) }
     end
   end
 
@@ -55,7 +55,7 @@ class UserMailer < ApplicationMailer
     }
 
     mail(to: application.email, subject: Mustache.render(application.event.reminder_mail_subject, data )) do |format|
-      format.text { render plain: Mustache.render(application.event.reminder_mail, data) }
+      format.html { render plain: Mustache.render(application.event.reminder_mail, data) }
     end
   end
 
