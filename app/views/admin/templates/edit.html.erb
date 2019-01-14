@@ -9,13 +9,13 @@
 
   <p><%= f.label params[:id], "E-mail body" %></p>
   <%= error_message(@event, params[:id]) %>
-  <p><%= f.text_area params[:id] %></p>
+  <p><%= f.trix_editor params[:id] %></p>
 </fieldset>
 
 <details>
   <summary>Preview</summary>
-  <pre style="font-weight: bold"><%= preview_template params[:id] + "_subject" %></pre>
-  <pre><%= preview_template params[:id] %></pre>
+  <div style="font-weight: bold"><%= preview_template params[:id] + "_subject" %></div>
+  <div><%= preview_template params[:id] %></div>
 </details>
 
 <%= render :partial => "#{params[:id]}_help" %>

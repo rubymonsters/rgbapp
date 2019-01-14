@@ -38,13 +38,9 @@ class AddEventTest < ApplicationSystemTestCase
 
     click_on "Save"
 
-    assert_equal find_field("Name").value, "New event"
-
-    click_on "Selection e-mail"
-
-    assert_equal find_field("Subject").value, "Congratulations!"
-    assert_equal find_field("E-mail body").value, "You have been selected."
-
+    assert_equal Event.last.name, "New event"
+    assert_equal Event.last.selection_mail_subject, "Congratulations!"
+    assert_equal Event.last.selection_mail, "You have been selected."
   end
 
   test "Adding event without email template" do
@@ -70,9 +66,7 @@ class AddEventTest < ApplicationSystemTestCase
 
     click_on "Selection e-mail"
 
-    assert_equal find_field("Subject").value.to_s, ""
-    assert_equal find_field("E-mail body").value.to_s, ""
-
+    assert_nil Event.last.selection_mail
   end
 
   test "Adding event without filling in fields" do
