@@ -13,7 +13,7 @@
       <td><%= attendant.sequence_number %></td>
       <td><%= attendant.name %></td>
       <td><%= attendant.email %></td>
-      <td></td>
+      <td><input type="checkbox" class="attended" <% if attendant.attended? %>	checked	<% end %>></td>	
     </tr>
     <% end %>
   </tbody>
