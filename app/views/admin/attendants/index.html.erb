@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Name</th>
+      <th>E-mail</th>
+      <th>Attended</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attendants.each do |attendant| %>
+    <tr>
+      <td><%= attendant.sequence_number %></td>
+      <td><%= attendant.name %></td>
+      <td><%= attendant.email %></td>
+      <td><input type="checkbox" data-url="<%= admin_event_attendant_path(@event, attendant) %>" class="attended" <% if attendant.attended? %>	checked	<% end %>></td>	
+    </tr>
+    <% end %>
+  </tbody>
+</table>
