@@ -1,13 +1,13 @@
 $(document).ready(function() {
-	$(".attended").click(function() {
-		$.ajax({
-			url: $(this).data( "url" ), 
-			method: 'PUT',
-			data: JSON.stringify({attendant:{ attended: $(this).prop('checked') }}),
-			contentType: "application/json; charset=utf-8",
-			dataType: "json",
-		})
-	});
+  $(".attended").click(function() {
+    $.ajax({
+      url: $(this).data( "url" ), 
+      method: 'PUT',
+      data: JSON.stringify({attendant:{ attended: $(this).prop('checked') }}),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+    })
+  });
 });
 
 // $(document).ready(function() {

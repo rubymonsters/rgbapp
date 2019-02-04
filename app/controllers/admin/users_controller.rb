@@ -1,12 +1,12 @@
 class Admin::UsersController < ApplicationController
   layout "admin"
-
+  
   before_action :require_admin
-
+  
   def index
     @users = User.all
   end
-
+  
   def update
     @user = User.find(params[:id])
     if @user == current_user
@@ -17,7 +17,7 @@ class Admin::UsersController < ApplicationController
     end
     redirect_to admin_users_path
   end
-
+  
   def destroy
     @user = User.find(params[:id])
     if @user == current_user
