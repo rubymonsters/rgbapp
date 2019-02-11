@@ -8,6 +8,7 @@ App.cable = ActionCable.createConsumer();
 
 App.messages = App.cable.subscriptions.create('AttendantsChannel', {
   received: function(data) {
-    console.log(data)
+    var checkbox = $('.attended[data-id="' + data.id + '"]');
+    checkbox.prop('checked', data.attended);
   },
 });
