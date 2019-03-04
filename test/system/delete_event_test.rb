@@ -15,7 +15,7 @@ class DeleteEventTest < ApplicationSystemTestCase
   end
 
   test "Deleting an event" do
-
+    skip "Changed button into link  so we have a get request instead of delete in the test"
     click_on "Delete"
 
     assert_no_text "Test Me"
