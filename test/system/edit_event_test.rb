@@ -31,7 +31,7 @@ class EditEventTest < ApplicationSystemTestCase
 
     click_on "Save"
 
-    assert_text "Name can't be blank"
+    assert_text "Name\ncan't be blank"
 
     assert_equal Event.first.name, "Test Me"
 
