@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   root to: "events#index"
+  resources :coaches do
+    collection do
+      get 'signup', to: 'coaches#new'
+    end
+  end
   resources :events do
     resources :applications do
       get :confirm, to: "applications#confirm"
