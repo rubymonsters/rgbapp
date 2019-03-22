@@ -4,8 +4,6 @@
       <th>Name</th>
       <th>Date</th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -17,14 +15,11 @@
       <td>
         <%= event.scheduled_at.strftime("%d.%m.%Y") %>
       </td>
-      <td>
-        <%= button_to 'Applicants', admin_event_applications_path(event), method: :get %>
-      </td>
-      <td>
-        <%= button_to 'Edit', edit_admin_event_path(event), method: :get %>
-      </td>
-      <td>
-        <%= button_to "Delete", admin_event_path(event), method: :delete, data: { confirm: "Are you sure?" } %>
+      <td class="actions">
+        <%= link_to 'Applicants', admin_event_applications_path(event), method: :get %>
+        <%= link_to 'Attendees', admin_event_attendants_path(event), method: :get %>
+        <%= link_to 'Edit', edit_admin_event_path(event), method: :get %>
+        <%= link_to 'Delete', admin_event_path(event), method: :delete, data: { confirm: "Are you sure?" } %>
       </td>
   </tr>
     <%end %>

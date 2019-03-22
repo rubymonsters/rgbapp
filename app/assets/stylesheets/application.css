@@ -219,6 +219,31 @@ td {
     vertical-align: middle;
 }
 
+/* td.actions a {
+  color: grey;
+} */
+
+td.actions a:link, a:visited {
+  background-color: #c4220d;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* mouse over link */
+td.actions a:hover {
+  color: purple;
+  text-decoration: none;
+}
+
+/* selected link */
+td.actions a:active {
+  color: green;
+  text-decoration: none;
+}
+
 td.center {
   text-align: center;
 }
