@@ -38,6 +38,11 @@ class Admin::EventsController < ApplicationController
     redirect_to admin_events_path
   end
 
+  def show
+    @events = Event.all
+    render :index
+  end
+
   def complete
     @event.update_attributes(selection_complete: true)
     send_selection_emails @event.applications.application_selected
