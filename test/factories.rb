@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :coach_application do
+    
+  end
   factory :coach do
     association :user
     name "Swenja"

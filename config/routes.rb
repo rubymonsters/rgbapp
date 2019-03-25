@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   resources :coaches do
     collection do
       get 'signup', to: 'coaches#new'
+      get 'signin'
     end
   end
   resources :events do
     resources :applications do
       get :confirm, to: "applications#confirm"
     end
+    resources :coach_applications
   end
 
   namespace :admin do

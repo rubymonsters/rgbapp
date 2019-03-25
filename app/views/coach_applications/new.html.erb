@@ -1,0 +1,60 @@
+<%= form_for [@event, @coach_application] do |f| %>
+  <h2>I can help on the</h2>
+    <p class="note">Please select one or both.</p>
+    <p>
+      <%= f.check_box :installationparty %>
+      <%= f.label(:installationparty, "installation party") %>
+    </p>
+    <p>
+      <%= f.check_box :workshopday %>
+      <%= f.label(:workshopday, "workshop day") %>
+    </p>
+  <h2>Would you like to give a lightning talk? What topic do you have in mind?</h2> 
+  <p class="note">The talk should be understandable for beginners and no longer than 5 minutes.</p>
+  <p>
+    <%= f.text_field :lightningtalk %>
+  </p>
+  <h2>Notes</h2> 
+  <p class="note">including if you would like to help the organizers on the day or even become an organizer in the future</p>
+  <p>
+    <%= f.text_field :notes %>
+  </p>
+    <fieldset>
+    <h2>Personal Information</h2>
+    <%= f.fields_for :coach do |coaches_form| %>
+      <%= coaches_form.fields_for :user do |users_form| %>
+        <p><%= users_form.label(:email, "E-Mail Address") %><br>
+          <%= users_form.text_field :email %>
+        </p>
+      <% end %>
+        <p><%= coaches_form.label(:name, "Name") %></p><p class="note">No official name necessary, you can use the name you want to be called. Just be sure to remember what you picked. *</p>
+        <p><%= coaches_form.text_field :name %></p>
+        <p>
+          <%= coaches_form.check_box :female %>
+          <%= coaches_form.label(:female, "female/I have some female sex characteristics.") %>
+        </p>
+      </fieldset>
+      <fieldset>
+        <h2>Which language(s) can you teach in?</h2>
+        <p class="note">Please select one or both.</p>
+        <p>
+          <%= coaches_form.check_box :language_de %>
+          <%= coaches_form.label(:language_de, "German") %>
+        </p>
+        <p>
+          <%= coaches_form.check_box :language_en %>
+          <%= coaches_form.label(:language_en, "English") %>
+        </p>
+      </fieldset>
+      <fieldset>
+        <p>
+          <%= coaches_form.check_box :notifications %>
+          <%= coaches_form.label(:notifications, "Notifications about upcoming events") %>
+        </p>
+        <p class="note">It would be great to have you on board as a coach again.</p>
+      </fieldset>
+    <% end %>
+  <div class='button'>
+    <%= f.submit "Submit", class: 'commit', type: 'submit' %>
+  </div>
+<% end %>
