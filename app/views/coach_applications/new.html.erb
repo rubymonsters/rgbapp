@@ -20,39 +20,9 @@
     <%= f.text_field :notes %>
   </p>
     <fieldset>
-    <h2>Personal Information</h2>
+    <h2>Update your information</h2>
     <%= f.fields_for :coach do |coaches_form| %>
-      <%= coaches_form.fields_for :user do |users_form| %>
-        <p><%= users_form.label(:email, "E-Mail Address") %><br>
-          <%= users_form.text_field :email %>
-        </p>
-      <% end %>
-        <p><%= coaches_form.label(:name, "Name") %></p><p class="note">No official name necessary, you can use the name you want to be called. Just be sure to remember what you picked. *</p>
-        <p><%= coaches_form.text_field :name %></p>
-        <p>
-          <%= coaches_form.check_box :female %>
-          <%= coaches_form.label(:female, "female/I have some female sex characteristics.") %>
-        </p>
-      </fieldset>
-      <fieldset>
-        <h2>Which language(s) can you teach in?</h2>
-        <p class="note">Please select one or both.</p>
-        <p>
-          <%= coaches_form.check_box :language_de %>
-          <%= coaches_form.label(:language_de, "German") %>
-        </p>
-        <p>
-          <%= coaches_form.check_box :language_en %>
-          <%= coaches_form.label(:language_en, "English") %>
-        </p>
-      </fieldset>
-      <fieldset>
-        <p>
-          <%= coaches_form.check_box :notifications %>
-          <%= coaches_form.label(:notifications, "Notifications about upcoming events") %>
-        </p>
-        <p class="note">It would be great to have you on board as a coach again.</p>
-      </fieldset>
+    <%= render 'shared/coachform', :f => coaches_form %>
     <% end %>
   <div class='button'>
     <%= f.submit "Submit", class: 'commit', type: 'submit' %>

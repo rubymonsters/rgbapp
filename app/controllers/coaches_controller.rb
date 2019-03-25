@@ -12,9 +12,15 @@ class CoachesController < ApplicationController
     @coach = Coach.new(coach_params)
     @coach.build_user(users_params)
     if @coach.save
-      render html: 'Success'
+      redirect_to coach_url(@coach)
     else
       render :new
     end
   end
+  
+  def show
+    @user = current_user
+    @coach = @user.coach
+  end
+  
 end

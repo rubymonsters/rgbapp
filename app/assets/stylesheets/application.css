@@ -398,3 +398,7 @@ nav.email-templates-menu li a:hover {
   background-color: #ffe6e6;
   color: #c4220d;
 }
+
+input.grey {
+  background-color: #c4220d;
+}
