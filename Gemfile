@@ -43,6 +43,7 @@ group :development, :test do
   gem 'rb-readline'
   gem 'capybara'
   gem 'capybara-email'
+  gem 'capybara-selenium'
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'pry'

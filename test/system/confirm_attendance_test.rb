@@ -52,10 +52,9 @@ class ConfirmAttendanceTest < ApplicationSystemTestCase
     @event = create(:event)
     @applicant = create(:application, event: @event, state: :waiting_list, attendance_confirmed: false)
 
-    assert_raises ActiveRecord::RecordNotFound do
-      visit "/events/#{@event.id}/applications/#{@applicant.random_id}/confirm"
-    end
+    visit "/events/#{@event.id}/applications/#{@applicant.random_id}/confirm"
 
+    assert_text "The page you were looking for doesn't exist"
     assert !@applicant.reload.attendance_confirmed?
   end
 
@@ -63,10 +62,9 @@ class ConfirmAttendanceTest < ApplicationSystemTestCase
     @event = create(:event)
     @applicant = create(:application, event: @event, state: :application_selected, selected_on: Date.today, attendance_confirmed: false)
 
-    assert_raises ActiveRecord::RecordNotFound do
-      visit "/events/#{@event.id}/applications/aklfphgh/confirm"
-    end
+    visit "/events/#{@event.id}/applications/aklfphgh/confirm"
 
+    assert_text "The page you were looking for doesn't exist"
     assert !@applicant.reload.attendance_confirmed?
   end
 

@@ -9,7 +9,7 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     @applicant1 = create(:application, event: @event)
     @applicant2 = create(:application, event: @event)
     @applicant3 = create(:application, event: @event)
-    
+
     visit admin_event_applications_path(@event.id)
 
     fill_in "Email", with: "test@user.de"
@@ -50,7 +50,7 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     assert !@applicant1.reload.attendance_confirmed?
     assert !@applicant2.reload.attendance_confirmed?
     assert !@applicant3.reload.attendance_confirmed?
-    
+
   end
 
   test "complete selection" do
@@ -60,7 +60,9 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     perform_enqueued_jobs do
       assert_no_text "The selection is completed"
 
-      click_on "Selection complete"
+      accept_alert do
+        click_on "Selection complete"
+      end
 
       assert_text "The selection is completed"
 

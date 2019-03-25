@@ -6,3 +6,5 @@ before_script:
 script:
   - bundle exec rake
   - bundle exec rake test:system
+addons:
+  chrome: stable
