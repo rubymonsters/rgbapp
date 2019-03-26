@@ -1,13 +1,14 @@
-<h1>Your coach account</h1>  
   <fieldset>
     <h2>Personal Information</h2>
-    <%= f.fields_for :user do |users_form| %>
-    <p><%= users_form.label(:email, "E-Mail Address") %><br>
-      <%= users_form.text_field :email %>
-    </p>
-    <p><%= users_form.label(:password, "Password") %><br>
-      <%= users_form.text_field :password %>
-    </p>
+    <% if params[:controller]=='coaches' %>
+      <%= f.fields_for :user do |users_form| %>
+        <p><%= users_form.label(:email, "E-Mail Address") %><br>
+          <%= users_form.text_field :email %>
+        </p>
+        <p><%= users_form.label(:password, "Password") %><br>
+          <%= users_form.text_field :password %>
+        </p>
+      <% end %>
     <% end %>
       <p><%= f.label(:name, "Name") %></p><p class="note">No official name necessary, you can use the name you want to be called. Just be sure to remember what you picked. *</p>
       <p><%= f.text_field :name %></p>
