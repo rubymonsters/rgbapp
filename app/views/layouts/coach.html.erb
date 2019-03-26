@@ -1,0 +1,17 @@
+<%= inside_layout do %>
+  <nav class="top-menu">
+    <ul>
+      <li style="float:right"><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+      <li style="float:right"><%= link_to_active "Profile", coach_path(@coach) %></li>
+      <li> Logged in as <%= @coach.user.email %> </li>
+    </ul>
+  </nav>
+  <%= yield %>
+  <footer>
+    <ul>
+      <li style="float:right"><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+      <li style="float:right"><%= link_to_active "Profile", coach_path(@coach) %></li>
+      <li> Logged in as <%= @coach.user.email %> </li>
+    </ul>
+  </footer>
+<% end %>
