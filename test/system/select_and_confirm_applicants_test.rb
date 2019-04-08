@@ -88,7 +88,11 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     @applicant1.update_attributes(state: :application_selected)
 
     perform_enqueued_jobs do
-      click_on "Selection complete"
+      accept_alert do
+        click_on "Selection complete"
+      end
+
+      sleep(0.1)
     end
 
     clear_emails
@@ -98,7 +102,11 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     click_on "Save"
 
     perform_enqueued_jobs do
-      click_on "Send e-mails"
+      accept_alert do
+        click_on "Send e-mails"
+      end
+
+      sleep(0.1)
     end
 
     open_email(@applicant2.email)

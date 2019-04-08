@@ -2,9 +2,8 @@ require 'test_helper'
 
 class ApplicationsControllerTest < ActionDispatch::IntegrationTest
   test "Get an event that does not exist responds to 404" do
-    assert_raises ActiveRecord::RecordNotFound do
-      get "/events/5/applications/new"
-    end
+    get "/events/5/applications/new"
+    assert_response 404
   end
 
   test "Get an event on the day the application period ends" do
