@@ -3,8 +3,11 @@ services:
   - postgresql
 before_script:
   - bundle exec rake db:create db:migrate
+  - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
 script:
   - bundle exec rake
   - bundle exec rake test:system
 addons:
-  chrome: stable
+  apt:
+    - google-chrome-stable
+    - chromium-chromedriver
