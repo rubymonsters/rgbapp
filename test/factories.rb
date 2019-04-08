@@ -1,16 +1,4 @@
 FactoryGirl.define do
-  factory :coach_application do
-    
-  end
-  factory :coach do
-    association :user
-    name "Swenja"
-    female true
-    language_de true
-    language_en true
-    notifications true
-  end
-  
   factory :event do
     name "Rails Girls Event"
     place "Venue"

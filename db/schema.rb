@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_25_103742) do
+ActiveRecord::Schema.define(version: 2019_01_21_190439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,31 +37,6 @@ ActiveRecord::Schema.define(version: 2019_03_25_103742) do
     t.integer "state", default: 0, null: false
     t.boolean "attended", default: false
     t.index ["event_id"], name: "index_applications_on_event_id"
-  end
-
-  create_table "coach_applications", force: :cascade do |t|
-    t.boolean "installationparty"
-    t.boolean "workshopday"
-    t.string "lightningtalk"
-    t.string "notes"
-    t.bigint "event_id"
-    t.bigint "coach_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["coach_id"], name: "index_coach_applications_on_coach_id"
-    t.index ["event_id"], name: "index_coach_applications_on_event_id"
-  end
-
-  create_table "coaches", force: :cascade do |t|
-    t.string "name"
-    t.boolean "language_de"
-    t.boolean "language_en"
-    t.boolean "female"
-    t.boolean "notifications", default: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_coaches_on_user_id"
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
@@ -102,6 +77,4 @@ ActiveRecord::Schema.define(version: 2019_03_25_103742) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
-  add_foreign_key "coach_applications", "coaches"
-  add_foreign_key "coach_applications", "events"
 end
