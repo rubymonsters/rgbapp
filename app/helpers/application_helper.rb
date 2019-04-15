@@ -3,8 +3,4 @@ module ApplicationHelper
     render inline: capture(&block), layout: "layouts/#{layout}"
   end
   
-  def logged_in_coach?
-    @coach = current_user.coach if current_user      
-  end
-  
 end

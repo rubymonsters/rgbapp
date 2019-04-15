@@ -1,7 +1,6 @@
 class CoachesController < ApplicationController
-  layout "coach", except: :new
   before_action :require_coach, except: [:new, :create]
-  
+
   def new
     @coach = Coach.new
     @coach.build_user

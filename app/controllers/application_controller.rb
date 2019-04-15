@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Clearance::Controller
   protect_from_forgery with: :exception
+  layout :choose_layout
 
 private
 
@@ -13,6 +14,10 @@ private
   
   def logged_in_coach?
     @coach = current_user.coach if current_user      
+  end
+
+  def choose_layout
+    logged_in_coach? ? "coach":nil
   end
   
   def require_coach
