@@ -1,4 +1,4 @@
-<% unless current_user.coach %>
+<% if current_user and !current_user.coach %>
   <p>Hey admin! You don't have a coach profile. [create a coach profile link for admins]</p>
 <% end %>
 <p>Hey coach!</p>
