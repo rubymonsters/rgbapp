@@ -10,25 +10,39 @@ class CoachesController < ApplicationController
   def create
     @coach = Coach.new(coach_params)
     if @coach.save
-      redirect_to coach_url(@coach)
+      redirect_to edit_coach_path(@coach)
     else
       render :new
     end
   end
 
-  def show
-    @user = current_user
-    @coach = @user.coach
+  def edit
+    @coach = find_coach
   end
-  
-  private
-    def coach_params
-      params.require(:coach).permit(:name, 
-                                    :female, 
-                                    :language_en, 
-                                    :language_de, 
-                                    :notifications,
-                                    user_attributes: [:email,:password])
+
+  def update
+    @coach = Coach.find(params[:id])
+    if !@coach.update(coach_params)
+      render :edit
     end
-  
+  end
+
+  def show
+    @coach = Coach.find(params[:id])
+  end
+
+  private
+  def coach_params
+    params.require(:coach).permit(:name,
+                                  :female,
+                                  :language_en,
+                                  :language_de,
+                                  :notifications,
+                                  user_attributes: [:email,:password])
+  end
+
+  def find_coach
+    Coach.find(params[:id])
+  end
+
 end

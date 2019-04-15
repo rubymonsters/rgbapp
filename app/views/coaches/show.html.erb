@@ -1,4 +1,15 @@
-<h1>Your coach account</h1>  
-<%= form_for @coach, html: {class: "grey"} do |f| %>
-  <%= render 'shared/coachform', :f => f %>
-<% end %>
+<h1>Coach <%= @coach.name %></h1>
+<table>
+  <tr>
+    <td>Female</td>
+    <td><%= @coach.female %></td>
+  </tr>
+  <tr>
+    <td>gives talks in German</td>
+    <td><%= @coach.language_de %></td>
+  </tr>
+  <tr>
+    <td>gives talks in English</td>
+    <td><%= @coach.language_en %></td>
+  </tr>
+</table>
