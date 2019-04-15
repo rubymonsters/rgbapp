@@ -8,11 +8,7 @@ class CoachesController < ApplicationController
   end
 
   def create
-    coach_params = params.require(:coach).permit(:name, :female, :language_en, :language_de, :notifications)
-    users_params = params.require(:coach).require(:user_attributes).permit(:email, :password)
-#     all_params = params.require(:coach).permit(user_attributes => [[:email, :password]], :name, :female, :language_en, :language_de, :notifications)
     @coach = Coach.new(coach_params)
-    @coach.build_user(users_params)
     if @coach.save
       redirect_to coach_url(@coach)
     else
@@ -24,5 +20,15 @@ class CoachesController < ApplicationController
     @user = current_user
     @coach = @user.coach
   end
+  
+  private
+    def coach_params
+      params.require(:coach).permit(:name, 
+                                    :female, 
+                                    :language_en, 
+                                    :language_de, 
+                                    :notifications,
+                                    user_attributes: [:email,:password])
+    end
   
 end
