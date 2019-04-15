@@ -1,4 +1,5 @@
 <%= form_for :session, url: session_path do |form| %>
+  <input name="user_type" type="hidden" value="coach" />
   <div class="text-field">
     <%= form.label :email %>
     <%= form.text_field :email, type: 'email' %>
@@ -15,7 +16,7 @@
 
   <div class="other-links">
     <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), signup_coaches_path %>
+      <%= link_to t(".sign_up"), sign_up_coaches_path %>
     <% end %>
     <%= link_to t(".forgot_password"), new_password_path %>
   </div>

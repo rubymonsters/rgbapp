@@ -1,5 +1,6 @@
 class CoachesController < ApplicationController
   before_action :require_coach, except: [:new, :create]
+  before_action :require_signed_out, only: :new
 
   def new
     @coach = Coach.new

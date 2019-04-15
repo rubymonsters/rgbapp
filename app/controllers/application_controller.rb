@@ -27,4 +27,8 @@ private
       redirect_to coaches_sign_in_path
     end
   end
+
+  def require_signed_out
+    redirect_to logged_in_path if current_user
+  end
 end
