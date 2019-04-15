@@ -19,7 +19,7 @@
         <%= link_to 'Applicants', admin_event_applications_path(event), method: :get %>
         <%= link_to 'Attendees', admin_event_attendants_path(event), method: :get %>
         <%= link_to 'Edit', edit_admin_event_path(event), method: :get %>
-        <%= link_to 'Delete', admin_event_path(event), method: :delete, data: { confirm: "Are you sure?" } %>
+        <%= button_to 'Delete', admin_event_path(event), method: :delete, data: { confirm: "Are you sure?" } %>
       </td>
   </tr>
     <%end %>
