@@ -22,11 +22,18 @@ header {
   position: fixed;
   top: 0;
   height: 80px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
-  border-bottom: 10px solid #1E64B4;
   width: 100%;
   background: #ffffff;
+  border-width: 0 0 5px 0;
+  -webkit-border-image:
+    -webkit-gradient(linear, 0, 100%, 0, 0, from(#28B4F0), to(#F0A0C8)) 100% 1;
+    -webkit-border-image:
+      -webkit-linear-gradient(right, #28B4F0, #F0A0C8) 100% 1;
+    -o-border-image:
+      -o-linear-gradient(right, #28B4F0, #F0A0C8) 100% 1;
+    -moz-border-image:
+      -moz-linear-gradient(right, #28B4F0, #F0A0C8) 100% 1;
 }
 
 header .section-boxed {
