@@ -25,15 +25,10 @@ header {
   transition: all 0.3s ease;
   width: 100%;
   background: #ffffff;
+  border-style: solid;
   border-width: 0 0 5px 0;
-  -webkit-border-image:
-    -webkit-gradient(linear, 0, 100%, 0, 0, from(#28B4F0), to(#F0A0C8)) 100% 1;
-    -webkit-border-image:
-      -webkit-linear-gradient(right, #28B4F0, #F0A0C8) 100% 1;
-    -o-border-image:
-      -o-linear-gradient(right, #28B4F0, #F0A0C8) 100% 1;
-    -moz-border-image:
-      -moz-linear-gradient(right, #28B4F0, #F0A0C8) 100% 1;
+  border-image:
+    linear-gradient(to right, #28B4F0, #F0A0C8) 100% 1;
 }
 
 header .section-boxed {
