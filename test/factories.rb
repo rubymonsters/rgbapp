@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :event do
-    name "Rails Girls Event"
+    name "Code Curious Event"
     place "Venue"
     application_start Time.now
     application_end Time.now
@@ -18,7 +18,7 @@ FactoryGirl.define do
 
   factory :application do
     association :event
-    name "Rails Applicant"
+    name "Curious Applicant"
     sequence(:email) { |n| "person#{n}@example.com" }
     sequence(:sequence_number)
     level "0"

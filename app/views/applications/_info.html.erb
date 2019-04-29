@@ -1,38 +1,36 @@
+<h1><%= @event.name %> <%= @event.scheduled_at.strftime("%d.%m.%Y") %> </h1>
+
 <article>
-    <h1><%= @event.name %> <%= @event.scheduled_at.strftime("%d.%m.%Y") %> </h1>
+  <% if @application.nil? || @application.errors.empty? %>
+    <p>Code curious want to give total beginners the opportunity and a community to start learning the technology to build their ideas and continue coding.</p>
+    <p>The Beginners Workshop is a hands on introduction to Rails. The workshop has a main focus on women with no previous Ruby on Rails programming experience and who want to be able to build their own applications. The program of the workshop includes
+      an overview of the Rails framework and a practical exercise in which attendees will be guided by coaches through the application building process.</p>
 
-    <article>
-      <% if @application.nil? || @application.errors.empty? %>
-        <p>Rails Girls Berlin (code curious) want to give total beginners the opportunity and a community to start learning the technology to build their ideas and continue coding.</p>
-        <p>The Beginners Workshop is a hands on introduction to Rails. The workshop has a main focus on women with no previous Ruby on Rails programming experience and who want to be able to build their own applications. The program of the workshop includes
-            an overview of the Rails framework and a practical exercise in which attendees will be guided by coaches through the application building process.</p>
+    <p>We provide a completely differently learning environment in order to not only support but also further motivate women who want to code, but don’t have the right environment to do so. We also aim to establish a community, so it’s not a once in a
+      life-time event, we want to help women code and encourage them to continue coding.</p>
 
-        <p>We provide a completely differently learning environment in order to not only support but also further motivate women who want to code, but don’t have the right environment to do so. We also aim to establish a community, so it’s not a once in a
-            life-time event, we want to help women code and encourage them to continue coding.</p>
+    <p>No previous knowledge is required to attend this workshop.</p>
 
-        <p>No previous knowledge is required to attend this workshop.</p>
+    <p>The first steps of learning how to program can be difficult. Our goal is it to help you with these first steps. We want to show you that programming is fun and creative and that there is a wonderful community that will support you.</p>
 
-        <p>The first steps of learning how to program can be difficult. Our goal is it to help you with these first steps. We want to show you that programming is fun and creative and that there is a wonderful community that will support you.</p>
-      <% end %>
+    <div id="greeting">
+      <h3>We are looking forward to seeing you <3</h3>
+    </div>
 
-        <div id="greeting">
-          <h3>We are looking forward to seeing you <3</h3>
-        </div>
+  <% end %>
+</article>
 
-        <aside>
-          <h3>
-            Application Start: <span><%= @event.application_start.strftime("%d.%m.%Y") %></span>
-          </h3>
-          <h3>
-            Application End: <span><%= @event.application_end.strftime("%d.%m.%Y") %></span>
-          </h3>
-          <h3>
-            Confirmation Mails: <span><%= @event.confirmation_date.strftime("%d.%m.%Y") %></span>
-          </h3>
-          <h3>
-            Location: <span><%= @event.place %></span>
-          </h3>
-
-        </aside>
-
-  </article>
+<aside>
+  <h3>
+    Application Start: <span><%= @event.application_start.strftime("%d.%m.%Y") %></span>
+  </h3>
+  <h3>
+    Application End: <span><%= @event.application_end.strftime("%d.%m.%Y") %></span>
+  </h3>
+  <h3>
+    Confirmation Mails: <span><%= @event.confirmation_date.strftime("%d.%m.%Y") %></span>
+  </h3>
+  <h3>
+    Location: <span><%= @event.place %></span>
+  </h3>
+</aside>
