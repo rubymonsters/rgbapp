@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       put :send_emails
       resources :templates
       resources :attendants
+      resources :groups
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
