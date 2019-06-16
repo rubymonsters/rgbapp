@@ -22,7 +22,7 @@ class Application < ApplicationRecord
   scope :confirmed, -> { where(attendance_confirmed: true) }
 
   enum state: { rejected: 0, waiting_list: 1, application_selected: 2 }
-  
+
    def at_least_select_one_language
      unless language_de? || language_en?
        errors.add(:language, "Please select at least one language.")
@@ -31,9 +31,9 @@ class Application < ApplicationRecord
 
    def self.to_csv(options = {})
      CSV.generate(options) do |csv|
-       csv << ["Name", "E-mail", "English", "German", "Attended before", "Rejected before", "Level", "Operating system", "Needs computer", "Date of application", "Comments"]
+       csv << ["Status", "Confirmed", "Name", "E-mail", "English", "German", "Attended before", "Rejected before", "Level", "Operating system", "Needs computer", "Date of application", "Comments"]
        all.each do |application|
-         csv << [application.name, application.email, I18n.t(application.language_en.class), I18n.t(application.language_de.class), I18n.t(application.attended_before.class), I18n.t(application.rejected_before.class), application.level, application.os, I18n.t(application.needs_computer.class), application.created_at, application.comments]
+         csv << [I18n.t(application.state), I18n.t(application.attendance_confirmed.class), application.name, application.email, I18n.t(application.language_en.class), I18n.t(application.language_de.class), I18n.t(application.attended_before.class), I18n.t(application.rejected_before.class), application.level, application.os, I18n.t(application.needs_computer.class), application.created_at, application.comments]
        end
      end
    end
