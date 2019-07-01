@@ -17,7 +17,7 @@ class UserMailer < ApplicationMailer
     data = {
       applicant_name: application.name,
       event_date: application.event.scheduled_at.strftime("%d.%m.%Y"),
-      confirmation_deadline: 5.days.from_now.strftime("%d.%m.%Y"),
+      confirmation_deadline: (application.event.confirmation_date + application.event.confirmation_deadline).strftime("%d.%m.%Y"),
       confirmation_link: event_application_confirm_url(event_id: application.event.id, application_id: application.random_id, host: "rgbworkshopapplication.herokuapp.com")
     }
 

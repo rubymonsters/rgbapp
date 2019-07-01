@@ -10,7 +10,7 @@ module Admin::TemplatesHelper
       selection_mail: {
         applicant_name: "Ruby",
         event_date: @event.scheduled_at.strftime("%d.%m.%Y"),
-        confirmation_deadline: (@event.confirmation_date + 5.days).strftime("%d.%m.%Y"),
+        confirmation_deadline: (@event.confirmation_date + @event.confirmation_deadline).strftime("%d.%m.%Y"),
         confirmation_link: event_application_confirm_url(event_id: @event.id, application_id: SecureRandom.hex(12))
       },
       rejection_mail: {
