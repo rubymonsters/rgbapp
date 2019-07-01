@@ -1,4 +1,4 @@
-<h1><%= @event.name %> <%= @event.scheduled_at.strftime("%d.%m.%Y") %> </h1>
+<h1><%= @event.name %> <%= l @event.scheduled_at %> </h1>
 
 <article>
   <% if @application.nil? || @application.errors.empty? %>
@@ -22,13 +22,13 @@
 
 <aside>
   <h3>
-    Application Start: <span><%= @event.application_start.strftime("%d.%m.%Y") %></span>
+    Application Start: <span><%= l @event.application_start %></span>
   </h3>
   <h3>
-    Application End: <span><%= @event.application_end.strftime("%d.%m.%Y") %></span>
+    Application End: <span><%= l @event.application_end %></span>
   </h3>
   <h3>
-    Confirmation Mails: <span><%= @event.confirmation_date.strftime("%d.%m.%Y") %></span>
+    Confirmation Mails: <span><%= l @event.confirmation_date %></span>
   </h3>
   <h3>
     Location: <span><%= @event.place %></span>
