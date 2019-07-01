@@ -22,19 +22,47 @@ class Application < ApplicationRecord
   scope :confirmed, -> { where(attendance_confirmed: true) }
 
   enum state: { rejected: 0, waiting_list: 1, application_selected: 2 }
-  
-   def at_least_select_one_language
-     unless language_de? || language_en?
-       errors.add(:language, "Please select at least one language.")
-     end
-   end
 
-   def self.to_csv(options = {})
-     CSV.generate(options) do |csv|
-       csv << ["Name", "E-mail", "English", "German", "Attended before", "Rejected before", "Level", "Operating system", "Needs computer", "Date of application", "Comments"]
-       all.each do |application|
-         csv << [application.name, application.email, I18n.t(application.language_en.class), I18n.t(application.language_de.class), I18n.t(application.attended_before.class), I18n.t(application.rejected_before.class), application.level, application.os, I18n.t(application.needs_computer.class), application.created_at, application.comments]
-       end
-     end
-   end
+  def at_least_select_one_language
+    unless language_de? || language_en?
+      errors.add(:language, "Please select at least one language.")
+    end
+  end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << [
+        "Status",
+        "Confirmed",
+        "Name",
+        "E-mail",
+        "English",
+        "German",
+        "Attended before",
+        "Rejected before",
+        "Level",
+        "Operating system",
+        "Needs computer",
+        "Date of application",
+        "Comments"
+      ]
+      all.each do |application|
+        csv << [
+          Application.human_attribute_name("state.#{application.state}"),
+          I18n.t("csv_display.#{application.attendance_confirmed}"),
+          application.name,
+          application.email,
+          I18n.t("csv_display.#{application.language_en}"),
+          I18n.t("csv_display.#{application.language_de}"),
+          I18n.t("csv_display.#{application.attended_before}"),
+          I18n.t("csv_display.#{application.rejected_before}"),
+          application.level,
+          application.os,
+          I18n.t("csv_display.#{application.needs_computer}"),
+          application.created_at,
+          application.comments
+        ]
+      end
+    end
+  end
 end
