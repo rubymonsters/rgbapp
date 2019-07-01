@@ -34,6 +34,9 @@ en:
   date:
     formats:
       default: "%d.%m.%Y"
+  time:
+    formats:
+      date: "%d.%m.%Y"
   activerecord:
     attributes:
       application/state:

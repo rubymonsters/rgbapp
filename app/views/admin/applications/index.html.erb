@@ -52,7 +52,7 @@ E-mail pending: <%= pluralize(@applications.application_selected.not_marked_as_s
       <td class="center"><%= application.level %></td>
       <td><%= application.os %></td>
       <td class="center"><% if application.needs_computer %> ✅ <% end %></td>
-      <td><%= l application.created_at %></td>
+      <td><%= l application.created_at, format: :date %></td>
       <td class="shorten-long-text"><%= application.comments %></td>
     </tr>
     <% end %>

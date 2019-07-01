@@ -7,7 +7,7 @@ class Event < ApplicationRecord
 
   def self.send_reminders
     Event.where("scheduled_at - current_date = reminder_date").each do |event|
-      event.applications.where(state: :application_selected, attendance_confirmed: true). each do |application|
+      event.applications.where(state: :application_selected, attendance_confirmed: true).each do |application|
         UserMailer.reminder_mail(application).deliver_now
       end
     end
