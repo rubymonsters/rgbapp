@@ -1,4 +1,4 @@
-<p>Hi <%= @application.name %>! Sorry, you missed the confirmation date. We expected your confirmation by <%= (@event.confirmation_date + @event.confirmation_deadline).strftime("%d.%m.%Y") %>.
+<p>Hi <%= @application.name %>! Sorry, you missed the confirmation date. We expected your confirmation by <%= l (@event.confirmation_date + @event.confirmation_deadline) %>.
 We had far more applicants hoping to get a spot, so we gave your spot to someone from the waiting list.
 We're really sorry to have to decline you, but this is the only way we can ensure the highest attendee show-up rate.
 We are sincerely sorry for this and really hope to get to meet you at the next workshop.</p>

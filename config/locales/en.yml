@@ -33,3 +33,6 @@ en:
   hello: "Hello world"
   TrueClass: "X"
   FalseClass: ""
+  date:
+    formats:
+      default: "%d.%m.%Y"
