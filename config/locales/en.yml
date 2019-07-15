@@ -43,6 +43,7 @@ en:
         rejected: "Rejected"
         waiting_list: "Waiting list"
         application_selected: "Selected"
+        cancelled: "Cancelled"
   csv_display:
     'true': "X"
     'false': ''

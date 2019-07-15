@@ -18,9 +18,7 @@ E-mail pending: <%= pluralize(@applications.application_selected.not_marked_as_s
   <thead>
     <tr>
       <th><%= link_to("No.", order: order("sequence_number")) %></th>
-      <th><div class="tooltip"><span class="tooltiptext">Rejected</span><%= link_to("R", order: order("state"))%></div></th>
-      <th><div class="tooltip"><span class="tooltiptext">Waiting list</span><%= link_to("WL", order: order("state"))%></div></th>
-      <th><div class="tooltip"><span class="tooltiptext">Selected</span><%= link_to("S", order: order("state"))%></div></th>
+      <th><div class="tooltip"><span class="tooltiptext">State</span><%= link_to("State", order: order("state"))%></div></th>
       <th><%= link_to("Confirmed", order: order("attendance_confirmed")) %></th>
       <th><%= link_to("Name", order: order("upper(name)")) %></th>
       <th><%= link_to("Email", order: order("upper(email)")) %></th>
@@ -39,10 +37,11 @@ E-mail pending: <%= pluralize(@applications.application_selected.not_marked_as_s
     <% @applications.each do |application| %>
     <tr>
       <td><%= application.sequence_number %>.</td>
-      <td<%= ' class="rejected"'.html_safe if application.rejected? %>><%= radio_button_tag "state[#{application.id}]", :rejected, application.rejected? %></td>
-      <td<%= ' class="waiting_list"'.html_safe if application.waiting_list? %>><%= radio_button_tag "state[#{application.id}]", :waiting_list, application.waiting_list? %></td>
-      <td<%= ' class="application_selected"'.html_safe if application.application_selected? %>><%= radio_button_tag "state[#{application.id}]", :application_selected, application.application_selected? %></td>
-      <td><%= check_box_tag 'confirmed_ids[]', application.id, application.attendance_confirmed, id: "confirm_applicant_#{application.id}" %></td>
+      <td class="<%= application.state %>"><%= select_tag "state[#{application.id}]", options_for_select(application_states_for_select, application.state) %></td> 
+      <td>
+        <%= check_box_tag 'confirmed_ids[]', application.id, application.attendance_confirmed, id: "confirm_applicant_#{application.id}" %>
+        <%= application.application_selected? && application.too_late_to_confirm?(current_time) && !application.attendance_confirmed? ? "<div class='tooltip'><span class='tooltiptext'>Not confirmed in time</span>⏰</div>".html_safe : "" %>
+      </td>
       <td><%= application.name %></td>
       <td><%= application.email %></td>
       <td class="center"><% if application.language_en %> ✅ <% end %></td>

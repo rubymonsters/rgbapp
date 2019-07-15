@@ -269,6 +269,7 @@ input[type=radio] {
 td.rejected {background-color: #FF4D4D}
 td.waiting_list {background-color: #FF9E9E}
 td.application_selected {background-color: #59A12F}
+td.cancelled {background-color: #999}
 
 /* Shorten text in comment field */
 
