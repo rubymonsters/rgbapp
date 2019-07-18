@@ -189,12 +189,22 @@ table {
   width: 100%;
 }
 
+.table-header-link {
+  color: white;
+  text-decoration: none;
+}
+
 th {
   background-color: #1E64B4;
   color: white;
 }
 
 th a:link {
+  text-decoration: none;
+  color: white;
+}
+
+th a:visited {
   text-decoration: none;
   color: white;
 }
