@@ -41,6 +41,8 @@ private
       self.rejection_mail_subject = event.rejection_mail_subject
       self.waiting_list_mail_subject = event.waiting_list_mail_subject
       self.reminder_mail_subject = event.reminder_mail_subject
+      self.reminder_attendance_mail = event.reminder_attendance_mail
+      self.reminder_attendance_mail_subject = event.reminder_attendance_mail_subject
     end
   end
 
