@@ -9,7 +9,7 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     @applicant1 = create(:application, event: @event)
     @applicant2 = create(:application, event: @event)
     @applicant3 = create(:application, event: @event)
-    
+
     visit admin_event_applications_path(@event.id)
 
     fill_in "Email", with: "test@user.de"
@@ -19,8 +19,8 @@ class SelectApplicantsTest < ApplicationSystemTestCase
   end
 
   test "select or confirm applicant" do
-    choose("state_#{@applicant1.id}_waiting_list")
-    choose("state_#{@applicant2.id}_application_selected")
+    select("Waiting list", from: "state_#{@applicant1.id}")
+    select("Selected", from: "state_#{@applicant2.id}")
 
     check("confirm_applicant_#{@applicant2.id}")
 
@@ -36,7 +36,7 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     assert @applicant2.reload.attendance_confirmed?
     assert !@applicant3.reload.attendance_confirmed?
 
-    choose("state_#{@applicant1.id}_rejected")
+    select("Rejected", from: "state_#{@applicant1.id}")
     uncheck("confirm_applicant_#{@applicant2.id}")
 
     click_on "Save"
@@ -50,7 +50,7 @@ class SelectApplicantsTest < ApplicationSystemTestCase
     assert !@applicant1.reload.attendance_confirmed?
     assert !@applicant2.reload.attendance_confirmed?
     assert !@applicant3.reload.attendance_confirmed?
-    
+
   end
 
   test "complete selection" do
@@ -91,7 +91,7 @@ class SelectApplicantsTest < ApplicationSystemTestCase
 
     clear_emails
 
-    choose("state_#{@applicant2.id}_application_selected")
+    select("Selected", from: "state_#{@applicant2.id}")
 
     click_on "Save"
 

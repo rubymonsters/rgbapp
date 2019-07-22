@@ -30,6 +30,7 @@ class Application < ApplicationRecord
   end
 
   def too_late_to_confirm?(date)
+    return false unless selected_on
     date - selected_on > event.confirmation_deadline
   end
 
