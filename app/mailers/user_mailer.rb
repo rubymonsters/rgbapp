@@ -63,7 +63,8 @@ class UserMailer < ApplicationMailer
     data = {
       applicant_name: application.name,
       event_date: I18n.l(application.event.scheduled_at),
-      confirmation_link: confirmation_link: event_application_confirm_url(event_id: application.event.id, application_id: application.random_id, host: "rgbworkshopapplication.herokuapp.com")
+      confirmation_link: event_application_confirm_url(event_id: application.event.id, application_id: application.random_id, host: "rgbworkshopapplication.herokuapp.com"),
+      event_place: application.event.place
     }
 
     mail(to: application.email, subject: Mustache.render(application.event.reminder_attendance_mail_subject, data )) do |format|
