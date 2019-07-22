@@ -19,7 +19,7 @@ E-mail pending: <%= pluralize(@applications.application_selected.not_marked_as_s
   <thead>
     <tr>
       <th><%= link_to("No.", order: order("sequence_number"), class: "table-header-link") %></th>
-      <th><%= link_to("Status", order: order("state"), class: "table-header-link")%></th>
+      <th><%= link_to("Status", order: order("state"), class: "table-header-link") %></th>
       <th><%= link_to("Confirmed", order: order("attendance_confirmed"), class: "table-header-link") %></th>
       <th><%= link_to("Name", order: order("upper(name)"), class: "table-header-link") %></th>
       <th><%= link_to("Email", order: order("upper(email)"), class: "table-header-link") %></th>
