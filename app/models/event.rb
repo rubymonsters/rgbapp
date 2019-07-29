@@ -11,6 +11,11 @@ class Event < ApplicationRecord
         UserMailer.reminder_mail(application).deliver_now
       end
     end
+    Event.where("scheduled_at = current_date + 1 + confirmation_deadline").each do |event|
+      event.applications.where(state: :application_selected, attendance_confirmed: false).each do |application|
+        UserMailer.reminder_attendance_mail(application).deliver_now
+      end
+    end
   end
 
   attr_accessor :copy_templates_from_event_id
@@ -41,6 +46,8 @@ private
       self.rejection_mail_subject = event.rejection_mail_subject
       self.waiting_list_mail_subject = event.waiting_list_mail_subject
       self.reminder_mail_subject = event.reminder_mail_subject
+      self.reminder_attendance_mail = event.reminder_attendance_mail
+      self.reminder_attendance_mail_subject = event.reminder_attendance_mail_subject
     end
   end
 
