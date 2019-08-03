@@ -18,6 +18,7 @@ class Application < ApplicationRecord
   scope :application_selected, -> { where(state: :application_selected) }
   scope :rejected, -> { where(state: :rejected) }
   scope :waiting_list, -> { where(state: :waiting_list) }
+  scope :cancelled, -> { where(state: :cancelled) }
   scope :not_marked_as_selected, -> { where(selected_on: nil) }
   scope :confirmed, -> { where(attendance_confirmed: true) }
 
