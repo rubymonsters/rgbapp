@@ -20,7 +20,8 @@ module Admin::TemplatesHelper
       reminder_mail: {
         applicant_name: "Ruby",
         event_date: I18n.l(@event.scheduled_at),
-        event_place: @event.place
+        event_place: @event.place,
+        cancel_link: event_application_cancel_url(event_id: @event.id, application_id: SecureRandom.hex(12)),
       },
       waiting_list_mail: {
         applicant_name: "Ruby",

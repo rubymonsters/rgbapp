@@ -18,8 +18,8 @@ class UserMailer < ApplicationMailer
       applicant_name: application.name,
       event_date: I18n.l(application.event.scheduled_at),
       confirmation_deadline: I18n.l(application.event.confirmation_date + application.event.confirmation_deadline),
-      confirmation_link: event_application_confirm_url(event_id: application.event.id, application_id: application.random_id, host: "rgbworkshopapplication.herokuapp.com"),
-      cancel_link: event_application_cancel_url(event_id: application.event.id, application_id: application.random_id, host: "rgbworkshopapplication.herokuapp.com")
+      confirmation_link: event_application_confirm_url(event_id: application.event.id, application_id: application.random_id),
+      cancel_link: event_application_cancel_url(event_id: application.event.id, application_id: application.random_id)
     }
 
     mail(to: application.email, subject: Mustache.render(application.event.selection_mail_subject, data)) do |format|
@@ -52,7 +52,8 @@ class UserMailer < ApplicationMailer
     data = {
       applicant_name: application.name,
       event_date: I18n.l(application.event.scheduled_at),
-      event_place: application.event.place
+      event_place: application.event.place,
+      cancel_link: event_application_cancel_url(event_id: application.event.id, application_id: application.random_id)
     }
 
     mail(to: application.email, subject: Mustache.render(application.event.reminder_mail_subject, data )) do |format|

@@ -34,18 +34,20 @@ class ApplicationsController < ApplicationController
     if @application.too_late_to_confirm?(current_time)
       render :confirmed_too_late
     else
-      @application.update_attributes(attendance_confirmed: true)
-      render :confirm
+      if @application.update_attributes(attendance_confirmed: true)
+        render :confirm
+      else
+        render :error
+      end
     end
   end
 
   def cancel
     @application = @event.applications.application_selected.find_by!(random_id: params[:application_id])
-    if @application.too_late_to_confirm?(current_time)
-      render :confirmed_too_late
-    else
-      @application.update_attributes(state: "cancelled")
+    if @application.update_attributes(state: "cancelled", attendance_confirmed: false)
       render :cancel
+    else
+      render :error
     end
   end
 
