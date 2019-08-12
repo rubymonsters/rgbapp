@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_21_190439) do
+ActiveRecord::Schema.define(version: 2019_07_21_101755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 2019_01_21_190439) do
     t.text "waiting_list_mail_subject"
     t.integer "confirmation_deadline", default: 5, null: false
     t.integer "reminder_date", default: 2, null: false
+    t.text "reminder_attendance_mail"
+    t.text "reminder_attendance_mail_subject"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

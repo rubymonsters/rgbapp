@@ -61,6 +61,20 @@ class UserMailer < ApplicationMailer
     end
   end
 
+  def reminder_attendance_mail(application)
+    data = {
+      applicant_name: application.name,
+      event_date: I18n.l(application.event.scheduled_at),
+      confirmation_link: link_to("Confirm", confirmation_link(application)),
+      cancel_link: link_to("Cancel", cancel_link(application)),
+      event_place: application.event.place
+    }
+
+    mail(to: application.email, subject: Mustache.render(application.event.reminder_attendance_mail_subject, data )) do |format|
+      format.html { render plain: Mustache.render(application.event.reminder_attendance_mail, data) }
+    end
+  end
+
   private
 
   def confirmation_link(application)
