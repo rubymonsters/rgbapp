@@ -11,19 +11,18 @@
 Selected: <%= pluralize(@applications.application_selected.size, "application") %> |
 Waiting list: <%= pluralize(@applications.waiting_list.size, "application") %> |
 Confirmed: <%= pluralize(@applications.application_selected.confirmed.size, "application") %> |
+Cancelled: <%= pluralize(@applications.cancelled.size, "application") %> |
 E-mail pending: <%= pluralize(@applications.application_selected.not_marked_as_selected.size, "application") %></p>
 
 <%= form_tag({}, method: :put) do %>
 <table>
   <thead>
     <tr>
-      <th><%= link_to("No.", order: order("sequence_number")) %></th>
-      <th><div class="tooltip"><span class="tooltiptext">Rejected</span><%= link_to("R", order: order("state"))%></div></th>
-      <th><div class="tooltip"><span class="tooltiptext">Waiting list</span><%= link_to("WL", order: order("state"))%></div></th>
-      <th><div class="tooltip"><span class="tooltiptext">Selected</span><%= link_to("S", order: order("state"))%></div></th>
-      <th><%= link_to("Confirmed", order: order("attendance_confirmed")) %></th>
-      <th><%= link_to("Name", order: order("upper(name)")) %></th>
-      <th><%= link_to("Email", order: order("upper(email)")) %></th>
+      <th><%= link_to("No.", order: order("sequence_number"), class: "table-header-link") %></th>
+      <th><%= link_to("Status", order: order("state"), class: "table-header-link") %></th>
+      <th><%= link_to("Confirmed", order: order("attendance_confirmed"), class: "table-header-link") %></th>
+      <th><%= link_to("Name", order: order("upper(name)"), class: "table-header-link") %></th>
+      <th><%= link_to("Email", order: order("upper(email)"), class: "table-header-link") %></th>
       <th><div class="tooltip"><span class="tooltiptext">English</span><%= link_to("🇬🇧", order: order("language_en")) %></div></th>
       <th><div class="tooltip"><span class="tooltiptext">German</span><%= link_to("🇩🇪", order: order("language_de")) %></div></th>
       <th><div class="tooltip"><span class="tooltiptext">Attended before</span><%= link_to("👍", order: order("attended_before")) %></div></th>
@@ -31,18 +30,19 @@ E-mail pending: <%= pluralize(@applications.application_selected.not_marked_as_s
       <th><div class="tooltip"><span class="tooltiptext">Level</span><%= link_to("🎓", order: order("level")) %></div></th>
       <th><div class="tooltip"><span class="tooltiptext">Operating System</span><%= link_to("🖥", order: order("os")) %></div></th>
       <th><div class="tooltip"><span class="tooltiptext">Needs computer</span><%= link_to("💻", order: order("needs_computer")) %></div></th>
-      <th><%= link_to("Date", order: order("created_at")) %></th>
-      <th><%= link_to("Comments", order: order("comments")) %></th>
+      <th><%= link_to("Date", order: order("created_at"), class: "table-header-link") %></th>
+      <th><%= link_to("Comments", order: order("comments"), class: "table-header-link") %></th>
     </tr>
   </thead>
   <tbody>
     <% @applications.each do |application| %>
     <tr>
       <td><%= application.sequence_number %>.</td>
-      <td<%= ' class="rejected"'.html_safe if application.rejected? %>><%= radio_button_tag "state[#{application.id}]", :rejected, application.rejected? %></td>
-      <td<%= ' class="waiting_list"'.html_safe if application.waiting_list? %>><%= radio_button_tag "state[#{application.id}]", :waiting_list, application.waiting_list? %></td>
-      <td<%= ' class="application_selected"'.html_safe if application.application_selected? %>><%= radio_button_tag "state[#{application.id}]", :application_selected, application.application_selected? %></td>
-      <td><%= check_box_tag 'confirmed_ids[]', application.id, application.attendance_confirmed, id: "confirm_applicant_#{application.id}" %></td>
+      <td class="<%= application.state %>"><%= select_tag "state[#{application.id}]", options_for_select(application_states_for_select, application.state) %></td>
+      <td>
+        <div style="text-align:center"><%= check_box_tag 'confirmed_ids[]', application.id, application.attendance_confirmed, id: "confirm_applicant_#{application.id}" %></div>
+        <div style="text-align:left"><%= application.application_selected? && application.too_late_to_confirm?(current_time) && !application.attendance_confirmed? ? "<div class='tooltip'><span class='tooltiptext'>Not confirmed in time</span>⏰</div>".html_safe : "" %></div>
+      </td>
       <td><%= application.name %></td>
       <td><%= application.email %></td>
       <td class="center"><% if application.language_en %> ✅ <% end %></td>

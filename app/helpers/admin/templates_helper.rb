@@ -11,7 +11,8 @@ module Admin::TemplatesHelper
         applicant_name: "Ruby",
         event_date: I18n.l(@event.scheduled_at),
         confirmation_deadline: I18n.l(@event.confirmation_date + @event.confirmation_deadline),
-        confirmation_link: event_application_confirm_url(event_id: @event.id, application_id: SecureRandom.hex(12))
+        confirmation_link: event_application_confirm_url(event_id: @event.id, application_id: SecureRandom.hex(12)),
+        cancel_link: event_application_cancel_url(event_id: @event.id, application_id: SecureRandom.hex(12))
       },
       rejection_mail: {
         applicant_name: "Ruby"
@@ -19,7 +20,8 @@ module Admin::TemplatesHelper
       reminder_mail: {
         applicant_name: "Ruby",
         event_date: I18n.l(@event.scheduled_at),
-        event_place: @event.place
+        event_place: @event.place,
+        cancel_link: event_application_cancel_url(event_id: @event.id, application_id: SecureRandom.hex(12)),
       },
       reminder_attendance_mail: {
         applicant_name: "Ruby",

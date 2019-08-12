@@ -18,15 +18,21 @@ class Application < ApplicationRecord
   scope :application_selected, -> { where(state: :application_selected) }
   scope :rejected, -> { where(state: :rejected) }
   scope :waiting_list, -> { where(state: :waiting_list) }
+  scope :cancelled, -> { where(state: :cancelled) }
   scope :not_marked_as_selected, -> { where(selected_on: nil) }
   scope :confirmed, -> { where(attendance_confirmed: true) }
 
-  enum state: { rejected: 0, waiting_list: 1, application_selected: 2 }
+  enum state: { rejected: 0, waiting_list: 1, application_selected: 2, cancelled: 3 }
 
   def at_least_select_one_language
     unless language_de? || language_en?
       errors.add(:language, "Please select at least one language.")
     end
+  end
+
+  def too_late_to_confirm?(date)
+    return false unless selected_on
+    date - selected_on > event.confirmation_deadline
   end
 
   def self.to_csv(options = {})
