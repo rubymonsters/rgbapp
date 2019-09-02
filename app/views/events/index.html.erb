@@ -1,9 +1,9 @@
 Here is a list of our workshops:
 <ul>
-  <% @events.each do |event| %> 
+  <% @events.each do |event| %>
   <li>
-    <%= link_to event.name , new_event_application_path(event) %> 
-    <%= event.scheduled_at.strftime("%d.%m.%Y") %>
+    <%= link_to event.name , new_event_application_path(event) %>
+    <%= l event.scheduled_at %>
   </li>
   <%end %>
 </ul>

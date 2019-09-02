@@ -2,8 +2,15 @@ class ApplicationController < ActionController::Base
   include Clearance::Controller
   protect_from_forgery with: :exception
   layout :choose_layout
+  helper_method :current_time
 
-private
+  # We want the periods to start and end at midnight in Berlin, not UTC.
+  # A possible improvement could be to configure a time zone for each event, instead of hardcoding it to Berlin.
+  def current_time
+    Time.now.in_time_zone("Berlin").to_date
+  end
+
+  private
 
   def require_admin
     require_login
@@ -11,15 +18,15 @@ private
       redirect_to root_path
     end
   end
-  
+
   def logged_in_coach?
-    @coach = current_user.coach if current_user      
+    @coach = current_user.coach if current_user
   end
 
   def choose_layout
     logged_in_coach? ? "coach":nil
   end
-  
+
   def require_coach
     unless logged_in_coach?
       store_location

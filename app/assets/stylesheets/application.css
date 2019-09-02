@@ -21,20 +21,18 @@ background-color: red;   }*/
 header {
   position: fixed;
   top: 0;
-  width: 60%;
-  height: 65px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  height: 80px;
   transition: all 0.3s ease;
-  border-bottom: 10px solid #c4220d;
-  width: 60%;
-  margin: -30px auto;
+  width: 100%;
   background: #ffffff;
-  padding-top: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
+  border-style: solid;
+  border-width: 0 0 5px 0;
+  border-image:
+    linear-gradient(to right, #28B4F0, #F0A0C8) 100% 1;
+  z-index: 10;
 }
 
-header .section-boxed section-header {
+header .section-boxed {
   margin: 0 auto;
   padding: 0 3%;
   position: relative;
@@ -42,6 +40,11 @@ header .section-boxed section-header {
   font-size: 100%;
   vertical-align: baseline;
   color: #777777;
+}
+
+.section-header {
+  margin: 0 auto;
+  width: 60%;
 }
 
 .fixed-header-scroll #header {
@@ -73,17 +76,17 @@ header .section-boxed section-header {
   top: 35px;
 }
 
-#logo-container {
-  height: auto;
-  width: auto;
-  float: left;
-  margin: 0 3.06%;
-  margin-left: 0;
-  position: relative;
+.header_logo {
+  margin: 10px 0;
+}
+
+.container {
+  width: 60%;
+  margin: 0 auto;
 }
 
 h1 {
-  color:#c4220d;
+  color:#1E64B4;
   font-size: 30px;
 }
 
@@ -93,7 +96,7 @@ h2 {
 }
 
 h3 {
-  color:#c4220d;
+  color:#1E64B4;
   font-size: 18px;
 }
 
@@ -102,29 +105,24 @@ h3 span {
 }
 
 body {
-  padding-top: 40px;
-  margin: 30px auto;
   text-align: justify;
   font-family: 'Open Sans', sans-serif;
   color: #777777;
   font-size: 16px;
   line-height: 25px;
-  width: 60%;
+  padding-top: 100px;
+  margin: 0;
 }
 
 #greeting {
   text-align: center;
   margin-top: 30px;
-}
-
-article aside {
-  border-top: 1px solid #777777;
+  border-bottom: 1px solid #777777;
 }
 
 fieldset {
   border: none;
   border-top: 1px solid #777777;
-
 }
 
 input[type=text] {
@@ -132,26 +130,19 @@ input[type=text] {
 }
 
 input[type=submit] {
-  display: inline-block;
-  padding: 12px 25px;
-  line-height: 20px;
-  color: #ffffff;
+  padding: 14px 25px;
+  border: none;
   text-align: center;
   vertical-align: middle;
-  background-repeat: repeat-x;
-  background-color: #c4220d;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin: 2px 0;
-  margin-left: 110px;
+  background-color: #1E64B4;
+  font-size: 16px;
   text-align: center;
+  color: #fff;
+}
+
+input[type=submit]:hover {
+  background-color: #28B4F0;
+  cursor: pointer;
 }
 
 input[type=number] {
@@ -164,7 +155,7 @@ textarea {
 }
 
 #error_explanation h2 {
-  color: #c4220d;
+  color: #1E64B4;
 }
 
 .button {
@@ -179,12 +170,12 @@ textarea {
 
 .field_with_errors {
   display: inline;
-  color: #c4220d;
+  color: #E65A5A;
 }
 
 .error_message {
   font-style: italic;
-  color: #c4220d;
+  color: #E65A5A;
 }
 
 .logo {
@@ -195,46 +186,68 @@ textarea {
 /*Table*/
 
 table {
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-header-link {
+  color: white;
+  text-decoration: none;
 }
 
 th {
-    background-color: #c4220d;
-    color: white;
+  background-color: #1E64B4;
+  color: white;
 }
 
-th a {
+th a:link {
+  text-decoration: none;
+  color: white;
+}
+
+th a:visited {
   text-decoration: none;
   color: white;
 }
 
 th a:hover {
   text-decoration: none;
-  color: #ffb3b3;
+  color: #e9e9e9;
 }
 
 td {
-    height: 50px;
-    vertical-align: middle;
+  height: 50px;
+  vertical-align: middle;
 }
 
 /* td.actions a {
-  color: grey;
+color: grey;
 } */
 
-td.actions a:link, a:visited {
-  background-color: #c4220d;
+td.actions a:link, td.actions a:visited {
+  background-color: #1E64B4;
   color: white;
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+}
+
+a:link, a:visited {
+  color: #1E64B4;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #28B4F0
+}
+
+td.actions form {
+  display: inline;
 }
 
 /* mouse over link */
 td.actions a:hover {
-  color: purple;
+  background-color: #28B4F0;
   text-decoration: none;
 }
 
@@ -249,14 +262,14 @@ td.center {
 }
 
 th, td {
-    padding: 15px;
-    text-align: left;
-    border: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+  border: 1px solid #ddd;
 }
 
-tr:nth-child(even) {background-color: #ffe6e6}
+tr:nth-child(even) {background-color: #e7f6fd}
 
-tr:hover {background-color: #ffb3b3}
+tr:hover {background-color: #e9e9e9}
 
 input[type=radio] {
   border: 0px;
@@ -267,13 +280,15 @@ input[type=radio] {
 td.rejected {background-color: #FF4D4D}
 td.waiting_list {background-color: #FF9E9E}
 td.application_selected {background-color: #59A12F}
+td.cancelled {background-color: #999}
+
 /* Shorten text in comment field */
 
 .shorten-long-text {
-   white-space: nowrap;
-   overflow: hidden;
-   max-width: 200px;
-   text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 200px;
+  text-overflow: ellipsis;
 }
 
 .shorten-long-text:hover {
@@ -286,54 +301,54 @@ td.application_selected {background-color: #59A12F}
 
 /* Tooltip container */
 .tooltip {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 /* Tooltip text */
 .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
 
-    /* Position the tooltip text */
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
 
-    /* Fade in tooltip */
-    opacity: 0;
-    transition: opacity 1s;
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 /* Tooltip arrow */
 .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Footer navigation in admin view */
 
 footer {
-  border-top: 1px solid #c4220d;
+  border-top: 1px solid #1E64B4;
 }
 
 footer ul {
@@ -348,16 +363,16 @@ footer li {
   float: left;
 }
 
-footer li a {
-    display: block;
-    color: #c4220d;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+footer li a, footer li a:visited {
+  display: block;
+  color: #1E64B4;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
 footer li a:hover {
-    background-color: #ffb3b3;
+  background-color: #e9e9e9;
 }
 
 /* Top navigation in admin view */
@@ -376,19 +391,20 @@ nav.top-menu li {
 
 nav.top-menu li a {
   display: block;
-  color: #c4220d;
+  color: #1E64B4;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
 nav.top-menu li a.active {
-    background-color: #c4220d;
-    color: white;
+  background-color: #1E64B4;
+  color: white;
 }
 
 nav.top-menu li a:hover {
-  background-color: #ffb3b3;
+  background-color: #e9e9e9;
+  color: #1E64B4;
 }
 
 /* E-mail templates side menu */
@@ -407,21 +423,21 @@ nav.email-templates-menu li {
 
 nav.email-templates-menu li a {
   display: block;
-  color: #c4220d;
+  color: #1E64B4;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
 nav.email-templates-menu li a.active {
-    background-color: #c4220d;
-    color: white;
+  background-color: #1E64B4;
+  color: white;
 }
 
 /* Change the link color on hover */
 nav.email-templates-menu li a:hover {
-  background-color: #ffe6e6;
-  color: #c4220d;
+  background-color: #28B4F0;
+  color: white;
 }
 
 input.grey {

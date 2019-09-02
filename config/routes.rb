@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :events do
     resources :applications do
       get :confirm, to: "applications#confirm"
+      get :cancel, to: "applications#cancel"
     end
     resources :coach_applications
   end

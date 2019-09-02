@@ -31,5 +31,19 @@
 
 en:
   hello: "Hello world"
-  TrueClass: "X"
-  FalseClass: ""
+  date:
+    formats:
+      default: "%d.%m.%Y"
+  time:
+    formats:
+      date: "%d.%m.%Y"
+  activerecord:
+    attributes:
+      application/state:
+        rejected: "Rejected"
+        waiting_list: "Waiting list"
+        application_selected: "Selected"
+        cancelled: "Cancelled"
+  csv_display:
+    'true': "X"
+    'false': ''

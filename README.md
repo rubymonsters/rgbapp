@@ -1,14 +1,14 @@
-# Rails Girls Berlin (code curious) application [![Build Status](https://travis-ci.org/rubymonsters/rgbapp.svg?branch=master)](https://travis-ci.org/rubymonsters/rgbapp)
+# code curious application [![Build Status](https://travis-ci.org/rubymonsters/rgbapp.svg?branch=master)](https://travis-ci.org/rubymonsters/rgbapp)
 
 ## About
 
-This repo is the open source project for the **Rails Girls Berlin (code curious) App** that aims to help the [Rails Girls Berlin (code curious) orga team](http://railsgirlsberlin.de) to organize their events by making the attendees, coaches and volunteers applications and/or participation more manageable.
+This repo is the open source project for the **code curious app** that aims to help the [code curious orga team](http://codecurious.org) to organize their events by making the attendees, coaches and volunteers applications and/or participation more manageable.
 
 ## Technical Requirements
 
 - Ruby '~> 2.3.x'
 - Bundler
-- Ruby on Rails '~> 5.1.0'
+- Ruby on Rails '~> 5.2.3'
 - PostgreSQL '~> 9.5.x'
 
 ## How to set up
@@ -16,7 +16,8 @@ This repo is the open source project for the **Rails Girls Berlin (code curious)
 1. Clone the repo (`git clone <repo-url>`)
 1. Change into the project directory (`cd rgbapp`)
 1. Run `bundle install`. This can fail for a number of reasons. See below for some troubleshooting.
-1. Run `(bundle exec) rake db:create:all`. This will create the databases for `development` and `test` by default.
+1. Run `(bundle exec) rake db:create`. This will create the databases for `development` and `test` by default.
+1. Install imagemagick (e.g. `brew install imagemagick`)
 1. Run `(bundle exec) rails server`. This will start the application in development mode.
 1. Go to [`http://localhost:3000/`](http://localhost:3000/) in your browser. You should see a welcome screen saying *“Yay! You're on Rails”*
 

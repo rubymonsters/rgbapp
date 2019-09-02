@@ -3,30 +3,29 @@
   <head>
     <%= action_cable_meta_tag %>
 
-    <title>Workshop Application | Rails Girls Berlin (code curious)</title>
+    <title>Workshop Application | code curious</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
   </head>
 
   <body>
     <header>
 
-    <div class="section-boxed section-header">
-        <div="logo-container">
-            <a style="background: url(<%= image_path("logomitschrift.png") %>) no-repeat;" id="mitschrift" href="http://railsgirlsberlin.de/beginners-workshop/" target="_blank"></a>
-        </div>
+      <div class="section-boxed section-header">
+        <%= link_to root_path do %>
+          <%= image_tag "code_curious_logo.png", alt: "code curious", class: "header_logo" %>
+        <% end %>
+      </div>
     </header>
-
-    <div id="flash">
-      <% flash.each do |key, value| %>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end %>
+    <div class="container">
+      <div id="flash">
+        <% flash.each do |key, value| %>
+          <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
+      </div>
+      <%= yield %>
     </div>
-
-    <%= yield %>
   </body>
 </html>
