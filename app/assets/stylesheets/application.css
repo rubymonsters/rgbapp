@@ -32,19 +32,33 @@ header {
   z-index: 10;
 }
 
-header .section-boxed {
+.header {
+  width: 60%;
   margin: 0 auto;
-  padding: 0 3%;
+  display: flex;
   position: relative;
-  border: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  color: #777777;
 }
 
-.section-header {
-  margin: 0 auto;
-  width: 60%;
+.header-logo {
+  padding: 0 3%;
+  vertical-align: baseline;
+  color: #777777;
+  flex: 0 0 60%;
+}
+
+.header-links {
+  flex: 1;
+}
+
+.header-links ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header-links > ul > li {
+  float: left;
+  padding: 10px;
 }
 
 .fixed-header-scroll #header {
@@ -176,6 +190,13 @@ textarea {
 .error_message {
   font-style: italic;
   color: #E65A5A;
+}
+
+.notice {
+  background-color: #A0C634;
+  color: white;
+  padding: 10px;
+  text-align: center;
 }
 
 .logo {

@@ -12,10 +12,18 @@
 
   <body>
     <header>
-
-      <div class="section-boxed section-header">
-        <%= link_to root_path do %>
-          <%= image_tag "code_curious_logo.png", alt: "code curious", class: "header_logo" %>
+      <div class="header">
+        <div class="header-logo">
+          <%= link_to root_path do %>
+            <%= image_tag "code_curious_logo.png", alt: "code curious", class: "header_logo" %>
+          <% end %>
+        </div>
+        <% if !current_user %>
+        <nav class="header-links top-menu">
+          <ul>
+            <li><%= link_to_active "I am a coach", coaches_sign_in_path %></li>
+          </ul>
+        </nav>
         <% end %>
       </div>
     </header>

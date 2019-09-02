@@ -8,12 +8,4 @@
     </ul>
   </nav>
   <%= yield %>
-  <footer>
-    <ul>
-      <li style="float:right"><%= link_to "Sign out", coaches_sign_out_path, method: :delete %></li>
-      <li style="float:right"><%= link_to_active "Profile", edit_coach_path(current_user.coach) %></li>
-      <li style="float:right"><%= link_to_active "Events", events_coaches_path %></li>
-      <li> Logged in as <%= current_user.email %> </li>
-    </ul>
-  </footer>
 <% end %>

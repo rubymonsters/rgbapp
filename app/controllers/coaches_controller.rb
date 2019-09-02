@@ -1,6 +1,7 @@
 class CoachesController < ApplicationController
   before_action :require_coach, except: [:new, :create]
   before_action :require_signed_out, only: :new
+  before_action :find_coach, only: [:edit, :update, :show]
 
   def new
     @coach = Coach.new
@@ -10,6 +11,8 @@ class CoachesController < ApplicationController
   def create
     @coach = Coach.new(coach_params)
     if @coach.save
+      sign_in(@coach.user)
+      flash[:notice] = "Coach created successfully"
       redirect_to edit_coach_path(@coach)
     else
       render :new
@@ -17,18 +20,18 @@ class CoachesController < ApplicationController
   end
 
   def edit
-    @coach = find_coach
   end
 
   def update
-    @coach = Coach.find(params[:id])
-    if !@coach.update(coach_params)
+    if @coach.update(coach_params)
+      flash[:notice] = "Coach updated successfully"
+      redirect_to edit_coach_path(@coach)
+    else
       render :edit
     end
   end
 
   def show
-    @coach = Coach.find(params[:id])
   end
 
   private
@@ -38,11 +41,10 @@ class CoachesController < ApplicationController
                                   :language_en,
                                   :language_de,
                                   :notifications,
-                                  user_attributes: [:email,:password])
+                                  user_attributes: [:email, :password, :id])
   end
 
   def find_coach
-    Coach.find(params[:id])
+    @coach = Coach.find(params[:id])
   end
-
 end
