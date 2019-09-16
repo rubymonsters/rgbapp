@@ -1,7 +1,8 @@
 class CoachesController < ApplicationController
+  layout "coach"
   before_action :require_coach, except: [:new, :create]
+  before_action :find_coach, except: [:new, :create]
   before_action :require_signed_out, only: :new
-  before_action :find_coach, only: [:edit, :update, :show]
 
   def new
     @coach = Coach.new
@@ -35,6 +36,15 @@ class CoachesController < ApplicationController
   end
 
   private
+
+  def require_coach
+    unless current_user && current_user.coach
+      store_location
+      flash[:notice] = "You need to be signed in as coach"
+      redirect_to coaches_sign_in_path
+    end
+  end
+
   def coach_params
     params.require(:coach).permit(:name,
                                   :female,
@@ -45,6 +55,6 @@ class CoachesController < ApplicationController
   end
 
   def find_coach
-    @coach = Coach.find(params[:id])
+    @coach = current_user.coach
   end
 end

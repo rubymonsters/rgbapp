@@ -1,8 +1,7 @@
 class EventsController < ApplicationController
+  before_action :check_if_coach, only: [:index]
+
   def index
-    @events = Event.all
-  end
-  def index_for_coaches
     @events = Event.all
   end
 end

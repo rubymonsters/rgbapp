@@ -5,9 +5,17 @@ class CoachApplicationsController < ApplicationController
   before_action :check_application_status
 
   def new
-    @coach_application = CoachApplication.new
-    @coach_application.coach = current_user.coach
-    @coach_application.event = @event
+    if @event.application_start > current_time
+      flash[:error] = "Too early to apply"
+      redirect_to events_coaches_path
+    elsif @event.application_end < current_time
+      flash[:error] = "Too late to apply"
+      redirect_to events_coaches_path
+    else
+      @coach_application = CoachApplication.new
+      @coach_application.coach = current_user.coach
+      @coach_application.event = @event
+    end
   end
 
   def create
@@ -17,7 +25,8 @@ class CoachApplicationsController < ApplicationController
     @coach_application.event = @event
 
     if @coach_application.save
-      render html: 'Success'
+      flash[:notice] = "Application saved"
+      redirect_to events_coaches_path
     else
       render :new
     end
