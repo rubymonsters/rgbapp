@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   mount ActionCable.server => '/cable'
-  
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
 
   resources :users, controller: "clearance/users", only: [:create] do
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :coaches do
     collection do
       get 'sign_up', to: 'coaches#new'
-      get 'events', to: 'events#index_for_coaches'
+      get 'events', to: 'coaches/events#index'
     end
   end
   resources :events do

@@ -192,12 +192,22 @@ textarea {
   color: #E65A5A;
 }
 
-.notice {
+.flash.notice {
   background-color: #A0C634;
   color: white;
+}
+
+.flash.error {
+  background-color: #E65A5A;
+  color: white;
+}
+
+.flash {
   padding: 10px;
   text-align: center;
 }
+
+.
 
 .logo {
   text-align: center;
