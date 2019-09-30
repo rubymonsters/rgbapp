@@ -11,16 +11,18 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def check_if_coach
-    if current_user && current_user.coach
-      redirect_to events_coaches_path
-    end
-  end
-
   def require_admin
     require_login
     if current_user && !current_user.admin
       redirect_to root_path
+    end
+  end
+
+  def require_coach
+    unless current_user && current_user.coach
+      store_location
+      flash[:notice] = "You need to be signed in as coach"
+      redirect_to coaches_sign_in_path
     end
   end
 

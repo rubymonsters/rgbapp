@@ -42,6 +42,9 @@
 	<%= error_message(@event, :reminder_date) %>
 	<p><%= f.number_field :reminder_date %></p>
 
+  <p><%= f.label(:coach_registration_enabled, "Coach registration enabled?") %> <%= f.check_box :coach_registration_enabled %></p>
+	<%= error_message(@event, :coach_registration_enabled) %>
+
   <% unless @event.persisted? %>
   <p><%= f.label(:copy_templates_from_event_id, "Use email templates from event:") %></p>
   <%= error_message(@event, :copy_templates_from_event_id) %>

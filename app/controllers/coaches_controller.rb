@@ -37,14 +37,6 @@ class CoachesController < ApplicationController
 
   private
 
-  def require_coach
-    unless current_user && current_user.coach
-      store_location
-      flash[:notice] = "You need to be signed in as coach"
-      redirect_to coaches_sign_in_path
-    end
-  end
-
   def coach_params
     params.require(:coach).permit(:name,
                                   :female,

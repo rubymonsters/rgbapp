@@ -11,6 +11,9 @@ class CoachApplicationsController < ApplicationController
     elsif @event.application_end < current_time
       flash[:error] = "Too late to apply"
       redirect_to events_coaches_path
+    elsif !@event.coach_registration_enabled
+      flash[:error] = "Registration not available"
+      redirect_to events_coaches_path
     else
       @coach_application = CoachApplication.new
       @coach_application.coach = current_user.coach

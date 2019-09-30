@@ -35,7 +35,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "events#index"
-    resources :users
+    resources :users do
+      member do
+        put :blacklist
+      end
+    end
     resources :events do
       resources :applications
       put :applications, to: "applications#checkboxes"
@@ -43,6 +47,7 @@ Rails.application.routes.draw do
       put :send_emails
       resources :templates
       resources :attendants
+      resources :coach_applications
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

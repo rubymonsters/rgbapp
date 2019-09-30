@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_21_101755) do
+ActiveRecord::Schema.define(version: 2019_09_30_190441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2019_07_21_101755) do
     t.integer "reminder_date", default: 2, null: false
     t.text "reminder_attendance_mail"
     t.text "reminder_attendance_mail_subject"
+    t.boolean "coach_registration_enabled", default: true
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_07_21_101755) do
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
     t.boolean "admin", default: false, null: false
+    t.boolean "blacklisted", default: false
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
