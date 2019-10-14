@@ -1,5 +1,5 @@
 class CoachesController < ApplicationController
-  layout "coach"
+  layout "coach", except: [:new, :create]
   before_action :require_coach, except: [:new, :create]
   before_action :find_coach, except: [:new, :create]
   before_action :require_signed_out, only: :new

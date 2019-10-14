@@ -1,7 +1,7 @@
   <fieldset>
     <h2>Personal Information</h2>
       <%= f.fields_for :user do |users_form| %>
-        <p><%= users_form.label(:email, "E-Mail Address") %><br>
+        <p><%= users_form.label(:email, "E-mail address") %><br>
           <%= users_form.text_field :email %>
         </p>
         <p><%= users_form.label(:password, "Password") %><br>
@@ -32,5 +32,6 @@
         <%= f.check_box :notifications %>
         <%= f.label(:notifications, "Notifications about upcoming events") %>
       </p>
-      <p class="note">It would be great to have you on board as a coach again.</p>
+      <p class="note">By signing up as a coach, your e-mail will be added to our coaches pool e-mail list. We use this list to inform coaches about upcoming workshops.
+It would be great to have you on board as a coach again.</p>
     </fieldset>

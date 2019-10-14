@@ -9,8 +9,7 @@ class CoachApplicationsController < ApplicationController
       flash[:error] = "Too early to apply"
       redirect_to events_coaches_path
     elsif @event.application_end < current_time
-      flash[:error] = "Too late to apply"
-      redirect_to events_coaches_path
+      render :too_late
     elsif !@event.coach_registration_enabled
       flash[:error] = "Registration not available"
       redirect_to events_coaches_path
@@ -28,8 +27,7 @@ class CoachApplicationsController < ApplicationController
     @coach_application.event = @event
 
     if @coach_application.save
-      flash[:notice] = "Application saved"
-      redirect_to events_coaches_path
+      render :create
     else
       render :new
     end
