@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: "contact@railsgirlsberlin.de"
+  default from: "contact@codecurious.org"
 
   def application_mail(application)
     data = {
