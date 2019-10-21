@@ -109,22 +109,22 @@ Execute following in the rails console:
 # => #<ActiveRecord::Relation []>
 
 # Create your first example event with a bang ("!") that validates your input immediately
->> event = Event.create!(name: "RGB Beginners WS 2017", place: "Travis", scheduled_at: "2017-10-31", application_start: "2017-10-02", application_end: "2017-10-20", confirmation_date: "2017-10-25")
+>> event = Event.create!(name: "Beginners WS 2017", place: "Travis", scheduled_at: "2017-10-31", application_start: "2017-10-02", application_end: "2017-10-20", confirmation_date: "2017-10-25")
 
-# => #<Event id: 1, name: "RGB Beginners WS 2017", place: "Travis", scheduled_at: "2017-10-31 00:00:00", created_at: "2017-10-02 00:00:00", updated_at: "2017-10-02 00:00:00", application_start: "2017-10-02 00:00:00", application_end: "2017-10-20 00:00:00", confirmation_date: "2017-10-25 00:00:00">
+# => #<Event id: 1, name: "Beginners WS 2017", place: "Travis", scheduled_at: "2017-10-31 00:00:00", created_at: "2017-10-02 00:00:00", updated_at: "2017-10-02 00:00:00", application_start: "2017-10-02 00:00:00", application_end: "2017-10-20 00:00:00", confirmation_date: "2017-10-25 00:00:00">
 
 # List all events
 >> events = Event.all
 
 # Event Load (0.4ms)  SELECT "events".* FROM "events"
-# => #<ActiveRecord::Relation [#<Event id: 1, name: "RGB Beginners WS 2017", place: "Travis", scheduled_at: "2017-10-31 00:00:00", created_at: "2017-10-03 12:55:54", updated_at: "2017-10-03 12:55:54", application_start: "2017-10-02 00:00:00", application_end: "2017-10-20 00:00:00", confirmation_date: "2017-10-25 00:00:00">]>
+# => #<ActiveRecord::Relation [#<Event id: 1, name: "Beginners WS 2017", place: "Travis", scheduled_at: "2017-10-31 00:00:00", created_at: "2017-10-03 12:55:54", updated_at: "2017-10-03 12:55:54", application_start: "2017-10-02 00:00:00", application_end: "2017-10-20 00:00:00", confirmation_date: "2017-10-25 00:00:00">]>
 ```
 
 Now start up the server with `$ (bundle exec) rails s` again and go to:
 http://localhost:3000/events/1/applications/new
 
 The current production URL start page can be found here (this may change in the future):
-http://radiant-bastion-50958.herokuapp.com/events/1/applications/new
+http://workshops.codecurious.org
 
 **Attention: You would need access to the production database and heroku app for production deployment. Ask the maintainers of this repository for the credentials.**
 
