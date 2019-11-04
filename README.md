@@ -44,7 +44,6 @@ TODO
 List all available rake tasks of this project:
 
 ```bash
-
 # List all rake tasks
 $ (bundle exec) rake -T
 
