@@ -1,0 +1,7 @@
+<% if current_user.admin == true %>
+  <% user_type_sign_out_path = sign_out_path %>
+<% else %>
+  <% user_type_sign_out_path = coaches_sign_out_path %>
+<% end %>
+<p>You are currently logged in with <%= current_user.email %>.</p>
+<p>Do you want to sign out? <%= link_to("Signout", user_type_sign_out_path, method: :delete) %></p>

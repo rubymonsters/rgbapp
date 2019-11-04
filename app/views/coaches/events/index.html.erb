@@ -1,0 +1,22 @@
+<p>Here is a list of our workshops:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Workshop</th>
+      <th>Date</th>
+      <th>Location</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event, coach| %>
+    <tr>
+      <td><%= link_to event.name, new_event_coach_application_path(event) %></td>
+      <td><%= l event.scheduled_at %></td>
+      <td><%= event.place %></td>
+      <td><%= event.coach_applications.find_by(coach_id: current_user.coach.id) ? "Applied" : "" %>
+    </tr>
+    <%end %>
+  </tbody>
+</table>

@@ -1,0 +1,25 @@
+<%= form_for [@event, @coach_application] do |f| %>
+  <h2>I can help on the</h2>
+    <p class="note">Please select one or both.</p>
+    <p>
+      <%= f.check_box :installationparty %>
+      <%= f.label(:installationparty, "installation party") %>
+    </p>
+    <p>
+      <%= f.check_box :workshopday %>
+      <%= f.label(:workshopday, "workshop day") %>
+    </p>
+  <h2>Would you like to give a lightning talk? What topic do you have in mind?</h2>
+  <p class="note">The talk should be understandable for beginners and no longer than 5 minutes.</p>
+  <p>
+    <%= f.text_field :lightningtalk %>
+  </p>
+  <h2>Notes</h2>
+  <p class="note">including if you would like to help the organizers on the day or even become an organizer in the future</p>
+  <p>
+    <%= f.text_field :notes %>
+  </p>
+  <div class='button'>
+    <%= f.submit "Submit", class: 'commit', type: 'submit' %>
+  </div>
+<% end %>

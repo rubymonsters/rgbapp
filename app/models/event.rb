@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   has_many :applications
+  has_many :coach_applications
   before_create :copy_templates
 
   validates :name, :place, :scheduled_at, :application_start, :application_end, :confirmation_date, :start_time, :end_time, presence: true

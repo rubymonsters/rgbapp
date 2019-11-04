@@ -16,9 +16,10 @@
         <%= l event.scheduled_at %>
       </td>
       <td class="actions">
-        <%= link_to 'Applicants', admin_event_applications_path(event), method: :get %>
-        <%= link_to 'Attendees', admin_event_attendants_path(event), method: :get %>
-        <%= link_to 'Edit', edit_admin_event_path(event), method: :get %>
+        <%= link_to 'Applicants', admin_event_applications_path(event) %>
+        <%= link_to 'Attendees', admin_event_attendants_path(event) %>
+        <%= link_to 'Coaches', admin_event_coach_applications_path(event) %>
+        <%= link_to 'Edit', edit_admin_event_path(event) %>
         <%= button_to 'Delete', admin_event_path(event), method: :delete, data: { confirm: "Are you sure?" } %>
       </td>
   </tr>

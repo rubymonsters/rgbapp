@@ -4,6 +4,7 @@
     <tr>
       <th>E-mail</th>
       <th>Admin</th>
+      <th>Coach</th>
       <th>Delete</th>
     </tr>
   </thead>
@@ -22,8 +23,17 @@
         <% end %>
       </td>
       <td>
-        <% if user != current_user %>
+        <% if user.coach %>
+          ✅
+        <% end %>
+      </td>
+      <td>
+        <% if user != current_user && !user.coach %>
           <%= button_to "Delete user", admin_user_path(user), method: "delete" %>
+        <% elsif user.coach && user.blacklisted %>
+          Blacklisted
+        <% elsif user.coach %>
+          <%= button_to "Blacklist", blacklist_admin_user_path(user), method: "put" %>
         <% end %>
       </td>
     </tr>
