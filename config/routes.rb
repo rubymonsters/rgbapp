@@ -48,6 +48,7 @@ Rails.application.routes.draw do
       resources :templates
       resources :attendants
       resources :coach_applications
+      put :coach_applications, to: "coach_applications#save_status"
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
