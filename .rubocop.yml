@@ -1,0 +1,12 @@
+inherit_from: .rubocop_todo.yml
+
+Layout/IndentationWidth:
+  Enabled: true
+  Width: 2
+
+Layout/EmptyLineBetweenDefs:
+  Enabled: true
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: true
+  EnforcedStyle: no_empty_lines

@@ -1,7 +1,6 @@
 require "application_system_test_case"
 
 class AddEventTest < ApplicationSystemTestCase
-
   setup do
     create(:user, email: "test@user.de", password: "test", admin: true)
     create(:event, name: "previous event", scheduled_at: "2017-04-20", application_start: "2017-04-01", application_end: "2017-04-10", confirmation_date: "2017-04-15", selection_mail: "You have been selected.", selection_mail_subject: "Congratulations!")

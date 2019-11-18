@@ -2,11 +2,13 @@ class SessionsController < Clearance::SessionsController
   before_action :require_signed_out, only: [:new_coach,:new_admin]
 
   def new_coach
-    render template: "sessions/new_coach" 
+    render template: "sessions/new_coach"
   end
+
   def new_admin
-    render template: "sessions/new_admin" 
+    render template: "sessions/new_admin"
   end
+
   def create
     @user = authenticate(params)
     sign_in(@user) do |status|
@@ -24,6 +26,7 @@ class SessionsController < Clearance::SessionsController
       end
     end
   end
+
   def url_after_create
     if params["user_type"] == "coach"
       flash[:notice] = "Welcome back! Do you want to coach an event?"
@@ -34,9 +37,11 @@ class SessionsController < Clearance::SessionsController
       Clearance.configuration.redirect_url
     end
   end
+
   def logged_in
     render template: "sessions/logged_in"
   end
+
   def destroy_coach
     sign_out
     redirect_to coaches_sign_in_path

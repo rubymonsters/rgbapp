@@ -51,5 +51,4 @@ private
       self.reminder_attendance_mail_subject = event.reminder_attendance_mail_subject
     end
   end
-
 end

@@ -54,42 +54,42 @@ class Admin::EventsController < ApplicationController
 
 private
 
-    def find_event
-      @event = Event.find(params[:id] || params[:event_id])
-    end
+  def find_event
+    @event = Event.find(params[:id] || params[:event_id])
+  end
 
-    def event_params
-      params.require(:event).
-        permit(:name,
-          :place,
-          :scheduled_at,
-          :application_start,
-          :application_end,
-          :confirmation_date,
-          :start_time,
-          :end_time,
-          :copy_templates_from_event_id,
-          :confirmation_deadline,
-          :reminder_date,
-          :coach_registration_enabled)
-    end
+  def event_params
+    params.require(:event).
+      permit(:name,
+        :place,
+        :scheduled_at,
+        :application_start,
+        :application_end,
+        :confirmation_date,
+        :start_time,
+        :end_time,
+        :copy_templates_from_event_id,
+        :confirmation_deadline,
+        :reminder_date,
+        :coach_registration_enabled)
+  end
 
-    def send_selection_emails(applications)
-      applications.each do |application|
-        UserMailer.selection_mail(application).deliver_later
-        application.update_attributes(selected_on: Date.today)
-      end
+  def send_selection_emails(applications)
+    applications.each do |application|
+      UserMailer.selection_mail(application).deliver_later
+      application.update_attributes(selected_on: Date.today)
     end
+  end
 
-    def send_rejection_emails(applications)
-      applications.each do |application|
-        UserMailer.rejection_mail(application).deliver_later
-      end
+  def send_rejection_emails(applications)
+    applications.each do |application|
+      UserMailer.rejection_mail(application).deliver_later
     end
+  end
 
-    def send_waiting_list_emails(applications)
-      applications.each do |application|
-        UserMailer.waiting_list_mail(application).deliver_later
-      end
+  def send_waiting_list_emails(applications)
+    applications.each do |application|
+      UserMailer.waiting_list_mail(application).deliver_later
     end
+  end
 end

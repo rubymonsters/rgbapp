@@ -1,7 +1,6 @@
 require "application_system_test_case"
 
 class CreateCoachTest < ApplicationSystemTestCase
-
   test "registration" do
     visit "/coaches/new"
 
@@ -24,5 +23,4 @@ class CreateCoachTest < ApplicationSystemTestCase
     assert_equal coach.notifications, true
 
   end
-
 end

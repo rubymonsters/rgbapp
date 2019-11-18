@@ -1,7 +1,6 @@
 require "application_system_test_case"
 
 class CancelApplicationTest < ApplicationSystemTestCase
-
   test "Cancellation" do
     @event = create(:event)
     @applicant = create(:application, event: @event, state: :application_selected, selected_on: 5.days.ago)
