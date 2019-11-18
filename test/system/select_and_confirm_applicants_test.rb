@@ -1,7 +1,6 @@
 require "application_system_test_case"
 
 class SelectApplicantsTest < ApplicationSystemTestCase
-
   setup do
     clear_emails
     @event = create(:event, start_time: "09:00", end_time: "17:30", selection_mail_subject: "You were selected", selection_mail: "Workshop Day: {{ event_date }} from 09:00 until 17:30 {{ confirmation_link }}. Cancel here {{ cancel_link }}", rejection_mail_subject: "You were rejected", rejection_mail: "Sorry, you are rejected", waiting_list_mail: "You are on the waiting list", waiting_list_mail_subject: "Please wait" )

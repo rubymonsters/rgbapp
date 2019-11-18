@@ -11,6 +11,5 @@ module ApplicationCable
     def find_admin
       self.admin = User.find_by(admin: true, remember_token: cookies[:remember_token]) || reject_unauthorized_connection
     end 
-
   end
 end

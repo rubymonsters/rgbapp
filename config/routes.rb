@@ -42,18 +42,18 @@ Rails.application.routes.draw do
     end
     resources :events do
       resources :applications do
-       collection do
-         put :update_statuses
-       end
+        collection do
+          put :update_statuses
+        end
       end
       put :complete
       put :send_emails
       resources :templates
       resources :attendants
       resources :coach_applications do
-       collection do
-         put :update_statuses
-       end
+        collection do
+          put :update_statuses
+        end
       end
     end
   end

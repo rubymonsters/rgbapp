@@ -25,16 +25,16 @@ class EventTest < ActiveSupport::TestCase
     assert current_email.has_content?("The workshop starts tmrw at Travis!")
   end
 
-	test "send reminders to selected and confirmed participants with overriden remainder date" do
-    event = create(:event, scheduled_at: 5.days.from_now, reminder_date: 5, place: "Travis", reminder_mail_subject: "Workshop reminder", reminder_mail: "The workshop starts tmrw at {{ event_place }}!" )
-    applicant = create(:application, event: event, state: :application_selected, attendance_confirmed: true)
+	 test "send reminders to selected and confirmed participants with overriden remainder date" do
+     event = create(:event, scheduled_at: 5.days.from_now, reminder_date: 5, place: "Travis", reminder_mail_subject: "Workshop reminder", reminder_mail: "The workshop starts tmrw at {{ event_place }}!" )
+     applicant = create(:application, event: event, state: :application_selected, attendance_confirmed: true)
 
-    Event.send_reminders
+     Event.send_reminders
 
-    open_email(applicant.email)
-    assert_equal current_email.subject, "Workshop reminder"
-    assert current_email.has_content?("The workshop starts tmrw at Travis!")
-  end
+     open_email(applicant.email)
+     assert_equal current_email.subject, "Workshop reminder"
+     assert current_email.has_content?("The workshop starts tmrw at Travis!")
+   end
 
   test "reminders not sent if event later than 2 days from now" do
     event = create(:event, scheduled_at: 3.days.from_now)

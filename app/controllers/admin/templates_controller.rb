@@ -17,5 +17,4 @@ class Admin::TemplatesController < ApplicationController
     end
 
   end
-
 end

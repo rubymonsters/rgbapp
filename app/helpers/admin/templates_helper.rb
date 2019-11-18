@@ -37,10 +37,10 @@ module Admin::TemplatesHelper
 
   def preview_template(template_name)
     begin
-      Mustache.render(@event[template_name], example_data[template_name.sub(/_subject$/,"").to_sym]).html_safe
+    Mustache.render(@event[template_name], example_data[template_name.sub(/_subject$/,"").to_sym]).html_safe
 			# TODO we have to check if it's really safe
-  rescue => e
-    "Error: #{e.message}"
+rescue => e
+  "Error: #{e.message}"
   end
 end
 end

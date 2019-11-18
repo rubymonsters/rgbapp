@@ -1,7 +1,6 @@
 require "application_system_test_case"
 
 class AdminUsersTest < ApplicationSystemTestCase
-
   setup do
     create(:user, email: "admin@user.de", password: "admin", admin: true)
     @user = create(:user, email: "test@user.de", password: "test", admin: false)

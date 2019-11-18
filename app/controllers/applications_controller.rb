@@ -1,7 +1,6 @@
 require 'securerandom'
 
 class ApplicationsController < ApplicationController
-
   before_action :find_event
 
   def new

@@ -1,5 +1,4 @@
 class Admin::AttendantsController < ApplicationController
-
   layout "admin"
   before_action :require_admin
 
@@ -14,5 +13,4 @@ class Admin::AttendantsController < ApplicationController
     @attendant.update_attributes!(params.require(:attendant).permit(:attended))
     ActionCable.server.broadcast 'attendants', @attendant
   end
-
 end

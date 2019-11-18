@@ -1,9 +1,8 @@
 require "application_system_test_case"
 
 class EditEventTest < ApplicationSystemTestCase
-
   setup do
-      create(:event, name: "Test Me")
+    create(:event, name: "Test Me")
       create(:user, email: "test@user.de", password: "test", admin: true)
 
       visit admin_events_path
@@ -41,5 +40,4 @@ class EditEventTest < ApplicationSystemTestCase
 
     assert_text "Some Event"
   end
-
 end
