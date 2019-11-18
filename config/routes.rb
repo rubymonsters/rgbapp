@@ -41,13 +41,20 @@ Rails.application.routes.draw do
       end
     end
     resources :events do
-      resources :applications
-      put :applications, to: "applications#checkboxes"
+      resources :applications do
+       collection do
+         put :update_statuses
+       end
+      end
       put :complete
       put :send_emails
       resources :templates
       resources :attendants
-      resources :coach_applications
+      resources :coach_applications do
+       collection do
+         put :update_statuses
+       end
+      end
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

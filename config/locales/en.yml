@@ -44,6 +44,11 @@ en:
         waiting_list: "Waiting list"
         application_selected: "Selected"
         cancelled: "Cancelled"
+      coach_application/state:
+        pending: "Pending"
+        approved: "Approved"
+        rejected: "Rejected"
+        cancelled: "Cancelled"
   csv_display:
     'true': "X"
     'false': ''
