@@ -1,6 +1,6 @@
 <p>Total: <%= pluralize(@coach_applications.size, "application") %> </p>
 
-<%= form_tag({}, method: :put) do %>
+<%= form_tag({ action: :update_statuses }, method: :put) do %>
 <table>
   <thead>
     <tr>

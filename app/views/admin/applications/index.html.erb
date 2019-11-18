@@ -14,7 +14,7 @@ Confirmed: <%= pluralize(@applications.application_selected.confirmed.size, "app
 Cancelled: <%= pluralize(@applications.cancelled.size, "application") %> |
 E-mail pending: <%= pluralize(@applications.application_selected.not_marked_as_selected.size, "application") %></p>
 
-<%= form_tag({}, method: :put) do %>
+<%= form_tag({ action: :update_statuses }, method: :put) do %>
 <table>
   <thead>
     <tr>

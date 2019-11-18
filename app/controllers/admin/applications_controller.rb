@@ -12,7 +12,7 @@ class Admin::ApplicationsController < ApplicationController
     end
   end
 
-  def checkboxes
+  def update_statuses
     selected_ids = params[:selected_ids] || [-1]
     confirmed_ids = params[:confirmed_ids] || [-1]
     # This code might cause performance problems. If application too slow, it needs refactoring.

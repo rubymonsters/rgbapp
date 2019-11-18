@@ -9,7 +9,7 @@ class Admin::CoachApplicationsController < ApplicationsController
       order(params[:order] || "created_at desc")
   end
 
-  def save_status
+  def update_statuses
     # This code might cause performance problems. If application too slow, it needs refactoring.
     params[:state].each do |application_id, state|
       application = CoachApplication.find(application_id)
