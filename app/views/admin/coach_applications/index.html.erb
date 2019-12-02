@@ -13,6 +13,7 @@
       <th><div class="tooltip"><span class="tooltiptext">Female</span>👩</div></th>
       <th><div class="tooltip"><span class="tooltiptext">Installation party</span>🖥</div></th>
       <th><div class="tooltip"><span class="tooltiptext">Workshop day</span>🎓</div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Lightning talk approved</span>🆗</div></th>
       <th><div class="tooltip"><span class="tooltiptext">Lightning talk</span>🗣</div></th>
       <th><%= link_to("Date", order: order("created_at"), class: "table-header-link") %></th>
       <th><%= link_to("Comments", order: order("notes"), class: "table-header-link") %></th>
@@ -30,6 +31,11 @@
       <td class="center"><% if application.coach.female %> ✅ <% end %></td>
       <td class="center"><% if application.installationparty %> ✅ <% end %></td>
       <td class="center"><% if application.workshopday %> ✅ <% end %></td>
+      <td>
+        <% unless application.lightningtalk.blank? %>
+          <div style="text-align:center"><%= check_box_tag 'approved_ids[]', application.id, application.lightningtalk_approved, id: "lightningtalk_approved_#{application.id}" %></div>
+        <% end %>
+      </td>
       <td class="center"><%= application.lightningtalk %></td>
       <td><%= l application.created_at, format: :date %></td>
       <td class="shorten-long-text"><%= application.notes %></td>
