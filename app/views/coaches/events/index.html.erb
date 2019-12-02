@@ -16,8 +16,12 @@
       <td><%= l event.scheduled_at %></td>
       <td><%= event.place %></td>
       <td>
-        <% if application = event.coach_applications.find_by(coach_id: current_user.coach.id) %>
-          <%= button_to 'Cancel', event_coach_application_path(application), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% application = event.coach_applications.find_by(coach_id: current_user.coach.id) %>
+        <% if application.pending? || application.approved? %>
+          <%= Application.human_attribute_name("state.#{application.state}") %> |
+          <%= link_to 'Cancel', event_coach_application_path(event.id, application.id), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% else %>
+          <%=  Application.human_attribute_name("state.#{application.state}") %>
         <% end %>
     </tr>
     <%end %>
