@@ -15,7 +15,10 @@
       <td><%= link_to event.name, new_event_coach_application_path(event) %></td>
       <td><%= l event.scheduled_at %></td>
       <td><%= event.place %></td>
-      <td><%= event.coach_applications.find_by(coach_id: current_user.coach.id) ? "Applied" : "" %>
+      <td>
+        <% if application = event.coach_applications.find_by(coach_id: current_user.coach.id) %>
+          <%= button_to 'Cancel', event_coach_application_path(application), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
     </tr>
     <%end %>
   </tbody>
