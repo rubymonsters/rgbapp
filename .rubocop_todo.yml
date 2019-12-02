@@ -32,7 +32,7 @@ Layout/AccessModifierIndentation:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
 # SupportedStyles: with_first_argument, with_fixed_indentation
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   Enabled: false
 
 # Offense count: 2
@@ -172,7 +172,7 @@ Layout/Tab:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: final_newline, final_blank_line
-Layout/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   Exclude:
     - 'app/controllers/sessions_controller.rb'
 
