@@ -1,8 +1,9 @@
 class CoachApplicationsController < ApplicationController
   layout "coach"
   before_action :find_event
+  before_action :find_coach_application, only: :destroy
   before_action :require_coach
-  before_action :check_application_status
+  before_action :check_application_status, only: [:new, :create]
 
   def new
     if @event.application_start > current_time
@@ -27,16 +28,30 @@ class CoachApplicationsController < ApplicationController
     @coach_application.event = @event
 
     if @coach_application.save
-      render :create
+      render :successful_registration
     else
       render :new
     end
+  end
+
+  def destroy
+    if @coach_application.destroy
+      flash[:notice] = "Application cancelled"
+    else
+      flash[:error] = "Something went wrong"
+    end
+
+    redirect_to events_coaches_path
   end
 
   private
 
   def find_event
     @event = Event.find(params[:event_id])
+  end
+
+  def find_coach_application
+    @coach_application = CoachApplication.find(params[:id])
   end
 
   def create_coach_application_params

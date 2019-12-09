@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class AddCoachApplicationTest < ApplicationSystemTestCase
   setup do
-    @event = create(:event, name: "coach event")
+    @event = create(:event, name: "Workshop Code Curious")
     @user = create(:user, email: "test@coach.de", password: "password")
     @coach = create(:coach, user: @user)
 
@@ -13,7 +13,7 @@ class AddCoachApplicationTest < ApplicationSystemTestCase
 
     click_on "Sign in"
     click_on "Events"
-    click_on "coach event"
+    click_on "Workshop Code Curious"
   end
 
   test "Coach application" do

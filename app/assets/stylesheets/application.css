@@ -176,6 +176,13 @@ textarea {
   text-align: center;
 }
 
+input[type=submit].button_link {
+  color: blue;
+  background-color: inherit;
+  display: inline;
+  padding: 0;
+}
+
 .note {
   font-size: 11px;
   font-style: italic;
