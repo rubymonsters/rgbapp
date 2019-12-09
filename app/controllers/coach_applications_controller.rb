@@ -28,7 +28,7 @@ class CoachApplicationsController < ApplicationController
     @coach_application.event = @event
 
     if @coach_application.save
-      render :create
+      render :successful_registration
     else
       render :new
     end
