@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_12_151130) do
+ActiveRecord::Schema.define(version: 2020_01_12_161847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 2020_01_12_151130) do
     t.text "reminder_attendance_mail"
     t.text "reminder_attendance_mail_subject"
     t.boolean "coach_registration_enabled", default: true
+    t.text "coach_selection_mail"
+    t.text "coach_selection_mail_subject"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
