@@ -75,6 +75,18 @@ class UserMailer < ApplicationMailer
     end
   end
 
+  def coach_approval_mail(coach)
+    data = {
+      coach_name: coach.name,
+      event_date: I18n.l(coach.event.scheduled_at),
+      event_place: coach.event.place
+    }
+
+    mail(to: coach.email, subject: Mustache.render(coach.event.coach_approval_mail_subject, data )) do |format|
+      format.html { render plain: Mustache.render(coach.event.coach_approval_mail, data) }
+    end
+  end
+
   private
 
   def confirmation_link(application)
