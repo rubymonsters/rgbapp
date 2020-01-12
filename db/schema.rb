@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_183522) do
+ActiveRecord::Schema.define(version: 2020_01_12_151130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_183522) do
     t.datetime "updated_at", null: false
     t.integer "state", default: 0, null: false
     t.boolean "lightningtalk_approved", default: false
+    t.boolean "coach_confirmed", default: false, null: false
     t.index ["coach_id"], name: "index_coach_applications_on_coach_id"
     t.index ["event_id"], name: "index_coach_applications_on_event_id"
   end

@@ -6,6 +6,7 @@
     <tr>
       <th><%= link_to("No.", order: order("sequence_number"), class: "table-header-link") %></th>
       <th><%= link_to("Status", order: order("state"), class: "table-header-link") %></th>
+      <th><%= link_to("Confirmed", order: order("coach_confirmed"), class: "table-header-link") %></th>
       <th><%= link_to("Name", order: order("upper(name)"), class: "table-header-link") %></th>
       <th><%= link_to("Email", order: order("upper(email)"), class: "table-header-link") %></th>
       <th><div class="tooltip"><span class="tooltiptext">English</span><%= link_to("🇬🇧", order: order("language_en")) %></div></th>
@@ -24,6 +25,9 @@
     <tr>
       <td><%= application.id %>.</td>
       <td class="<%= application.state %>"><%= select_tag "state[#{application.id}]", options_for_select(coach_application_states_for_select, application.state) %></td>
+      <td>
+        <div style="text-align:center"><%= check_box_tag 'confirmed_ids[]', application.id, application.coach_confirmed, id: "confirm_coach_#{application.id}" %></div>
+      </td>
       <td><%= application.coach.name %></td>
       <td><%= application.coach.user.email %></td>
       <td class="center"><% if application.coach.language_en %> ✅ <% end %></td>

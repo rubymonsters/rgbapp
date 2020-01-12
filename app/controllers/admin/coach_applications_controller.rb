@@ -10,6 +10,7 @@ class Admin::CoachApplicationsController < ApplicationsController
   end
 
   def update_statuses
+    confirmed_ids = params[:confirmed_ids] || [-1]
     approved_ids = params[:approved_ids] || [-1]
     # This code might cause performance problems. If application too slow, it needs refactoring.
     params[:state].each do |application_id, state|
@@ -18,6 +19,7 @@ class Admin::CoachApplicationsController < ApplicationsController
       application.save!
     end
 
+    @event.coach_applications.update_all(["coach_confirmed = (id IN (?))", confirmed_ids])
     @event.coach_applications.update_all(["lightningtalk_approved = (id IN (?))", approved_ids])
 
     redirect_to admin_event_coach_applications_path(@event), notice: "Cool! Changes saved."
