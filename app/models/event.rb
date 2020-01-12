@@ -49,6 +49,7 @@ private
       self.reminder_mail_subject = event.reminder_mail_subject
       self.reminder_attendance_mail = event.reminder_attendance_mail
       self.reminder_attendance_mail_subject = event.reminder_attendance_mail_subject
+      self.coach_selection_mail_subject = event.coach_selection_mail_subject
     end
   end
 end
