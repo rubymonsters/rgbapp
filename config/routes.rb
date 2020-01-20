@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       resources :coach_applications do
         collection do
           put :update_statuses
+          put :send_approval_emails
         end
       end
     end
