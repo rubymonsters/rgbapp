@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post "/session" => "sessions#create", as: "session"
 
   root to: "events#index"
-  resources :coaches do
+  resources :coaches, except: [:show] do
     collection do
       get 'sign_up', to: 'coaches#new'
       get 'events', to: 'coaches/events#index'
