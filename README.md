@@ -164,6 +164,7 @@ If this is the case try `$ bundle update` and then run `$ bundle exec rake -T` i
 ## Deployment
 
 1. Make sure you have Heroku set up as a remote. If not enter `git remote add heroku https://git.heroku.com/rgbworkshopapplication.git`.
-1. Checkout `master` branch
-1. Pull the latest changes
-1. Push to Heroku using `git push heroku master`
+1. Checkout `master` branch.
+1. Pull the latest changes.
+1. Push to Heroku using `git push heroku master`.
+1. If necessary, run migrations using `heroku run rails db:migrate`.
