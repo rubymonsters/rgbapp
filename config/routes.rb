@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post "/session" => "sessions#create", as: "session"
 
   root to: "events#index"
-  resources :coaches do
+  resources :coaches, except: [:show] do
     collection do
       get 'sign_up', to: 'coaches#new'
       get 'events', to: 'coaches/events#index'
@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       resources :coach_applications do
         collection do
           put :update_statuses
+          put :send_approval_emails
         end
       end
     end

@@ -45,3 +45,7 @@
 </table>
 <p><%= submit_tag "Save" %></p>
 <% end %>
+
+<% unless @coach_applications.to_contact.empty? %>
+  <%= button_to "Send #{pluralize(@coach_applications.to_contact.size, 'e-mail')}", send_approval_emails_admin_event_coach_applications_path(@event), method: :put, data: { confirm: "Are you sure? This will send e-mails to the selected applicants." } %>
+<% end %>

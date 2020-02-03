@@ -23,6 +23,15 @@ class Admin::CoachApplicationsController < ApplicationsController
     redirect_to admin_event_coach_applications_path(@event), notice: "Cool! Changes saved."
   end
 
+  def send_approval_emails
+    @event.coach_applications.includes(coach: :user).to_contact.each do |coach_application|
+      coach_application.update_attribute(:contacted_at, Time.now)
+      UserMailer.coach_approval_mail(coach_application).deliver_later
+    end
+
+    redirect_to admin_event_coach_applications_path(@event), notice: "E-mails sent"
+  end
+
   private
 
   def find_event

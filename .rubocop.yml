@@ -10,3 +10,6 @@ Layout/EmptyLineBetweenDefs:
 Layout/EmptyLinesAroundClassBody:
   Enabled: true
   EnforcedStyle: no_empty_lines
+
+Layout/HashAlignment:
+  Enabled: false

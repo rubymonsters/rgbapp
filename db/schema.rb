@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_183522) do
+ActiveRecord::Schema.define(version: 2020_01_20_190459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_183522) do
     t.datetime "updated_at", null: false
     t.integer "state", default: 0, null: false
     t.boolean "lightningtalk_approved", default: false
+    t.datetime "contacted_at"
     t.index ["coach_id"], name: "index_coach_applications_on_coach_id"
     t.index ["event_id"], name: "index_coach_applications_on_event_id"
   end
@@ -93,6 +94,8 @@ ActiveRecord::Schema.define(version: 2019_12_02_183522) do
     t.text "reminder_attendance_mail"
     t.text "reminder_attendance_mail_subject"
     t.boolean "coach_registration_enabled", default: true
+    t.text "coach_approval_mail"
+    t.text "coach_approval_mail_subject"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

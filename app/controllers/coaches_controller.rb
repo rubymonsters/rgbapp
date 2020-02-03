@@ -32,9 +32,6 @@ class CoachesController < ApplicationController
     end
   end
 
-  def show
-  end
-
   private
 
   def coach_params
