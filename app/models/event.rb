@@ -25,6 +25,10 @@ class Event < ApplicationRecord
     scheduled_at.to_s + " " + name
   end
 
+  def has_groups?
+    false
+  end
+  
 private
 
   def right_order_of_dates

@@ -13,3 +13,6 @@ Layout/EmptyLinesAroundClassBody:
 
 Layout/HashAlignment:
   Enabled: false
+
+Naming/PredicateName:
+  Enabled: false

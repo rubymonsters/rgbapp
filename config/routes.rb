@@ -46,6 +46,11 @@ Rails.application.routes.draw do
           put :update_statuses
         end
       end
+      resources :groups, only: [:index] do
+        collection do
+          post :generate
+        end
+      end
       put :complete
       put :send_emails
       resources :templates

@@ -1,0 +1,5 @@
+<% if @event.has_groups? %>
+has Groups
+<% else %>
+  <%= button_to "Generate groups", generate_admin_event_groups_path(@event), method: :post %>
+<% end %>
