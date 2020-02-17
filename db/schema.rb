@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_190804) do
+ActiveRecord::Schema.define(version: 2020_02_17_195541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,12 @@ ActiveRecord::Schema.define(version: 2020_02_17_190804) do
     t.boolean "coach_registration_enabled", default: true
     t.text "coach_approval_mail"
     t.text "coach_approval_mail_subject"
+    t.date "coach_the_coaches_date"
+    t.time "coach_the_coaches_start_time"
+    t.time "coach_the_coaches_end_time"
+    t.date "installation_get_together_date"
+    t.time "installation_get_together_start_time"
+    t.time "installation_get_together_end_time"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
