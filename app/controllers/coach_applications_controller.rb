@@ -56,7 +56,7 @@ class CoachApplicationsController < ApplicationController
 
   def create_coach_application_params
     params.require(:coach_application).
-      permit(:installationparty, :workshopday, :lightningtalk, :notes)
+      permit(:installationparty, :workshopday, :lightningtalk, :notes, :first_time_coaching)
   end
 
   def check_application_status
