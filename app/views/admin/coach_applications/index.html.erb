@@ -10,7 +10,7 @@
       <th><%= link_to("Email", order: order("upper(email)"), class: "table-header-link") %></th>
       <th><div class="tooltip"><span class="tooltiptext">English</span><%= link_to("🇬🇧", order: order("language_en")) %></div></th>
       <th><div class="tooltip"><span class="tooltiptext">German</span><%= link_to("🇩🇪", order: order("language_de")) %></div></th>
-      <th><div class="tooltip"><span class="tooltiptext">Female</span>👩</div></th>
+      <th><div class="tooltip"><span class="tooltiptext">Gender</span>Gender</div></th>
       <th><div class="tooltip"><span class="tooltiptext">Installation party</span>🖥</div></th>
       <th><div class="tooltip"><span class="tooltiptext">Workshop day</span>🎓</div></th>
       <th><div class="tooltip"><span class="tooltiptext">Lightning talk approved</span>🆗</div></th>
@@ -28,7 +28,7 @@
       <td><%= application.coach.user.email %></td>
       <td class="center"><% if application.coach.language_en %> ✅ <% end %></td>
       <td class="center"><% if application.coach.language_de %> ✅ <% end %></td>
-      <td class="center"><% if application.coach.female %> ✅ <% end %></td>
+      <td class="center"><%= application.coach.gender.humanize %></td>
       <td class="center"><% if application.installationparty %> ✅ <% end %></td>
       <td class="center"><% if application.workshopday %> ✅ <% end %></td>
       <td>

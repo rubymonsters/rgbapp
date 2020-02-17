@@ -11,8 +11,8 @@
       <p><%= f.label(:name, "Name") %></p><p class="note">No official name necessary, you can use the name you want to be called. Just be sure to remember what you picked. *</p>
       <p><%= f.text_field :name %></p>
       <p>
-        <%= f.check_box :female %>
-        <%= f.label(:female, "female/I have some female sex characteristics.") %>
+        <%= f.label(:gender, "I identify as") %>
+        <%= f.select :gender, genders_for_form, include_blank: true %>
       </p>
     </fieldset>
     <fieldset>

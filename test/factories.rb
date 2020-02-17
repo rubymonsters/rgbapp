@@ -5,7 +5,7 @@ FactoryBot.define do
   factory :coach do
     association :user
     name { "Swenja" }
-    female { true }
+    gender { "female" }
     language_de { true }
     language_en { true }
     notifications { true }
