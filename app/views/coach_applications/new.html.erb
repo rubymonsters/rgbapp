@@ -14,8 +14,8 @@
     <%= l @event.installation_get_together_end_time, format: :short %></p>
     <p>Workshop day:
     <%= l @event.scheduled_at, format: :long %>,
-    <%= @event.start_time %> -
-    <%= @event.end_time %></p>
+    <%= l @event.start_time, format: :short %> -
+    <%= l @event.end_time, format: :short %></p>
   </div>
   <div>
     <p><b>Where for all events:</b></p>
