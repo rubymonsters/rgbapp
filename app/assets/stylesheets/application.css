@@ -136,7 +136,18 @@ body {
 
 fieldset {
   border: none;
-  border-top: 1px solid #777777;
+  margin-top: 20px;
+}
+
+fieldset.form-border {
+  border: 1px solid #ddd;
+  border-radius: 25px;
+}
+
+legend.form-title {
+  text-align: center;
+  color: #1e64b4;
+  font-size: 18px;
 }
 
 input[type=text] {
