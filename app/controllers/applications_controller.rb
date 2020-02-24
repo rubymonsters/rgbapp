@@ -16,7 +16,7 @@ class ApplicationsController < ApplicationController
   def create
     @application = @event.applications.build(params.require(:application).permit(:name,
       :email, :language_de, :language_en, :attended_before, :rejected_before, :level,
-      :comments, :os, :needs_computer, :read_coc, :female))
+      :comments, :referred_by, :os, :needs_computer, :read_coc, :female))
 
     @application.random_id = SecureRandom.hex(12)
     @application.sequence_number = @event.applications.count + 1

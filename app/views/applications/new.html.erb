@@ -11,7 +11,11 @@
     <%= error_message(@application, :female) %>
     <p>
       <%= f.check_box :female %>
-      <%= f.label(:female, "I am a woman / non-binary person.") %>
+      <%= f.label(:female, "I identify as a woman (cis or trans) or non-binary person or trans-man.") %>
+      <p class="note">
+        This workshop is only for women, non-binary and trans-people. 
+        Feel free to leave a comment at the bottom of the form, if this line is problematic for you.
+      </p>
     </p>
     <p><%= f.label(:name, "Name") %></p><p class="note">No official name necessary, you can use the name you want to be called. Just be sure to remember what you picked. *</p>
       <%= error_message(@application, :name) %>
@@ -37,7 +41,7 @@
   <fieldset>
       <p>
         <%= f.check_box :attended_before %>
-        <%= f.label(:attended_before, "I have attended a code curious workshop before.") %>
+        <%= f.label(:attended_before, "I have attended a code curious or Rails Girls Berlin workshop before.") %>
       </p>
       <p>
         <%= f.check_box :rejected_before %>
@@ -52,10 +56,19 @@
       <p><%= f.select(:os, options_for_select([["Linux", "linux"], ["Mac", "mac"], ["Windows", "windows"], ["Other", "other"]], @application.os), include_blank: true) %></p>
       <p>
         <%= f.check_box :needs_computer %>
-        <%= f.label(:needs_computer, "Or do you need a computer for the workshop?") %>
+        <%= f.label(:needs_computer, "Or do you need to borrow a laptop for the duration of the workshop?") %>
+        <p class="note">
+          We do not have laptops to lend out for the day, but we will try our best to find you one from the community. 
+          If you have a possibility of borrowing a laptop from a friend, that would be very helpful so you can still 
+          tick this box but make sure to mention that in the bottom comment section.
+        </p>
       </p>
-      <p><%= f.label(:comments, "Is there anything else that you would like to mention?") %></p>
+      <p><%= f.label(:referred_by, "How did you hear about us?") %></p>
+      <p><%= f.text_area :referred_by %></p>
+      
+      <p><%= f.label(:comments, "Is there anything else you would like to mention? For example: why you want to attend?") %></p>
       <p><%= f.text_area :comments %></p>
+      
   </fieldset>
   <fieldset>
     <h2>Please read and accept our <a href="http://berlincodeofconduct.org">Code of Conduct</a></h2>
