@@ -11,7 +11,7 @@
 # Include: **/*.gemfile, **/Gemfile, **/gems.rb
 Bundler/DuplicatedGem:
   Exclude:
-    - 'Gemfile'
+    - "Gemfile"
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -19,7 +19,7 @@ Bundler/DuplicatedGem:
 # Include: **/*.gemfile, **/Gemfile, **/gems.rb
 Bundler/OrderedGems:
   Exclude:
-    - 'Gemfile'
+    - "Gemfile"
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -46,7 +46,7 @@ Layout/BlockAlignment:
 # Cop supports --auto-correct.
 Layout/CommentIndentation:
   Exclude:
-    - 'app/helpers/admin/templates_helper.rb'
+    - "app/helpers/admin/templates_helper.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -66,7 +66,7 @@ Layout/DotPosition:
 # Cop supports --auto-correct.
 Layout/EmptyLineAfterGuardClause:
   Exclude:
-    - 'app/models/application.rb'
+    - "app/models/application.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -84,7 +84,7 @@ Layout/EmptyLinesAroundBlockBody:
 # Cop supports --auto-correct.
 Layout/EmptyLinesAroundMethodBody:
   Exclude:
-    - 'app/controllers/admin/templates_controller.rb'
+    - "app/controllers/admin/templates_controller.rb"
 
 # Offense count: 6
 # Cop supports --auto-correct.
@@ -118,13 +118,13 @@ Layout/LeadingCommentSpace:
 # SupportedStyles: aligned, indented, indented_relative_to_receiver
 Layout/MultilineMethodCallIndentation:
   Exclude:
-    - 'app/controllers/admin/coach_applications_controller.rb'
+    - "app/controllers/admin/coach_applications_controller.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 Layout/RescueEnsureAlignment:
   Exclude:
-    - 'app/helpers/admin/templates_helper.rb'
+    - "app/helpers/admin/templates_helper.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -135,7 +135,7 @@ Layout/SpaceAfterComma:
 # Cop supports --auto-correct.
 Layout/SpaceBeforeComma:
   Exclude:
-    - 'db/migrate/20180122202409_add_event_time.rb'
+    - "db/migrate/20180122202409_add_event_time.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -144,7 +144,7 @@ Layout/SpaceBeforeComma:
 # SupportedStylesForEmptyBrackets: space, no_space
 Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
-    - 'config/environments/production.rb'
+    - "config/environments/production.rb"
 
 # Offense count: 6
 # Cop supports --auto-correct.
@@ -153,7 +153,7 @@ Layout/SpaceInsideArrayLiteralBrackets:
 # SupportedStylesForEmptyBraces: space, no_space
 Layout/SpaceInsideHashLiteralBraces:
   Exclude:
-    - 'test/controllers/applications_controller_test.rb'
+    - "test/controllers/applications_controller_test.rb"
 
 # Offense count: 11
 # Cop supports --auto-correct.
@@ -174,7 +174,7 @@ Layout/Tab:
 # SupportedStyles: final_newline, final_blank_line
 Layout/TrailingEmptyLines:
   Exclude:
-    - 'app/controllers/sessions_controller.rb'
+    - "app/controllers/sessions_controller.rb"
 
 # Offense count: 15
 # Cop supports --auto-correct.
@@ -185,7 +185,7 @@ Layout/TrailingWhitespace:
 # Offense count: 1
 Lint/UselessAssignment:
   Exclude:
-    - 'app/controllers/admin/applications_controller.rb'
+    - "app/controllers/admin/applications_controller.rb"
 
 # Offense count: 10
 Metrics/AbcSize:
@@ -202,14 +202,6 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 34
 
-# Offense count: 3
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: braces, no_braces, context_dependent
-Style/BracesAroundHashParameters:
-  Exclude:
-    - 'test/system/edit_event_test.rb'
-
 # Offense count: 18
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, EnforcedStyle.
@@ -223,7 +215,7 @@ Style/ClassAndModuleChildren:
 # Keywords: TODO, FIXME, OPTIMIZE, HACK, REVIEW
 Style/CommentAnnotation:
   Exclude:
-    - 'app/helpers/admin/templates_helper.rb'
+    - "app/helpers/admin/templates_helper.rb"
 
 # Offense count: 64
 Style/Documentation:
@@ -264,7 +256,7 @@ Style/HashSyntax:
 # Configuration parameters: AllowIfModifier.
 Style/IfInsideElse:
   Exclude:
-    - 'app/controllers/applications_controller.rb'
+    - "app/controllers/applications_controller.rb"
 
 # Offense count: 4
 # Cop supports --auto-correct.
@@ -280,14 +272,14 @@ Style/MixinUsage:
 # Configuration parameters: MinDigits, Strict.
 Style/NumericLiterals:
   Exclude:
-    - 'db/schema.rb'
+    - "db/schema.rb"
 
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: PreferredDelimiters.
 Style/PercentLiteralDelimiters:
   Exclude:
-    - 'config/spring.rb'
+    - "config/spring.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -300,7 +292,7 @@ Style/RedundantBegin:
 # SupportedStyles: implicit, explicit
 Style/RescueStandardError:
   Exclude:
-    - 'app/helpers/admin/templates_helper.rb'
+    - "app/helpers/admin/templates_helper.rb"
 
 # Offense count: 2
 # Cop supports --auto-correct.
@@ -313,7 +305,7 @@ Style/SafeNavigation:
 # Cop supports --auto-correct.
 Style/StderrPuts:
   Exclude:
-    - 'bin/yarn'
+    - "bin/yarn"
 
 # Offense count: 567
 # Cop supports --auto-correct.
@@ -342,7 +334,7 @@ Style/SymbolArray:
 # SupportedStylesForMultiline: comma, consistent_comma, no_comma
 Style/TrailingCommaInHashLiteral:
   Exclude:
-    - 'app/helpers/admin/templates_helper.rb'
+    - "app/helpers/admin/templates_helper.rb"
 
 # Offense count: 122
 # Cop supports --auto-correct.

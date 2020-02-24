@@ -11,14 +11,14 @@ class ApplicationsControllerTest < ActionDispatch::IntegrationTest
     event = create(:event, name: "Test Me", place: "Testing", installation_get_together_date: 13.days.from_now, scheduled_at: 2.weeks.from_now, application_start: Date.yesterday, application_end: Date.today, confirmation_date: 12.days.from_now)
     get "/events/#{event.id}/applications/new"
     assert_response 200
-    assert_select "h1", "Test Me #{i10n.l 13.days.from_now, format: :short} & #{i18n.l 2.weeks.from_now}"
+    assert_select "h1", "Test Me #{I18n.l 13.days.from_now.to_date, format: :short} & #{I18n.l 2.weeks.from_now.to_date}"
   end
 
   test "Get an event on the day the application period starts" do
     event = create(:event, name: "Test Me", place: "Testing", installation_get_together_date: 13.days.from_now, scheduled_at: 2.weeks.from_now, application_start: Date.today, application_end: Date.tomorrow, confirmation_date: 12.days.from_now)
     get "/events/#{event.id}/applications/new"
     assert_response 200
-    assert_select "h1", "Test Me #{i10n.l 13.days.from_now, format: :short} & #{i18n.l 2.weeks.from_now}"
+    assert_select "h1", "Test Me #{I18n.l 13.days.from_now.to_date, format: :short} & #{I18n.l 2.weeks.from_now.to_date}"
   end
 
   test "Get an event before application starts" do
