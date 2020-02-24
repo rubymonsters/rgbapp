@@ -1,26 +1,26 @@
-<h1><%= @event.name %> <%= @event.installation_get_together_date.strftime("%d.%m.") %> & <%= l @event.scheduled_at %> </h1>
-<section id="infoforcoaches">
-  <h4>Dear code curious (former Rails Girls Berlin) coaches,</h4>
+<h1><%= @event.name %> <%= l @event.installation_get_together_date, format: :short %> & <%= l @event.scheduled_at %> </h1>
+<section id="info-for-coaches">
+  <h3>Dear code curious (former Rails Girls Berlin) coaches,</h3>
   <p>We are looking for helping hands for our next <%= @event.name %>.</p>
-  <p>
-    <b>When:</b><br>
-    Coach the coaches:
-    <%= @event.coach_the_coaches_date.strftime("%A, %d.%m.%Y") %>,
-    <%= @event.coach_the_coaches_start_time.strftime("%H:%M") %> -
-    <%= @event.coach_the_coaches_end_time.strftime("%H:%M") %><br>
-    Installation get-together:
-    <%= @event.installation_get_together_date.strftime("%A, %d.%m.%Y") %>,
-    <%= @event.installation_get_together_start_time.strftime("%H:%M") %> -
-    <%= @event.installation_get_together_end_time.strftime("%H:%M") %><br>
-    Workshop day:
-    <%= @event.scheduled_at.strftime("%A, %d.%m.%Y") %>,
+  <div>
+    <p><b>When:</b></p>
+    <p>Coach the coaches:
+    <%= l @event.coach_the_coaches_date, format: :long %>,
+    <%= l @event.coach_the_coaches_start_time, format: :short %> -
+    <%= l @event.coach_the_coaches_end_time, format: :short %></p>
+    <p>Installation get-together:
+    <%= l @event.installation_get_together_date, format: :long %>,
+    <%= l @event.installation_get_together_start_time, format: :short %> -
+    <%= l @event.installation_get_together_end_time, format: :short %></p>
+    <p>Workshop day:
+    <%= l @event.scheduled_at, format: :long %>,
     <%= @event.start_time %> -
-    <%= @event.end_time %>
-  </p>
-  <p>
-    <b>Where for all events:</b><br>
+    <%= @event.end_time %></p>
+  </div>
+  <div>
+    <p><b>Where for all events:</b></p>
     <%= @event.place %>
-  </p>
+  </div>
 </section>
 
 <%= form_for [@event, @coach_application] do |f| %>
