@@ -16,11 +16,35 @@
 
   <p><%= f.label(:start_time, "Workshop starts at:") %></p>
   <%= error_message(@event, :start_time) %>
-  <p><%= f.text_field :start_time %></p>
+  <p><%= f.time_select :start_time %></p>
 
   <p><%= f.label(:end_time, "Workshop ends at:") %></p>
   <%= error_message(@event, :end_time) %>
-  <p><%= f.text_field :end_time %></p>
+  <p><%= f.time_select :end_time %></p>
+
+  <p><%= f.label(:coach_the_coaches_date, "Coach the Coaches date:") %></p>
+  <%= error_message(@event, :coach_the_coaches_date) %>
+  <p><%= f.date_select :coach_the_coaches_date %></p>
+
+  <p><%= f.label(:coach_the_coaches_start_time, "Coach the coaches starts at:") %></p>
+  <%= error_message(@event, :coach_the_coaches_start_time) %>
+  <p><%= f.time_select :coach_the_coaches_start_time %></p>
+
+  <p><%= f.label(:coach_the_coaches_end_time, "Coach the coaches ends at:") %></p>
+  <%= error_message(@event, :coach_the_coaches_end_time) %>
+  <p><%= f.time_select :coach_the_coaches_end_time %></p>
+
+  <p><%= f.label(:installation_get_together_date, "Installation Get-Together date:") %></p>
+  <%= error_message(@event, :installation_get_together_date) %>
+  <p><%= f.date_select :installation_get_together_date %></p>
+
+  <p><%= f.label(:installation_get_together_start_time, "Installation Get-Together starts at:") %></p>
+  <%= error_message(@event, :installation_get_together_start_time) %>
+  <p><%= f.time_select :installation_get_together_start_time %></p>
+
+  <p><%= f.label(:installation_get_together_end_time, "Installation Get-Together ends at:") %></p>
+  <%= error_message(@event, :installation_get_together_end_time) %>
+  <p><%= f.time_select :installation_get_together_end_time %></p>
 
   <p><%= f.label(:application_start, "Applications start on:") %></p>
   <%= error_message(@event, :application_start) %>

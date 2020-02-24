@@ -1,23 +1,63 @@
+<h1><%= @event.name %> <%= l @event.installation_get_together_date, format: :short %> & <%= l @event.scheduled_at %> </h1>
+<section id="info-for-coaches">
+  <h3>Dear code curious (former Rails Girls Berlin) coaches,</h3>
+  <p>We are looking for helping hands for our next <%= @event.name %>.</p>
+  <div>
+    <p><b>When:</b></p>
+    <p>Coach the coaches:
+    <%= l @event.coach_the_coaches_date, format: :long %>,
+    <%= l @event.coach_the_coaches_start_time, format: :short %> -
+    <%= l @event.coach_the_coaches_end_time, format: :short %></p>
+    <p>Installation get-together:
+    <%= l @event.installation_get_together_date, format: :long %>,
+    <%= l @event.installation_get_together_start_time, format: :short %> -
+    <%= l @event.installation_get_together_end_time, format: :short %></p>
+    <p>Workshop day:
+    <%= l @event.scheduled_at, format: :long %>,
+    <%= @event.start_time %> -
+    <%= @event.end_time %></p>
+  </div>
+  <div>
+    <p><b>Where for all events:</b></p>
+    <%= @event.place %>
+  </div>
+</section>
+
 <%= form_for [@event, @coach_application] do |f| %>
   <h2>I can help on the</h2>
     <p class="note">Please select one or both.</p>
     <p>
       <%= f.check_box :installationparty %>
-      <%= f.label(:installationparty, "installation party") %>
+      <%= f.label(:installationparty, "installation get-together") %>
     </p>
     <p>
       <%= f.check_box :workshopday %>
       <%= f.label(:workshopday, "workshop day") %>
     </p>
   <h2>Are you coaching for the first time?</h2>
+  <p class="note">First-time coach = someone who has never coached at a code curious or Rails Girls Berlin beginner workshop.</p>
   <p>
     <%= f.check_box :first_time_coaching %>
-    <%= f.label(:first_time_coaching, "yes, coaching for the first time") %>
+    <%= f.label(:first_time_coaching, "Yes, I'm coaching for the first time.") %>
   </p>
   <h2>Would you like to give a lightning talk? What topic do you have in mind?</h2>
-  <p class="note">The talk should be understandable for beginners and no longer than 5 minutes.</p>
+  <p class="note">
+    The talk should be understandable for beginners and no longer than 5 minutes.
+    We especially welcome more inspirational talks, from women/under-represented groups in tech.
+    This could be about what got you into tech or what cool projects you've done or are interested in doing.
+  </p>
   <p>
     <%= f.text_field :lightningtalk %>
+  </p>
+  <h2>Will you attend the coach the coaches?</h2>
+  <p class="note">This is to help and familiarize you with the topics of the workshop. We suggest every coach be present, especially first-time coaches.</p>
+  <p>
+    <%= f.check_box :coach_the_coaches %>
+    <%= f.label(:coach_the_coaches, "Yes, I will attend the coach-the-coaches workshop.") %>
+  </p>
+  <h2>Is your company interested in sponsoring code curious?</h2>
+  <p>
+    <%= f.text_field :sponsor %>
   </p>
   <h2>Notes</h2>
   <p class="note">including if you would like to help the organizers on the day or even become an organizer in the future</p>

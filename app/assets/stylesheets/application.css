@@ -219,6 +219,13 @@ input[type=submit].button_link {
   margin-top: 100px;
 }
 
+#info-for-coaches {
+  background-color: #e7f6fd;
+  text-align: center;
+  border: thin solid #1e64b4;
+  color: #1e64b4;
+}
+
 /*Table*/
 
 table {

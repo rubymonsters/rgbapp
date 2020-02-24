@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2020_02_24_192634) do
     t.boolean "lightningtalk_approved", default: false
     t.datetime "contacted_at"
     t.boolean "first_time_coaching"
+    t.boolean "coach_the_coaches", default: false
+    t.string "sponsor"
     t.index ["coach_id"], name: "index_coach_applications_on_coach_id"
     t.index ["event_id"], name: "index_coach_applications_on_event_id"
   end
@@ -61,11 +63,11 @@ ActiveRecord::Schema.define(version: 2020_02_24_192634) do
     t.string "name"
     t.boolean "language_de"
     t.boolean "language_en"
-    t.boolean "female"
     t.boolean "notifications", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gender", default: "female", null: false
     t.index ["user_id"], name: "index_coaches_on_user_id"
   end
 
@@ -105,8 +107,6 @@ ActiveRecord::Schema.define(version: 2020_02_24_192634) do
     t.date "application_end"
     t.date "confirmation_date"
     t.boolean "selection_complete", default: false, null: false
-    t.string "start_time", null: false
-    t.string "end_time", null: false
     t.text "application_mail"
     t.text "selection_mail"
     t.text "rejection_mail"
@@ -124,6 +124,14 @@ ActiveRecord::Schema.define(version: 2020_02_24_192634) do
     t.boolean "coach_registration_enabled", default: true
     t.text "coach_approval_mail"
     t.text "coach_approval_mail_subject"
+    t.date "coach_the_coaches_date"
+    t.time "coach_the_coaches_start_time"
+    t.time "coach_the_coaches_end_time"
+    t.date "installation_get_together_date"
+    t.time "installation_get_together_start_time"
+    t.time "installation_get_together_end_time"
+    t.time "start_time", null: false
+    t.time "end_time", null: false
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
