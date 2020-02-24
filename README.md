@@ -6,9 +6,9 @@ This repo is the open source project for the **code curious app** that aims to h
 
 ## Technical Requirements
 
-- Ruby '~> 2.3.x'
+- Ruby '~> 2.6.5'
 - Bundler
-- Ruby on Rails '~> 5.2.3'
+- Ruby on Rails '~> 5.2.x'
 - PostgreSQL '~> 9.5.x'
 
 ## How to set up
