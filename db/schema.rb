@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_192549) do
+ActiveRecord::Schema.define(version: 2020_02_24_192634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_192549) do
     t.integer "sequence_number"
     t.integer "state", default: 0, null: false
     t.boolean "attended", default: false
+    t.text "referred_by"
     t.index ["event_id"], name: "index_applications_on_event_id"
   end
 
@@ -51,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_192549) do
     t.integer "state", default: 0, null: false
     t.boolean "lightningtalk_approved", default: false
     t.datetime "contacted_at"
-    t.boolean "first_time_coaching", default: false
+    t.boolean "first_time_coaching"
     t.boolean "coach_the_coaches", default: false
     t.string "sponsor"
     t.index ["coach_id"], name: "index_coach_applications_on_coach_id"
