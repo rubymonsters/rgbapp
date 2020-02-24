@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_150918) do
+ActiveRecord::Schema.define(version: 2020_02_24_192549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,8 +106,6 @@ ActiveRecord::Schema.define(version: 2020_02_22_150918) do
     t.date "application_end"
     t.date "confirmation_date"
     t.boolean "selection_complete", default: false, null: false
-    t.string "start_time", null: false
-    t.string "end_time", null: false
     t.text "application_mail"
     t.text "selection_mail"
     t.text "rejection_mail"
@@ -131,6 +129,8 @@ ActiveRecord::Schema.define(version: 2020_02_22_150918) do
     t.date "installation_get_together_date"
     t.time "installation_get_together_start_time"
     t.time "installation_get_together_end_time"
+    t.time "start_time", null: false
+    t.time "end_time", null: false
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

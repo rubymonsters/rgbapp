@@ -16,11 +16,11 @@
 
   <p><%= f.label(:start_time, "Workshop starts at:") %></p>
   <%= error_message(@event, :start_time) %>
-  <p><%= f.text_field :start_time %></p>
+  <p><%= f.time_select :start_time %></p>
 
   <p><%= f.label(:end_time, "Workshop ends at:") %></p>
   <%= error_message(@event, :end_time) %>
-  <p><%= f.text_field :end_time %></p>
+  <p><%= f.time_select :end_time %></p>
 
   <p><%= f.label(:coach_the_coaches_date, "Coach the Coaches date:") %></p>
   <%= error_message(@event, :coach_the_coaches_date) %>
