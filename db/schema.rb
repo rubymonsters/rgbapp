@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_10_194758) do
+ActiveRecord::Schema.define(version: 2020_02_22_150918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 2020_02_10_194758) do
     t.boolean "lightningtalk_approved", default: false
     t.datetime "contacted_at"
     t.boolean "first_time_coaching", default: false
+    t.boolean "coach_the_coaches", default: false
+    t.string "sponsor"
     t.index ["coach_id"], name: "index_coach_applications_on_coach_id"
     t.index ["event_id"], name: "index_coach_applications_on_event_id"
   end
@@ -60,11 +62,11 @@ ActiveRecord::Schema.define(version: 2020_02_10_194758) do
     t.string "name"
     t.boolean "language_de"
     t.boolean "language_en"
-    t.boolean "female"
     t.boolean "notifications", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "gender", default: "female", null: false
     t.index ["user_id"], name: "index_coaches_on_user_id"
   end
 
@@ -123,6 +125,12 @@ ActiveRecord::Schema.define(version: 2020_02_10_194758) do
     t.boolean "coach_registration_enabled", default: true
     t.text "coach_approval_mail"
     t.text "coach_approval_mail_subject"
+    t.date "coach_the_coaches_date"
+    t.time "coach_the_coaches_start_time"
+    t.time "coach_the_coaches_end_time"
+    t.date "installation_get_together_date"
+    t.time "installation_get_together_start_time"
+    t.time "installation_get_together_end_time"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

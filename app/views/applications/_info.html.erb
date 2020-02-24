@@ -1,4 +1,4 @@
-<h1><%= @event.name %> <%= l @event.scheduled_at %> </h1>
+<h1><%= @event.name %> <%= l @event.installation_get_together_date, format: :short %> & <%= l @event.scheduled_at %> </h1>
 
 <article>
   <% if @application.nil? || @application.errors.empty? %>

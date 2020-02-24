@@ -5,7 +5,7 @@ FactoryBot.define do
   factory :coach do
     association :user
     name { "Swenja" }
-    female { true }
+    gender { "female" }
     language_de { true }
     language_en { true }
     notifications { true }
@@ -17,6 +17,12 @@ FactoryBot.define do
     application_start { Time.now }
     application_end { Time.now }
     confirmation_date { Time.now }
+    coach_the_coaches_date { Time.now }
+    coach_the_coaches_start_time { Time.now }
+    coach_the_coaches_end_time { Time.now }
+    installation_get_together_date { Time.now }
+    installation_get_together_start_time { Time.now }
+    installation_get_together_end_time { Time.now }
     scheduled_at { Time.now }
     start_time { "10:00" }
     end_time { "18:00" }

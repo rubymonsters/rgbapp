@@ -71,7 +71,13 @@ private
         :copy_templates_from_event_id,
         :confirmation_deadline,
         :reminder_date,
-        :coach_registration_enabled)
+        :coach_registration_enabled,
+        :coach_the_coaches_date,
+        :coach_the_coaches_start_time,
+        :coach_the_coaches_end_time,
+        :installation_get_together_date,
+        :installation_get_together_start_time,
+        :installation_get_together_end_time)
   end
 
   def send_selection_emails(applications)

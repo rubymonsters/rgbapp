@@ -7,7 +7,7 @@ class CreateCoachTest < ApplicationSystemTestCase
     fill_in "E-mail address", with: "test@coach.de"
     fill_in "Password", with: "password"
     fill_in "Name", with: "Super coach"
-    check "female/I have some female sex characteristics."
+    select "Female", from: "I identify as"
     check "English"
     check "Notifications about upcoming events"
 
@@ -17,7 +17,7 @@ class CreateCoachTest < ApplicationSystemTestCase
 
     assert_equal coach.name, "Super coach"
     assert_equal coach.user.email, "test@coach.de"
-    assert_equal coach.female, true
+    assert_equal coach.gender, "female"
     assert_equal coach.language_en, true
     assert_equal coach.language_de, false
     assert_equal coach.notifications, true

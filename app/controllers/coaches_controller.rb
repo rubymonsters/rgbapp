@@ -36,7 +36,7 @@ class CoachesController < ApplicationController
 
   def coach_params
     params.require(:coach).permit(:name,
-                                  :female,
+                                  :gender,
                                   :language_en,
                                   :language_de,
                                   :notifications,

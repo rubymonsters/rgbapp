@@ -34,9 +34,12 @@ en:
   date:
     formats:
       default: "%d.%m.%Y"
+      short: "%d.%m."
+      long: "%A, %d.%m.%Y"
   time:
     formats:
       date: "%d.%m.%Y"
+      short: "%H:%M"
   activerecord:
     attributes:
       application/state:

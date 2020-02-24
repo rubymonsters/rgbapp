@@ -4,7 +4,7 @@ class AddCoachApplicationTest < ApplicationSystemTestCase
   setup do
     @event = create(:event, name: "Workshop Code Curious")
     @user = create(:user, email: "test@coach.de", password: "password")
-    @coach = create(:coach, user: @user)
+    @coach = create(:coach, user: @user, gender: "female")
 
     visit coaches_sign_in_path
 
@@ -17,11 +17,14 @@ class AddCoachApplicationTest < ApplicationSystemTestCase
   end
 
   test "Coach application" do
-    check "installation party"
+    check "installation get-together"
     check "workshop day"
+    check "Yes, I'm coaching for the first time."
+    check "Yes, I will attend the coach-the-coaches workshop."
 
     fill_in "coach_application_lightningtalk", with: "Yes"
     fill_in "coach_application_notes", with: "I'm happy"
+    fill_in "coach_application_sponsor", with: "Yes"
 
     click_on "Submit"
 
@@ -33,5 +36,8 @@ class AddCoachApplicationTest < ApplicationSystemTestCase
     assert_equal coach_application.workshopday, true
     assert_equal coach_application.lightningtalk, "Yes"
     assert_equal coach_application.notes, "I'm happy"
+    assert_equal coach_application.first_time_coaching, true
+    assert_equal coach_application.coach_the_coaches, true
+    assert_equal coach_application.sponsor, "Yes"
   end
 end

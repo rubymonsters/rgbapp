@@ -17,6 +17,9 @@ Layout/HashAlignment:
 Naming/PredicateName:
   Enabled: false
 
+Style/MutableConstant:
+  Enabled: false
+
 Style/HashEachMethods:
   Enabled: false
 

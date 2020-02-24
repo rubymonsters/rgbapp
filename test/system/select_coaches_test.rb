@@ -7,8 +7,8 @@ class SelectCoachesTest < ApplicationSystemTestCase
     @admin = create(:user, email: "test@user.de", password: "test", admin: true)
     @user1 = create(:user, email: "user1@coach.de", password: "password")
     @user2 = create(:user, email: "user2@coach.de", password: "password")
-    @coach1 = create(:coach, user: @user1, name: "Supercoach")
-    @coach2 = create(:coach, user: @user2)
+    @coach1 = create(:coach, user: @user1, name: "Supercoach", gender: "female")
+    @coach2 = create(:coach, user: @user2, gender: "female")
     @coach_application1 = create(:coach_application, event: @event, coach: @coach1, lightningtalk: "Amazing talk")
     @coach_application2 = create(:coach_application, event: @event, coach: @coach2)
 
