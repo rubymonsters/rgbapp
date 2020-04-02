@@ -14,7 +14,7 @@ This repo is the open source project for the **code curious app** that aims to h
 ## How to set up
 
 1. Clone the repo (`git clone <repo-url>`)
-1. Change into the project directory (`cd rgbapp`)
+1. Change into the project directory (`cd cc-app`)
 1. Run `bundle install`. This can fail for a number of reasons. See below for some troubleshooting.
 1. Run `(bundle exec) rake db:create`. This will create the databases for `development` and `test` by default.
 1. Install imagemagick (e.g. `brew install imagemagick`)
@@ -168,3 +168,21 @@ If this is the case try `$ bundle update` and then run `$ bundle exec rake -T` i
 1. Pull the latest changes.
 1. Push to Heroku using `git push heroku master`.
 1. If necessary, run migrations using `heroku run rails db:migrate`.
+
+## Contributing
+
+Welcome! We're happy that you will help us improve our app. Please let us know, if you have any questions.
+
+**Choose or open an issue**
+
+If you want to contribute, feel free to assign yourself to an existing issue or open a new one.
+
+**Create your own branch**
+
+1. Clone the repository.
+1. `git checkout -b <your-name>-<feature-name>` to a new branch in your local repository.
+1. Make your changes.
+1. `git commit -m` 'Add commit message'
+1. `git push` to push your new branch to your GitHub repository.
+
+When you have made your changes and tested them, please send us a pull request for review.
