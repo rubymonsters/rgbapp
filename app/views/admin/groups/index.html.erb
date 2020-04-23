@@ -1,5 +1,28 @@
 <% if @event.has_groups? %>
 has Groups
+
+<% @event_groups.each do |event_group| %>
+<h2><%= event_group.name %></h2>
+<table>
+  <thead>
+    <tr>
+      <th>Attendees</th>
+      <th>Coaches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= @application.name %>
+      </td>
+      <td>
+        <%= @coach.name %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<%end %>
+
 <% else %>
   <%= button_to "Generate groups", generate_admin_event_groups_path(@event), method: :post %>
 <% end %>
