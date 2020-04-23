@@ -13,10 +13,9 @@ has Groups
   <tbody>
     <tr>
       <td>
-        <%= @application.name %>
+        <%= event_group.applications.map(&:name).join(", ") %>
       </td>
       <td>
-        <%= @coach.name %>
       </td>
     </tr>
   </tbody>

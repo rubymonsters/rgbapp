@@ -4,32 +4,19 @@ class Admin::GroupsController < ApplicationController
   before_action :find_event
 
   def index
+    @event_groups = @event.event_groups
   end
 
   def generate
-    # 50 Teilnehmer insgesamt
-    # mach 10 Gruppen á 5 Teilnehmer
-    # mach für jede Gruppe einen DB Eintrag mit name = "Group " + index Zahl 
+    @attendees = @event.applications.application_selected.confirmed
+    @attendees.each_slice(6).with_index do |group, index|
+      event_group = EventGroup.create(event: @event, name: "Group #{index}")
+      group.each do |application|
+        event_group.applications << application
+      end
+    end
 
-    # (Anzahl der Gruppen = Anzahl der Attendees, die attended haben / 6 )
-    #p application.attended
-    #
-    # if @event.applications.attended && @event.applications.language_de 
-    # attendants = @event.applications.attendants
-
-    @attendants = @event.applications.application_selected.confirmed
-    puts ('huhuu')
-    puts @attendants
-    
-    # attendants.each do |attendant|
-    #   puts ('huhuuu')
-    #   puts @attendant
-    # end
-    puts @event.applications #.attendants 
-      #attended = 'true')
-    # end
-    # Gruppennummer zuordnen put application_id in event_group_attendees
-    # 
+    @event_groups = @event.event_groups
 
     redirect_to admin_event_groups_path(@event), notice: "Groups successfully generated"
   end

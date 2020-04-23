@@ -1,6 +1,7 @@
 class Event < ApplicationRecord
   has_many :applications
   has_many :coach_applications
+  has_many :event_groups
   before_create :copy_templates
 
   validates :name, :place, :scheduled_at, :application_start, :application_end, :confirmation_date, :start_time, :end_time, presence: true
@@ -26,9 +27,9 @@ class Event < ApplicationRecord
   end
 
   def has_groups?
-    false
+    !event_groups.empty?
   end
-  
+
 private
 
   def right_order_of_dates
