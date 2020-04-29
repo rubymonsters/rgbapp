@@ -1,26 +1,26 @@
 <% if @event.has_groups? %>
-has Groups
 
-<% @event_groups.each do |event_group| %>
-<h2><%= event_group.name %></h2>
-<table>
-  <thead>
-    <tr>
-      <th>Attendees</th>
-      <th>Coaches</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <%= event_group.applications.map(&:name).join(", ") %>
-      </td>
-      <td>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<%end %>
+  <% @event_groups.each do |event_group| %>
+    <h2><%= event_group.name %></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Attendees</th>
+          <th>Coaches</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= event_group.applications.map(&:name).join(", ") %>
+          </td>
+          <td>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <%end %>
 
 <% else %>
   <%= button_to "Generate groups", generate_admin_event_groups_path(@event), method: :post %>

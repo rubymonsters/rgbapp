@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_182618) do
+ActiveRecord::Schema.define(version: 2020_04_29_185626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,13 +88,13 @@ ActiveRecord::Schema.define(version: 2020_04_23_182618) do
     t.index ["event_group_id"], name: "index_event_groups_applications_on_event_group_id"
   end
 
-  create_table "event_groups_coaches", force: :cascade do |t|
+  create_table "event_groups_coach_applications", force: :cascade do |t|
     t.bigint "coach_application_id"
     t.bigint "event_group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["coach_application_id"], name: "index_event_groups_coaches_on_coach_application_id"
-    t.index ["event_group_id"], name: "index_event_groups_coaches_on_event_group_id"
+    t.index ["coach_application_id"], name: "index_event_groups_coach_applications_on_coach_application_id"
+    t.index ["event_group_id"], name: "index_event_groups_coach_applications_on_event_group_id"
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
@@ -152,6 +152,6 @@ ActiveRecord::Schema.define(version: 2020_04_23_182618) do
   add_foreign_key "event_groups", "events"
   add_foreign_key "event_groups_applications", "applications"
   add_foreign_key "event_groups_applications", "event_groups"
-  add_foreign_key "event_groups_coaches", "coach_applications"
-  add_foreign_key "event_groups_coaches", "event_groups"
+  add_foreign_key "event_groups_coach_applications", "coach_applications"
+  add_foreign_key "event_groups_coach_applications", "event_groups"
 end
