@@ -15,7 +15,9 @@
             <%= event_group.applications.map(&:name).join(", ") %>
           </td>
           <td>
-
+            <% event_group.coach_applications.map do |application| %>
+              <%= application.coach.name %>
+            <% end %>
           </td>
         </tr>
       </tbody>
