@@ -7,8 +7,28 @@ class Admin::GroupsController < ApplicationController
     @event_groups = @event.event_groups
   end
 
-  def generate
+  # An action to regenerate 
+  # -> a controller method
+  # -> button (to call the action)
+  # -> a route
+  # -> isolate generate behaviour in its own method
 
+  def generate
+    fill_groups
+    @event_groups = @event.event_groups
+    redirect_to admin_event_groups_path(@event), notice: "Groups successfully generated"
+  end
+
+  def regenerate
+    @event_groups = @event.event_groups
+    @event_groups.destroy_all
+    fill_groups
+    redirect_to admin_event_groups_path(@event), notice: "Groups successfully regenerated"
+  end
+
+  private
+
+  def fill_groups
     # create a group for each pair of coaches
     @coaches = @event.coach_applications.approved.to_a
     @coaches.each_slice(2).with_index do |group, index|
@@ -26,13 +46,7 @@ class Admin::GroupsController < ApplicationController
         event_group.applications << attendee_group unless attendee_group.empty?
       end
     end
-
-    @event_groups = @event.event_groups
-
-    redirect_to admin_event_groups_path(@event), notice: "Groups successfully generated"
   end
-
-  private
 
   def find_event
     @event = Event.find(params[:event_id])

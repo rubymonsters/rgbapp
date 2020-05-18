@@ -1,5 +1,6 @@
 <% if @event.has_groups? %>
 
+  <%= button_to "Regenerate groups", regenerate_admin_event_groups_path(@event), method: :post %>
   <% @event_groups.each do |event_group| %>
     <h2><%= event_group.name %></h2>
     <table>
