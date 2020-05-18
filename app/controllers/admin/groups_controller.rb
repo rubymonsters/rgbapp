@@ -7,7 +7,7 @@ class Admin::GroupsController < ApplicationController
     @event_groups = @event.event_groups
   end
 
-  # An action to regenerate 
+  # An action to regenerate
   # -> a controller method
   # -> button (to call the action)
   # -> a route
@@ -22,6 +22,8 @@ class Admin::GroupsController < ApplicationController
   def regenerate
     @event_groups = @event.event_groups
     @event_groups.destroy_all
+    @event.reload
+
     fill_groups
     redirect_to admin_event_groups_path(@event), notice: "Groups successfully regenerated"
   end
