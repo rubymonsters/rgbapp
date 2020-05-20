@@ -13,11 +13,12 @@
       <tbody>
         <tr>
           <td>
-            <%= event_group.applications.map(&:name).join(", ") %>
+            <%= event_group.applications.map(&:name).join("<br>").html_safe %>
           </td>
           <td>
             <% event_group.coach_applications.map do |application| %>
               <%= application.coach.name %>
+              <br>
             <% end %>
           </td>
         </tr>

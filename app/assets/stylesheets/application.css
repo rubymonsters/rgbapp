@@ -497,3 +497,42 @@ nav.email-templates-menu li a:hover {
 input.grey {
   background-color: #c4220d;
 }
+
+/* Printer styles */
+
+@media print {
+  header,
+  input,
+  footer,
+  .top-menu {
+    display: none;
+  }
+
+  body {
+    color: #000;
+    background-color: #fff;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  table {
+    break-inside: avoid;
+  }
+
+  h2 {
+    page-break-inside: avoid;
+    margin-top: 30px;
+  }
+
+  /* Hacky solution to make avoidance of page break work ^^
+  https://stackoverflow.com/a/53742871/9328428
+  */
+  h2::after {
+    content: "";
+    display: block;
+    height: 200px;
+    margin-bottom: -200px;
+  }
+}
