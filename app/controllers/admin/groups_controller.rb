@@ -40,16 +40,16 @@ class Admin::GroupsController < ApplicationController
       end
     end
 
-    # add one attendee to each group as long as there are attendees in array
+    # get selected attendees from DB
     @attendees = @event.applications.application_selected.confirmed.to_a
 
-    groupped_attendes_by_language = @attendees.group_by do |element|
+    grouped_attendees_by_language = @attendees.group_by do |element|
       [element.language_de, element.language_en]
     end
 
-    attendees_de = groupped_attendes_by_language[[true, false]]
-    attendees_en = groupped_attendes_by_language[[false, true]]
-    attendees_de_en = groupped_attendes_by_language[[true, true]]
+    attendees_de = grouped_attendees_by_language[[true, false]]
+    attendees_en = grouped_attendees_by_language[[false, true]]
+    attendees_de_en = grouped_attendees_by_language[[true, true]]
 
     de_groups = attendees_de.in_groups_of(6, false)
     en_groups = attendees_en.in_groups_of(6, false)
