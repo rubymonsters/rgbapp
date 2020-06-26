@@ -13,12 +13,39 @@
       <tbody>
         <tr>
           <td>
-            <%= event_group.applications.map(&:name).join("<br>").html_safe %>
+            <% event_group.applications.map do |application| %>
+              <div class="grid-wrapper">
+                <span>
+                  <%= application.name %>
+                </span>
+                <span class="language-tag">
+                  <% if application.language_de === true && application.language_en === true %>
+                    both languages
+                  <% elsif application.language_de === true && application.language_en === false %>
+                    German
+                  <% else %> 
+                    English
+                  <% end %>
+                </span>
+              </div>
+            <% end %>
           </td>
           <td>
             <% event_group.coach_applications.map do |application| %>
-              <%= application.coach.name %>
-              <br>
+              <div class="grid-wrapper">
+                  <span>
+                    <%= application.coach.name %>
+                  </span>
+                  <span class="language-tag">
+                    <% if application.coach.language_de === true && application.coach.language_en === true %>
+                      both languages
+                    <% elsif application.coach.language_de === true && application.coach.language_en === false %>
+                      German
+                    <% else %> 
+                      English
+                    <% end %>
+                  </span>
+                </div>
             <% end %>
           </td>
         </tr>
