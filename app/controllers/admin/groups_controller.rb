@@ -42,11 +42,35 @@ class Admin::GroupsController < ApplicationController
 
     # add one attendee to each group as long as there are attendees in array
     @attendees = @event.applications.application_selected.confirmed.to_a
-    @attendees.each do |attendee|
-      @event.event_groups.each do |event_group|
-        attendee_group = @attendees.pop(1)
-        event_group.applications << attendee_group unless attendee_group.empty?
-      end
+
+    groupped_attendes_by_language = @attendees.group_by do |element|
+      [element.language_de, element.language_en]
+    end
+
+    attendees_de = groupped_attendes_by_language[[true, false]]
+    attendees_en = groupped_attendes_by_language[[false, true]]
+    attendees_de_en = groupped_attendes_by_language[[true, true]]
+
+    de_groups = attendees_de.in_groups_of(6, false)
+    en_groups = attendees_en.in_groups_of(6, false)
+
+    if (de_groups.last.size < 6)
+      de_groups.last.concat(attendees_de_en.pop(6 - de_groups.last.size))
+    end
+    
+    if (en_groups.last.size < 6)
+      en_groups.last.concat(attendees_de_en.pop(6 - en_groups.last.size))
+    end
+
+    de_en_groups = attendees_de_en.in_groups_of(6, false)
+
+    all_groups = de_groups + en_groups + de_en_groups
+
+    # FIXME: This can cause attendees to not be assigned to event groups
+    @event.event_groups.each do |event_group|
+      group_to_add = all_groups.pop(1) 
+      break if group_to_add.nil?
+      event_group.applications << group_to_add
     end
   end
 
