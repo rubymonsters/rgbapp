@@ -504,11 +504,29 @@ input.grey {
   margin-bottom: .5em;
 }
 
+.info-wrapper {
+  display: flex;
+  /* justify-content: space-evenly; */
+  margin-bottom: 1em;
+  font-weight: bold;
+  color: #fff;
+}
+
+.info-wrapper .info {
+  border-right: 1px solid #ffff;
+  padding: 15px;
+  text-align: left;
+  width: 30em;
+}
+
+.cc-gradient {
+  background: linear-gradient(to right, #28B4F0, #F0A0C8);
+}
+
 .language-tag {
   padding: 0 .7em;
   font-size: 12px;
   width: fit-content;
-  background: linear-gradient(to right, #28B4F0, #F0A0C8);
   color: #fff;
   border-radius: 5px;
 }

@@ -1,5 +1,9 @@
 <% if @event.has_groups? %>
 
+  <div class="info-wrapper cc-gradient">
+    <div class="info">Attendees: <%= @attendees_count %></div>
+    <div class="info">Coaches: <%= @coaches_count %></div>
+  </div>
   <%= button_to "Regenerate groups", regenerate_admin_event_groups_path(@event), method: :post %>
   <% @event_groups.each do |event_group| %>
     <h2><%= event_group.name %></h2>
@@ -18,7 +22,7 @@
                 <span>
                   <%= application.name %>
                 </span>
-                <span class="language-tag">
+                <span class="language-tag cc-gradient">
                   <% if application.language_de === true && application.language_en === true %>
                     both languages
                   <% elsif application.language_de === true && application.language_en === false %>
@@ -36,7 +40,7 @@
                   <span>
                     <%= application.coach.name %>
                   </span>
-                  <span class="language-tag">
+                  <span class="language-tag cc-gradient">
                     <% if application.coach.language_de === true && application.coach.language_en === true %>
                       both languages
                     <% elsif application.coach.language_de === true && application.coach.language_en === false %>

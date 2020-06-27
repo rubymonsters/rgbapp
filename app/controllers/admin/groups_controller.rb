@@ -5,6 +5,8 @@ class Admin::GroupsController < ApplicationController
 
   def index
     @event_groups = @event.event_groups
+    @coaches_count = @event.coach_applications.approved.size
+    @attendees_count = @event.applications.application_selected.size
   end
 
   # An action to regenerate
