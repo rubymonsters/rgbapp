@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :check_if_coach, only: [:index]
 
   def index
-    @events = Event.all
+    @events = Event.all.sort_by &:scheduled_at
   end
 
   private
