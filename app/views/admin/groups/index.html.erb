@@ -22,13 +22,22 @@
                 <span>
                   <%= application.name %>
                 </span>
-                <span class="language-tag cc-gradient">
+                <span class="tag cc-gradient">
                   <% if application.language_de === true && application.language_en === true %>
                     both languages
                   <% elsif application.language_de === true && application.language_en === false %>
                     German
                   <% else %> 
                     English
+                  <% end %>
+                </span>
+                <span class="tag cc-gradient-reverse">
+                  <% if application.os === "mac" %>
+                    Mac
+                  <% elsif application.os === "windows" %>
+                    Windows
+                  <% elsif application.os === "linux" %>
+                    Linux
                   <% end %>
                 </span>
               </div>
@@ -40,7 +49,7 @@
                   <span>
                     <%= application.coach.name %>
                   </span>
-                  <span class="language-tag cc-gradient">
+                  <span class="tag cc-gradient">
                     <% if application.coach.language_de === true && application.coach.language_en === true %>
                       both languages
                     <% elsif application.coach.language_de === true && application.coach.language_en === false %>

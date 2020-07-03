@@ -3,6 +3,8 @@ class Admin::GroupsController < ApplicationController
   before_action :require_admin
   before_action :find_event
 
+  GROUP_SIZE = 4
+
   def index
     @event_groups = @event.event_groups
     @coaches_count = @event.coach_applications.approved.size
@@ -32,10 +34,14 @@ class Admin::GroupsController < ApplicationController
 
   private
 
+  def fetch_by_key(object, key)
+    object[key] || []
+  end
+
   def fill_groups
     # create a group for each pair of coaches
     @coaches = @event.coach_applications.approved.to_a
-    @coaches.each_slice(2).with_index do |group, index|
+    @coaches.each_slice(1).with_index do |group, index|
       event_group = EventGroup.create(event: @event, name: "Group #{index + 1}")
       group.each do |coach_application|
         event_group.coach_applications << coach_application
@@ -46,27 +52,58 @@ class Admin::GroupsController < ApplicationController
     @attendees = @event.applications.application_selected.confirmed.to_a
 
     grouped_attendees_by_language = @attendees.group_by do |element|
-      [element.language_de, element.language_en]
+      [element.language_de, element.language_en, element.os]
     end
 
-    attendees_de = grouped_attendees_by_language[[true, false]]
-    attendees_en = grouped_attendees_by_language[[false, true]]
-    attendees_de_en = grouped_attendees_by_language[[true, true]]
+    attendees_de_mac = fetch_by_key(grouped_attendees_by_language, [true, false, "mac"])
+    attendees_de_windows = fetch_by_key(grouped_attendees_by_language, [true, false, "windows"])
+    attendees_de_linux = fetch_by_key(grouped_attendees_by_language, [true, false, "linux"])
 
-    de_groups = attendees_de.in_groups_of(6, false)
-    en_groups = attendees_en.in_groups_of(6, false)
+    attendees_en_mac = fetch_by_key(grouped_attendees_by_language, [false, true, "mac"])
+    attendees_en_windows = fetch_by_key(grouped_attendees_by_language, [false, true, "windows"])
+    attendees_en_linux = fetch_by_key(grouped_attendees_by_language, [false, true, "linux"])
 
-    if (de_groups.last.size < 6)
-      de_groups.last.concat(attendees_de_en.pop(6 - de_groups.last.size))
+    attendees_de_en_mac = fetch_by_key(grouped_attendees_by_language, [true, true, "mac"])
+    attendees_de_en_windows = fetch_by_key(grouped_attendees_by_language, [true, true, "windows"])
+    attendees_de_en_linux = fetch_by_key(grouped_attendees_by_language, [true, true, "linux"])
+
+    attendees_de_mac_groups = attendees_de_mac.in_groups_of(GROUP_SIZE, false)
+    attendees_de_windows_groups = attendees_de_windows.in_groups_of(GROUP_SIZE, false)
+    attendees_de_linux_groups = attendees_de_linux.in_groups_of(GROUP_SIZE, false)
+    attendees_en_mac_groups = attendees_en_mac.in_groups_of(GROUP_SIZE, false)
+    attendees_en_windows_groups = attendees_en_windows.in_groups_of(GROUP_SIZE, false)
+    attendees_en_linux_groups = attendees_en_linux.in_groups_of(GROUP_SIZE, false)
+
+    [attendees_de_mac_groups, attendees_en_mac_groups].each do |groups|
+      if groups.try :nonzero?
+        if (groups.last.size < GROUP_SIZE)
+          groups.last.concat(attendees_de_en_mac.pop(GROUP_SIZE - groups.last.size))
+        end
+      end
+    end
+
+    [attendees_de_linux_groups, attendees_en_linux_groups].each do |groups|
+      if groups.try :nonzero?
+        if(groups.last.size < GROUP_SIZE)
+          groups.last.concat(attendees_de_en_linux.pop(GROUP_SIZE - groups.last.size))
+        end
+      end 
     end
     
-    if (en_groups.last.size < 6)
-      en_groups.last.concat(attendees_de_en.pop(6 - en_groups.last.size))
+    [attendees_de_windows_groups, attendees_en_windows_groups].each do |groups|
+      if groups.try :nonzero?
+        if(groups.last.size < GROUP_SIZE)
+          groups.last.concat(attendees_de_en_windows.pop(GROUP_SIZE - groups.last.size))
+        end
+      end
     end
 
-    de_en_groups = attendees_de_en.in_groups_of(6, false)
+    de_en_groups_mac = attendees_de_en_mac.in_groups_of(GROUP_SIZE, false)
+    de_en_groups_windows = attendees_de_en_windows.in_groups_of(GROUP_SIZE, false)
+    de_en_groups_linux = attendees_de_en_windows.in_groups_of(GROUP_SIZE, false)
 
-    all_groups = de_groups + en_groups + de_en_groups
+    all_groups = attendees_de_mac_groups + attendees_de_windows_groups + attendees_de_linux_groups + attendees_en_mac_groups + attendees_en_windows_groups + attendees_en_linux_groups + de_en_groups_mac + de_en_groups_windows + de_en_groups_linux
+
 
     # FIXME: This can cause attendees to not be assigned to event groups
     @event.event_groups.each do |event_group|

@@ -500,7 +500,7 @@ input.grey {
 
 .grid-wrapper {
   display: grid;
-  grid-template-columns: 250px 250px;
+  grid-template-columns: 200px 200px 200px;
   margin-bottom: .5em;
 }
 
@@ -523,7 +523,11 @@ input.grey {
   background: linear-gradient(to right, #28B4F0, #F0A0C8);
 }
 
-.language-tag {
+.cc-gradient-reverse {
+  background: linear-gradient(to right, #F0A0C8, #28B4F0);
+}
+
+.tag {
   padding: 0 .7em;
   font-size: 12px;
   width: fit-content;
