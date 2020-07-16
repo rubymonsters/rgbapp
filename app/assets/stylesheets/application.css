@@ -15,29 +15,10 @@
 *= require trix
 */
 
-/* @tailwind base;
-
-h1 {
-  @apply text-2xl;
-}
-h2 {
-  @apply text-xl;
-}
-h3 {
-  @apply text-lg;
-}
-a {
-  @apply text-blue-600;
-}
-
-@tailwind components;
-
-@tailwind utilities; */
-
 /* * {
 background-color: red;   }*/
 
-/* header {
+header {
   position: fixed;
   top: 0;
   height: 80px;
@@ -124,13 +105,13 @@ h1 {
 }
 
 h2 {
-  font-size: 16px;
-  font-style: italic;
+  color:#1E64B4;
+  font-size: 18px;
 }
 
 h3 {
   color:#1E64B4;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 h3 span {
@@ -187,9 +168,9 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #28B4F0;
   cursor: pointer;
-} */
+}
 
-/* input[type=number] {
+input[type=number] {
   width: 75px;
 }
 
@@ -254,11 +235,11 @@ input[type=submit].button_link {
   text-align: center;
   border: thin solid #1e64b4;
   color: #1e64b4;
-} */
+}
 
 /*Table*/
 
-/* table {
+table {
   border-collapse: collapse;
   width: 100%;
 }
@@ -291,13 +272,13 @@ th a:hover {
 td {
   height: 50px;
   vertical-align: middle;
-} */
+}
 
 /* td.actions a {
 color: grey;
 } */
 
-/* td.actions a:link, td.actions a:visited {
+td.actions a:link, td.actions a:visited {
   background-color: #1E64B4;
   color: white;
   padding: 14px 25px;
@@ -316,21 +297,21 @@ a:hover {
 
 td.actions form {
   display: inline;
-} */
+}
 
 /* mouse over link */
-/* td.actions a:hover {
+td.actions a:hover {
   background-color: #28B4F0;
   text-decoration: none;
-} */
+}
 
 /* selected link */
-/* td.actions a:active {
+td.actions a:active {
   color: green;
   text-decoration: none;
-} */
+}
 
-/* td.center {
+td.center {
   text-align: center;
 }
 
@@ -353,11 +334,11 @@ input[type=radio] {
 td.rejected {background-color: #FF4D4D}
 td.waiting_list {background-color: #FF9E9E}
 td.application_selected, td.approved {background-color: #59A12F}
-td.cancelled {background-color: #999} */
+td.cancelled {background-color: #999}
 
 /* Shorten text in comment field */
 
-/* .shorten-long-text {
+.shorten-long-text {
   white-space: nowrap;
   overflow: hidden;
   max-width: 200px;
@@ -370,38 +351,38 @@ td.cancelled {background-color: #999} */
   display: block;
   width: 400px;
   height: auto;
-} */
+}
 
 /* Tooltip container */
-/* .tooltip {
+.tooltip {
   position: relative;
   display: inline-block;
-} */
+}
 
 /* Tooltip text */
-/* .tooltip .tooltiptext {
+.tooltip .tooltiptext {
   visibility: hidden;
   width: 120px;
   background-color: #555;
   color: #fff;
   text-align: center;
   padding: 5px 0;
-  border-radius: 6px; */
+  border-radius: 6px;
 
   /* Position the tooltip text */
-  /* position: absolute;
+  position: absolute;
   z-index: 1;
   bottom: 125%;
   left: 50%;
-  margin-left: -60px; */
+  margin-left: -60px;
 
   /* Fade in tooltip */
-  /* opacity: 0;
+  opacity: 0;
   transition: opacity 1s;
-} */
+}
 
 /* Tooltip arrow */
-/* .tooltip .tooltiptext::after {
+.tooltip .tooltiptext::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -410,17 +391,17 @@ td.cancelled {background-color: #999} */
   border-width: 5px;
   border-style: solid;
   border-color: #555 transparent transparent transparent;
-} */
+}
 
 /* Show the tooltip text when you mouse over the tooltip container */
-/* .tooltip:hover .tooltiptext {
+.tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
-} */
+}
 
 /* Footer navigation in admin view */
 
-/* footer {
+footer {
   border-top: 1px solid #1E64B4;
 }
 
@@ -446,11 +427,11 @@ footer li a, footer li a:visited {
 
 footer li a:hover {
   background-color: #e9e9e9;
-} */
+}
 
 /* Top navigation in admin view */
 
-/* nav.top-menu ul {
+nav.top-menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -478,11 +459,11 @@ nav.top-menu li a.active {
 nav.top-menu li a:hover {
   background-color: #e9e9e9;
   color: #1E64B4;
-} */
+}
 
 /* E-mail templates side menu */
 
-/* nav.email-templates-menu ul {
+nav.email-templates-menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -505,14 +486,14 @@ nav.email-templates-menu li a {
 nav.email-templates-menu li a.active {
   background-color: #1E64B4;
   color: white;
-} */
+}
 
 /* Change the link color on hover */
-/* nav.email-templates-menu li a:hover {
+nav.email-templates-menu li a:hover {
   background-color: #28B4F0;
   color: white;
 }
 
 input.grey {
   background-color: #c4220d;
-} */
+}
