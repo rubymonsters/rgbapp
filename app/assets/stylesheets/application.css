@@ -194,6 +194,22 @@ input[type=submit].button_link {
   padding: 0;
 }
 
+input[type=submit].unblock-button {
+  padding: 14px 25px;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #b63838;
+  font-size: 16px;
+  text-align: center;
+  color: #fff;
+}
+
+input[type=submit].unblock-button:hover {
+  background-color: #cd5c5c;
+  cursor: pointer;
+}
+
 .note {
   font-size: 11px;
   font-style: italic;

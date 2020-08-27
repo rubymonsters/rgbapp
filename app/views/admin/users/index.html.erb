@@ -5,7 +5,7 @@
       <th>E-mail</th>
       <th>Admin</th>
       <th>Coach</th>
-      <th>Delete</th>
+      <th>Delete | Block</th>
     </tr>
   </thead>
   <tbody>
@@ -29,11 +29,13 @@
       </td>
       <td>
         <% if user != current_user && !user.coach %>
-          <%= button_to "Delete user", admin_user_path(user), method: "delete" %>
-        <% elsif user.coach && user.blacklisted %>
-          Blacklisted
+          <%= button_to "Delete", admin_user_path(user), method: "delete" %>
+        <% elsif user.coach && user.is_blocked %>
+          <%= button_to "Delete", admin_user_path(user), method: "delete" %>
+          <%= button_to "Unblock", unblock_admin_user_path(user), method: "put", class: "unblock-button" %>
         <% elsif user.coach %>
-          <%= button_to "Blacklist", blacklist_admin_user_path(user), method: "put" %>
+          <%= button_to "Delete", admin_user_path(user), method: "delete" %>
+          <%= button_to "Block", block_admin_user_path(user), method: "put" %>
         <% end %>
       </td>
     </tr>

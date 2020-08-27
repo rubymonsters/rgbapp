@@ -27,9 +27,15 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_path
   end
 
-  def blacklist
-    @user.update_attributes(blacklisted: true)
-    flash[:notice] = "User was blacklisted"
+  def block
+    @user.update_attributes(is_blocked: true)
+    flash[:notice] = "User is blocked"
+    redirect_to admin_users_path
+  end
+
+  def unblock
+    @user.update_attributes(is_blocked: false)
+    flash[:notice] = "User is unblocked"
     redirect_to admin_users_path
   end
 

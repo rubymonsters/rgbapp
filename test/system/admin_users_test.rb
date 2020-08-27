@@ -3,7 +3,8 @@ require "application_system_test_case"
 class AdminUsersTest < ApplicationSystemTestCase
   setup do
     create(:user, email: "admin@user.de", password: "admin", admin: true)
-    @user = create(:user, email: "test@user.de", password: "test", admin: false)
+    @user = create(:user, email: "test@user.de", password: "test", admin: false, is_blocked: false)
+    coach = create(:coach, user: @user)
 
     visit admin_users_path
 
@@ -24,8 +25,20 @@ class AdminUsersTest < ApplicationSystemTestCase
   end
 
   test "Deleting user" do
-    click_on "Delete user"
+    click_on "Delete"
 
     assert_equal User.count, 1
+  end
+
+  test "Block coach" do
+    click_on "Block"
+
+    assert @user.reload.is_blocked?
+    assert_button "Unblock"
+
+    click_on "Unblock"
+
+    assert !@user.reload.is_blocked?
+    assert_button "Block"
   end
 end
