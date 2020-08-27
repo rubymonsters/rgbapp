@@ -4,7 +4,7 @@ class AdminUsersTest < ApplicationSystemTestCase
   setup do
     create(:user, email: "admin@user.de", password: "admin", admin: true)
     @user = create(:user, email: "test@user.de", password: "test", admin: false, is_blocked: false)
-    coach = create(:coach, user: @user)
+    create(:coach, user: @user)
 
     visit admin_users_path
 
