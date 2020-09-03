@@ -27,15 +27,15 @@
           ✅
         <% end %>
       </td>
-      <td>
+      <td class="actions">
         <% if user != current_user && !user.coach %>
           <%= button_to "Delete", admin_user_path(user), method: "delete" %>
         <% elsif user.coach && user.is_blocked %>
-          <%= button_to "Delete", admin_user_path(user), method: "delete" %>
           <%= button_to "Unblock", unblock_admin_user_path(user), method: "put", class: "unblock-button" %>
-        <% elsif user.coach %>
           <%= button_to "Delete", admin_user_path(user), method: "delete" %>
+        <% elsif user.coach %>
           <%= button_to "Block", block_admin_user_path(user), method: "put" %>
+          <%= button_to "Delete", admin_user_path(user), method: "delete" %>
         <% end %>
       </td>
     </tr>
