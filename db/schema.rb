@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_174101) do
     t.integer "state", default: 0, null: false
     t.boolean "lightningtalk_approved", default: false
     t.datetime "contacted_at"
-    t.boolean "first_time_coaching", default: false
+    t.boolean "first_time_coaching"
     t.boolean "coach_the_coaches", default: false
     t.string "sponsor"
     t.index ["coach_id"], name: "index_coach_applications_on_coach_id"

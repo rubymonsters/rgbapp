@@ -11,17 +11,22 @@ class SessionsController < Clearance::SessionsController
 
   def create
     @user = authenticate(params)
-    sign_in(@user) do |status|
-      if status.success?
-        redirect_back_or url_after_create
-      else
-        flash.now.alert = status.failure_message
-        if params["user_type"] == "coach"
-          render template: "sessions/new_coach", status: :unauthorized
-        elsif params["user_type"] == "admin"
-          render template: "sessions/new_admin", status: :unauthorized
+    if @user.present? && @user.is_blocked
+      flash[:error] = "You have been blocked! Contact an Admin for details."
+      redirect_to coaches_sign_in_path
+    else
+      sign_in(@user) do |status|
+        if status.success?
+          redirect_back_or url_after_create
         else
-          render template: "clearance/sessions/new", status: :unauthorized
+          flash.now.alert = status.failure_message
+          if params["user_type"] == "coach"
+            render template: "sessions/new_coach", status: :unauthorized
+          elsif params["user_type"] == "admin"
+            render template: "sessions/new_admin", status: :unauthorized
+          else
+            render template: "clearance/sessions/new", status: :unauthorized
+          end
         end
       end
     end
