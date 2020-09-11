@@ -34,7 +34,7 @@ class Admin::UsersController < ApplicationController
     @coach_applications.each do |coach_application|
       coach_application.update(state: 'rejected')
     end
-    flash[:notice] = "User is blocked"
+    flash[:notice] = "User is blocked and rejected from the Events they applied for"
     redirect_to admin_users_path
   end
 
