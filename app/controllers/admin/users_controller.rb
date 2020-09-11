@@ -29,6 +29,11 @@ class Admin::UsersController < ApplicationController
 
   def block
     @user.update_attributes(is_blocked: true)
+    @coach = Coach.where(user_id: @user.id).first
+    @coach_applications = CoachApplication.where(coach_id: @coach.id)
+    @coach_applications.each do |coach_application|
+      coach_application.update(state: 'rejected')
+    end
     flash[:notice] = "User is blocked"
     redirect_to admin_users_path
   end
