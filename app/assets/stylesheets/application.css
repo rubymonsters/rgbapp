@@ -170,9 +170,9 @@ input[type=submit]:hover {
   cursor: pointer;
 }
 
-input[type=number] {
+/* input[type=number] {
   width: 75px;
-}
+} */
 
 textarea {
   width: 50%;

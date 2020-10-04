@@ -1,5 +1,5 @@
 <%= render :partial => 'info' %>
-<%= form_for [@event, @application] do |f| %>
+<%= form_for [@event, @application], html: {class: 'w-full'} do |f| %>
   <fieldset>
     <% if @application.errors.any? %>
       <div id="error_explanation">
@@ -7,55 +7,7 @@
       </div>
     <% end %>
   </fieldset>
-  <fieldset>
-      <p>
-        <%= f.check_box :attended_before %>
-        <%= f.label(:attended_before, "I have attended a code curious or Rails Girls Berlin workshop before.") %>
-      </p>
-      <p>
-        <%= f.check_box :rejected_before %>
-         <%= f.label(:rejected_before, "I have applied before but did not get a place in the workshop.") %>
-      </p>
-      <p><%= f.label(:level, "What level of coding do you see yourself in Rails? (0=never coded before; 10=expert) *") %></p>
-      <%= error_message(@application, :level) %>
-      <p><%= f.number_field(:level, in: 0..10, step: 1) %></p>
-      <p><%= f.label(:os, "Which operating system does your computer have? *") %></p>
-      <p class="note">If "Other", please tell us in the comments which one you use.</p>
-      <%= error_message(@application, :os) %>
-      <p><%= f.select(:os, options_for_select([["Linux", "linux"], ["Mac", "mac"], ["Windows", "windows"], ["Other", "other"]], @application.os), include_blank: true) %></p>
-      <p>
-        <%= f.check_box :needs_computer %>
-        <%= f.label(:needs_computer, "Or do you need to borrow a laptop for the duration of the workshop?") %>
-        <p class="note">
-          We do not have laptops to lend out for the day, but we will try our best to find you one from the community. 
-          If you have a possibility of borrowing a laptop from a friend, that would be very helpful so you can still 
-          tick this box but make sure to mention that in the bottom comment section.
-        </p>
-      </p>
-      <p><%= f.label(:referred_by, "How did you hear about us?") %></p>
-      <p><%= f.text_area :referred_by %></p>
-      
-      <p><%= f.label(:comments, "Is there anything else you would like to mention? For example: why you want to attend?") %></p>
-      <p><%= f.text_area :comments %></p>
-      
-  </fieldset>
-  <fieldset>
-    <h2>Please read and accept our <a href="http://berlincodeofconduct.org">Code of Conduct</a></h2>
-    <p><%= f.check_box :read_coc %>
-      <%= error_message(@application, :read_coc) %>
-      <%= f.label(:read_coc, "I have read the Code of Conduct and will comply with it. *") %>
-    </p>
-  </fieldset>
-  <div class='button'>
-    <%= f.submit "Apply", class: 'commit', type: 'submit' %>
-  </div>
 
-  <br>
-<br>
-<br>
-<br>
-
-<form class="w-full max-w-lg">
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
@@ -75,7 +27,7 @@
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full md:w-1/3 px-5 mb-6 md:mb-0">
+    <div class="w-full md:w-1/2 px-5 mb-6 md:mb-0">
       <h3 class="font-bold text-l mb-2">Personal Information</h3>
       <%= error_message(@application, :female) %>
       <div class="flex items-baseline">
@@ -90,7 +42,7 @@
       </p>
     </div>
 
-    <div class="w-full md:w-1/3 px-5">
+    <div class="w-full md:w-1/2 px-5">
       <h3 class="font-bold text-l mb-2">Which language(s) do you prefer learning in? *</h3>
       <%= error_message(@application, :language) %>
       <div class="flex items-center">
@@ -105,102 +57,92 @@
       </div>
       <p class="text-gray-600 text-xs italic">Please select one or both.</p>      
     </div>
-    <div class="w-full md:w-1/3 px-5">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-        E-Mail Address *
-      </label>
-      <%= f.text_field :email, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500', placeholder: "jane.doe@mail.com" %>
-      <%= error_message(@application, :email) %>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-5 mb-6 md:mb-0">
+      <h3 class="font-bold text-l mb-2">Have you ever attended or applied for one of our workshops?</h3>
+      <%= error_message(@application, :female) %>
+      <div class="flex items-baseline">      
+        <%= f.check_box :female, class: 'mr-2'%>
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+          I have attended a code curious or Rails Girls Berlin workshop before
+        </label>
+      </div>
+      <div class="flex items-baseline">
+        <%= f.check_box :rejected_before, class: 'mr-2'%>
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+          I have applied before but did not get a place in the workshop
+        </label>
+      </div>
+    </div>
+
+    <div class="w-full md:w-1/2 px-5">
+      <h3 class="font-bold text-l mb-2">What level of coding do you see yourself in Rails? *</h3>
+      <%= error_message(@application, :level) %>
+      <div class="flex items-center">
+        <%= f.number_field(:level, class: 'appearance-none block w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500', in: 0..10, step: 1) %>
+      </div>
+      <p class="text-gray-600 text-xs italic">(0=never coded before; 10=expert)</p>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-5">
+      <h3 class="font-bold text-l mb-2">Which operating system does your computer have? *</h3>
+      <%= error_message(@application, :os) %>
+      <div class="">
+        <%= f.select(:os, options_for_select([["Linux", "linux"], ["Mac", "mac"], ["Windows", "windows"], ["Other", "other"]], @application.os), {include_blank: true}, { class: 'block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'}) %>
+      </div>
+      <p class="text-gray-600 text-xs italic">If "Other", please tell us in the comments which one you use.</p>
+    </div>
+    <div class="w-full md:w-1/2 px-5">
+      <h3 class="font-bold text-l mb-2">Do you need to borrow a laptop for the duration of the workshop?</h3>
+      <div class="flex items-center">
+        <%= f.check_box :needs_computer, class: 'mr-2'%>
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mr-2" for="">
+          Yes, I need a computer
+        </label>
+      </div>
+      <p class="text-gray-600 text-xs italic">We do not have laptops to lend out for the day, but we will try our best to find you one from the community. 
+          If you have a possibility of borrowing a laptop from a friend, that would be very helpful so you can still 
+          tick this box but make sure to mention that in the bottom comment section.
+      </p>      
+    </div>
+  </div>
+
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-5">
+      <h3 class="font-bold text-l mb-8">How did you hear about us?</h3>
+      <div class="">
+        <%= f.text_area :referred_by, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+      </div>
+    </div>
+    <div class="w-full md:w-1/2 px-5">
+      <h3 class="font-bold text-l mb-2">Is there anything else you would like to mention? For example: why you want to attend?</h3>
+      <div class="">
+        <%= f.text_area :comments, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+      </div>
     </div>
   </div>
   <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-        Password
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************">
-      <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
-    </div>
-  </div>
-  <div class="flex flex-wrap -mx-3 mb-2">
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-        City
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="Albuquerque">
-    </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-        State
-      </label>
-      <div class="relative">
-        <select class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-          <option>New Mexico</option>
-          <option>Missouri</option>
-          <option>Texas</option>
-        </select>
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-        </div>
+    <div class="w-full md:w-1/2 px-5">
+      <h3 class="font-bold text-l mb-2">Please read and accept our <a href="http://berlincodeofconduct.org">Code of Conduct</h3>
+      <%= error_message(@application, :read_coc) %>
+      <div class="flex items-center">
+        <%= f.check_box :read_coc, class: 'mr-2' %>
+         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mr-2" for="">
+          I have read the Code of Conduct and will comply with it. *
+        </label>
       </div>
     </div>
-    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
-        Zip
-      </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="90210">
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="flex justify-center w-full px-3 items-center">
+      <%= f.submit "Apply", class: 'commit', type: 'submit' %>
     </div>
   </div>
-</form>
 
-<br>
-<br>
-<br><br>
-<br>
-<br><br>
-<br>
-<br><br>
-<br>
-<br>
 
-<form class="w-full max-w-sm">
-  <div class="md:flex md:items-center mb-6">
-    <div class="md:w-1/3">
-      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-        Full Name
-      </label>
-    </div>
-    <div class="md:w-2/3">
-      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="Jane Doe">
-    </div>
-  </div>
-  <div class="md:flex md:items-center mb-6">
-    <div class="md:w-1/3">
-      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-username">
-        Password
-      </label>
-    </div>
-    <div class="md:w-2/3">
-      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-username" type="password" placeholder="******************">
-    </div>
-  </div>
-  <div class="md:flex md:items-center mb-6">
-    <div class="md:w-1/3"></div>
-    <label class="md:w-2/3 block text-gray-500 font-bold">
-      <input class="mr-2 leading-tight" type="checkbox">
-      <span class="text-sm">
-        Send me your newsletter!
-      </span>
-    </label>
-  </div>
-  <div class="md:flex md:items-center">
-    <div class="md:w-1/3"></div>
-    <div class="md:w-2/3">
-      <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-        Sign Up
-      </button>
-    </div>
-  </div>
-</form>
 
 <% end %>
