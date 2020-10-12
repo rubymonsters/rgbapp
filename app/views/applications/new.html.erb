@@ -62,9 +62,8 @@
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full md:w-1/2 px-5 mb-6 md:mb-0">
       <h3 class="font-bold text-l mb-2">Have you ever attended or applied for one of our workshops?</h3>
-      <%= error_message(@application, :female) %>
       <div class="flex items-baseline">      
-        <%= f.check_box :female, class: 'mr-2'%>
+        <%= f.check_box :attended_before, class: 'mr-2'%>
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
           I have attended a code curious or Rails Girls Berlin workshop before
         </label>

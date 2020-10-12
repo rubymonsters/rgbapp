@@ -1,5 +1,6 @@
-<h1><%= @event.name %> <%= l @event.scheduled_at %> </h1>
-<p>Thank you for filling out the form!</p>
-<p>Your application has been received. You will receive a confirmation e-mail that we received your application.</p>
-<p>For queries regarding the application, please contact: <a href="mailto:contact@codecurious.org">contact@codecurious.org</a>.</p>
-<p class="logo"><a href="http://codecurious.org"><%= image_tag("logo.png", width: 300, height: 300) %></a></p>
+<h1 class="text-center text-3xl my-5"><%= @event.name %> <%= l @event.scheduled_at %> </h1>
+<div class="text-center p-6 border rounded border-gray-400">
+  <p>Thank you for filling out the form!</p>
+  <p>Your application has been received. You will receive a confirmation e-mail that we received your application.</p>
+  <p>For queries regarding the application, please contact: <a href="mailto:contact@codecurious.org">contact@codecurious.org</a>.</p>
+</div>
