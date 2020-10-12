@@ -1,10 +1,10 @@
 <%= render :partial => 'info' %>
 <%= form_for [@event, @application], html: {class: 'w-full'} do |f| %>
   <fieldset>
-    <% if @application.errors.any? %>
-      <div id="error_explanation">
-        <h2>Please check fields marked in red:</h2>
-      </div>
+    <% if @application.errors.any? %>  
+      <h2 class="text-center p-2 mb-4 rounded flash error">
+        Please check the fields marked in red:
+      </h2>
     <% end %>
   </fieldset>
 
@@ -13,7 +13,7 @@
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
         Name
       </label>
-      <%= f.text_field :name, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white', placeholder: "Jane" %>
+      <%= f.text_field :name, class: 'block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white', placeholder: "Jane" %>
       <p class="text-gray-600 text-xs italic">No official name necessary, you can use the name you want to be called.</p>
       <p class="text-gray-600 text-xs italic">Just be sure to remember what you picked. *</p>
       <%= error_message(@application, :name) %>
@@ -22,7 +22,7 @@
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
         E-Mail Address *
       </label>
-      <%= f.text_field :email, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500', placeholder: "jane.doe@mail.com" %>
+      <%= f.text_field :email, class: 'block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500', placeholder: "jane.doe@mail.com" %>
       <%= error_message(@application, :email) %>
     </div>
   </div>
@@ -80,7 +80,7 @@
       <h3 class="font-bold text-l mb-2">What level of coding do you see yourself in Rails? *</h3>
       <%= error_message(@application, :level) %>
       <div class="flex items-center">
-        <%= f.number_field(:level, class: 'appearance-none block w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500', in: 0..10, step: 1) %>
+        <%= f.number_field(:level, class: 'w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500', in: 0..10, step: 1) %>
       </div>
       <p class="text-gray-600 text-xs italic">(0=never coded before; 10=expert)</p>
     </div>
@@ -91,7 +91,7 @@
       <h3 class="font-bold text-l mb-2">Which operating system does your computer have? *</h3>
       <%= error_message(@application, :os) %>
       <div class="">
-        <%= f.select(:os, options_for_select([["Linux", "linux"], ["Mac", "mac"], ["Windows", "windows"], ["Other", "other"]], @application.os), {include_blank: true}, { class: 'block appearance-none bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'}) %>
+        <%= f.select(:os, options_for_select([["Linux", "linux"], ["Mac", "mac"], ["Windows", "windows"], ["Other", "other"]], @application.os), {include_blank: true}, { class: 'block bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500'}) %>
       </div>
       <p class="text-gray-600 text-xs italic">If "Other", please tell us in the comments which one you use.</p>
     </div>
@@ -114,13 +114,13 @@
     <div class="w-full md:w-1/2 px-5">
       <h3 class="font-bold text-l mb-8">How did you hear about us?</h3>
       <div class="">
-        <%= f.text_area :referred_by, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+        <%= f.text_area :referred_by, class: 'block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
       </div>
     </div>
     <div class="w-full md:w-1/2 px-5">
       <h3 class="font-bold text-l mb-2">Is there anything else you would like to mention? For example: why you want to attend?</h3>
       <div class="">
-        <%= f.text_area :comments, class: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
+        <%= f.text_area :comments, class: 'block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white' %>
       </div>
     </div>
   </div>
