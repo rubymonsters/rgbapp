@@ -1,6 +1,6 @@
-<h1 class="text-center text-3xl my-5"><%= @event.name %> <%= l @event.installation_get_together_date, format: :short %> & <%= l @event.scheduled_at %> </h1>
+<h1 class="text-center text-3xl my-8"><%= @event.name %> <%= l @event.installation_get_together_date, format: :short %> & <%= l @event.scheduled_at %> </h1>
 
-<article>
+<article class="my-16">
   <% if @application.nil? || @application.errors.empty? %>
     <p class="mb-3">
       Code curious wants to give total beginners the opportunity and a community to start learning the technology to build their ideas and continue coding.
@@ -26,14 +26,14 @@
       We want to show you that programming is fun and creative and that there is a wonderful community ready to support your journey.
     </p>
 
-    <div id="greeting">
+    <div class="text-center">
       <h3>We are looking forward to seeing you <3 </h3>
     </div>
 
   <% end %>
 </article>
 
-<aside class="grid grid-cols-4 gap-4 my-8 text-center border rounded border-gray-400">
+<aside class="grid grid-cols-4 gap-4 my-12 text-center border rounded border-gray-400">
   <div class="py-6">
     <h3 class="font-bold text-l">Application Start:</h3>
     <span><%= l @event.application_start %></span>

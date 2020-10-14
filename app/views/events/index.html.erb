@@ -1,22 +1,23 @@
-<h1 class="text-center text-3xl my-5">Here is a list of our workshops:</h1>
+<h1 class="text-center text-3xl my-8">Here is a list of our workshops:</h1>
 
 <ul class="flex justify-center flex-wrap -mx-2">
   <% @events.each do |event| %>
   <li class="px-2 py-2">
-    <div class="max-w-sm rounded overflow-hidden shadow-lg">
-    <img class="w-full" src="/assets/squirrel-curious.jpg" alt="Curious Squirrel"> 
-    <div class="px-6 py-4">
-      <h2 class="font-bold text-xl mb-2"><%= link_to event.name , new_event_application_path(event) %></h2>
-      <p class="text-gray-700 text-base">
-        <%= l event.scheduled_at %>
-      </p>
-    </div>
-    <div class="px-6 py-4">
-      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 my-1">#code</span>
-      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 my-1">#curious</span>
-      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 my-1">#diveintocoding</span>
-    </div>
-    </div>
+    <a href="<%= new_event_application_path(event) %>">
+      <article class="max-w-sm rounded border border-gray-300 shadow-md hover:shadow-xl">
+        <div class="px-6 py-8">
+          <h2 class="font-bold text-xl mb-8"><%= event.name %></h2>
+          <section class="text-gray-700 text-base">
+            <p> <strong>When? </strong><%= l event.scheduled_at %></p>
+          </section>
+        </div>
+        <div class="px-6 py-4">
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 my-1">#code</span>
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 my-1">#curious</span>
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 my-1"> #<%= event.place %> </span>
+        </div>
+      </article>
+    </a>
   </li>
   <%end %>
 </ul>
