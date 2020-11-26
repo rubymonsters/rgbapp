@@ -37,7 +37,8 @@ Rails.application.routes.draw do
     root to: "events#index"
     resources :users do
       member do
-        put :blacklist
+        put :block
+        put :unblock
       end
     end
     resources :events do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_192634) do
+ActiveRecord::Schema.define(version: 2020_08_27_174101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_192634) do
     t.integer "state", default: 0, null: false
     t.boolean "lightningtalk_approved", default: false
     t.datetime "contacted_at"
-    t.boolean "first_time_coaching", default: false
+    t.boolean "first_time_coaching"
     t.boolean "coach_the_coaches", default: false
     t.string "sponsor"
     t.index ["coach_id"], name: "index_coach_applications_on_coach_id"
@@ -71,30 +71,30 @@ ActiveRecord::Schema.define(version: 2020_02_24_192634) do
     t.index ["user_id"], name: "index_coaches_on_user_id"
   end
 
-  create_table "event_group_attendees", force: :cascade do |t|
-    t.bigint "application_id"
-    t.bigint "event_group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["application_id"], name: "index_event_group_attendees_on_application_id"
-    t.index ["event_group_id"], name: "index_event_group_attendees_on_event_group_id"
-  end
-
-  create_table "event_group_coaches", force: :cascade do |t|
-    t.bigint "coach_application_id"
-    t.bigint "event_group_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["coach_application_id"], name: "index_event_group_coaches_on_coach_application_id"
-    t.index ["event_group_id"], name: "index_event_group_coaches_on_event_group_id"
-  end
-
   create_table "event_groups", force: :cascade do |t|
     t.bigint "event_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_groups_on_event_id"
+  end
+
+  create_table "event_groups_applications", force: :cascade do |t|
+    t.bigint "application_id"
+    t.bigint "event_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["application_id"], name: "index_event_groups_applications_on_application_id"
+    t.index ["event_group_id"], name: "index_event_groups_applications_on_event_group_id"
+  end
+
+  create_table "event_groups_coach_applications", force: :cascade do |t|
+    t.bigint "coach_application_id"
+    t.bigint "event_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["coach_application_id"], name: "index_event_groups_coach_applications_on_coach_application_id"
+    t.index ["event_group_id"], name: "index_event_groups_coach_applications_on_event_group_id"
   end
 
   create_table "events", id: :serial, force: :cascade do |t|
@@ -142,16 +142,16 @@ ActiveRecord::Schema.define(version: 2020_02_24_192634) do
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128, null: false
     t.boolean "admin", default: false, null: false
-    t.boolean "blacklisted", default: false
+    t.boolean "is_blocked", default: false
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
   add_foreign_key "coach_applications", "coaches"
   add_foreign_key "coach_applications", "events"
-  add_foreign_key "event_group_attendees", "applications"
-  add_foreign_key "event_group_attendees", "event_groups"
-  add_foreign_key "event_group_coaches", "coach_applications"
-  add_foreign_key "event_group_coaches", "event_groups"
   add_foreign_key "event_groups", "events"
+  add_foreign_key "event_groups_applications", "applications"
+  add_foreign_key "event_groups_applications", "event_groups"
+  add_foreign_key "event_groups_coach_applications", "coach_applications"
+  add_foreign_key "event_groups_coach_applications", "event_groups"
 end

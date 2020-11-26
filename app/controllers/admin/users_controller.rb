@@ -27,9 +27,20 @@ class Admin::UsersController < ApplicationController
     redirect_to admin_users_path
   end
 
-  def blacklist
-    @user.update_attributes(blacklisted: true)
-    flash[:notice] = "User was blacklisted"
+  def block
+    @user.update_attributes(is_blocked: true)
+    @coach = Coach.where(user_id: @user.id).first
+    @coach_applications = CoachApplication.where(coach_id: @coach.id)
+    @coach_applications.each do |coach_application|
+      coach_application.update(state: 'rejected')
+    end
+    flash[:notice] = "User is blocked and rejected from the Events they applied for"
+    redirect_to admin_users_path
+  end
+
+  def unblock
+    @user.update_attributes(is_blocked: false)
+    flash[:notice] = "User is unblocked"
     redirect_to admin_users_path
   end
 
