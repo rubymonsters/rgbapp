@@ -5,6 +5,7 @@ class CoachApplication < ApplicationRecord
   accepts_nested_attributes_for :event
 
   scope :to_contact, -> { where(contacted_at: nil, state: :approved) }
+  scope :approved, ->{ where(state: :approved) }
 
   enum state: { pending: 0, approved: 1, rejected: 2, cancelled: 3 }
 

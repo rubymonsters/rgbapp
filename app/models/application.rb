@@ -21,6 +21,7 @@ class Application < ApplicationRecord
   scope :cancelled, -> { where(state: :cancelled) }
   scope :not_marked_as_selected, -> { where(selected_on: nil) }
   scope :confirmed, -> { where(attendance_confirmed: true) }
+  scope :language_de, -> { where(language_de: true) }
 
   enum state: { rejected: 0, waiting_list: 1, application_selected: 2, cancelled: 3 }
 

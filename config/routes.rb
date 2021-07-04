@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       resources :groups, only: [:index] do
         collection do
           post :generate
+          post :regenerate
         end
       end
       put :complete
